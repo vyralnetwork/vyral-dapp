@@ -33,8 +33,11 @@
     <p>Please send your contribution to the following address or QR code. Recommended Gas amount: 200,00</p>
     <img src="/static/images/qr_code.jpg" alt="">
     <div class="input-grp">
-      <input type="text" placeholder="Contract ETH Address"/>
-      <button > COPY </button>
+      <input type="text" placeholder="Contract ETH Address" v-model="contractAddress"/>
+      <button type="button"
+      v-clipboard:copy="contractAddress"
+      v-clipboard:success="contractAddressCopySuccess"
+      v-clipboard:error="contractAddressCopyError">COPY</button>
     </div>
   </div>
   
@@ -46,9 +49,13 @@
 </template>
 
 <script>
+  import Vue from 'vue'
+  import VueClipboard from 'vue-clipboard2'
   import { getWeb3, getNetworkVersion  } from '../utils/BlockchainHelpers'
   import { VyralConfig } from '../utils/Config'
   import {getEncodedABIClientSide} from '../utils/MicroServices'
+
+  Vue.use(VueClipboard)
 
   export default {
     name: 'ContibutePage',
@@ -76,7 +83,7 @@
 
     data () {
       return {
-        //this.isNetworkConnected = false;
+        contractAddress: VyralConfig.contractAddress
       };
     },
     methods: {
@@ -87,6 +94,15 @@
         getEncodedABIClientSide(web3, VyralConfig.abi, data, function(){
           alert("here");
         });
+      },
+
+      contractAddressCopySuccess: function(e){
+        alert("Copied: "+ e.text);
+      },
+
+
+      contractAddressCopyError: function(e){
+        alert("Error");
       }
     }
   }

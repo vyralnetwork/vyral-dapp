@@ -15,11 +15,6 @@ export default new Router({
       component: AgreeTermsPage
     },
     {
-      path: '/agree-terms',
-      name: 'AgreeTermsPage',
-      component: AgreeTermsPage
-    },
-    {
       path: '/select-wallet',
       name: 'SelectWalletPage',
       component: SelectWalletPage

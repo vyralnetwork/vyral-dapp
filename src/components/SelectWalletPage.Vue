@@ -59,7 +59,10 @@
   
   <p class="footer-txt">Coinbase, Bittrex, poloniex, kraken, bitfinex,& all other exchanges are not compatible</p>
   
-  <button class="red-btn large">CONTINUE TO CONTRIBUTE</button>
+
+  <div class="text-center margin-top-xl">
+    <router-link :to="{ name: 'ContributePage' }" class="red-btn large">Continue To Contribute</router-link>
+  </div>
   
 </div>
 </template>

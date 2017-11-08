@@ -6,6 +6,15 @@ body{
 button, a, input[type='checkbox']{
 	cursor: pointer;
 }
+
+.text-center{
+	text-align: center;
+}
+
+.margin-top-xl{
+	margin-top:39px;
+}
+
 /** background body **/
 .logo{
     width: 70%;
@@ -323,7 +332,8 @@ ul
 	background-color: #ED385E;	
 	box-shadow: 0 1px 2px 0 rgba(0,0,0,0.16);
 	border:none;
-	display:block;
+	padding: 10px 40px;
+	text-decoration: none;
 }
 .footer-links{
 	margin:auto;

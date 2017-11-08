@@ -10,7 +10,8 @@ const networks = {
 const abi = [];
 
 
-export const VyralConfig = { 
+export const VyralConfig = {
+    launchDateTime: new Date('01/12/2017 10:00:00'),
     contractAddress: '0xc5a21a3e32d9d614ed46e4b2352670fcb21009ee',
     networks: networks,
     abi: abi

@@ -15,6 +15,10 @@ button, a, input[type='checkbox']{
 	margin-top:39px;
 }
 
+.margin-bottom-xl{
+	margin-bottom:39px;
+}
+
 /** background body **/
 .logo{
     width: 70%;
@@ -540,8 +544,8 @@ input {
 	color: #FFFFFF;	
 	font-size: 13px;	
 	line-height: 16px;
-	margin:35px auto;
-	display:block;
+	padding: 10px 40px;
+    text-decoration: none;
 }
 .qrcode-container {
 	height: 360.9px;

@@ -36,24 +36,34 @@
     <div>
       <img src="/static/images/myetherwallet-logo.png" class="ether"/>
       <span >MyEtherWallet</span>
+      <span class="selector" v-if="selectedWallet == 'MYETHERWALLET'"></span>
     </div>
     <div>
       <span class="recom-txt">Recommended</span>
       <img src="/static/images/metamask.png" class="metamask">
       <span>Metamask</span>
-      <span class="selector"></span>
+      <span class="selector" v-if="selectedWallet == 'METAMASK'"></span>
     </div>
     <div>
       <img src="/static/images/parity.png" class="parity">
       <span >Parity</span>
+      <span class="selector" v-if="selectedWallet == 'PARITY'"></span>
     </div>
     <div>
       <img src="/static/images/i am token.png" class="ether">
       <span >Iam Token</span>
+      <span class="selector" v-if="selectedWallet == 'IAMTOKEN'"></span>
     </div>
-    <div><img src="/static/images/jaxx.png" class="jaxx"></div>
-    <div><img src="/static/images/MIST.png" class="mist"></div>
-    
+    <div>
+      <img src="/static/images/jaxx.png" class="jaxx">
+      <span>Jaxx</span>
+      <span class="selector" v-if="selectedWallet == 'JAXX'"></span>
+    </div>
+    <div>
+      <img src="/static/images/MIST.png" class="mist">
+      <span>Mist</span>
+      <span class="selector" v-if="selectedWallet == 'MIST'"></span>
+    </div>
   </div>
   
   
@@ -72,7 +82,7 @@
     name: 'SelectWalletPage',
     data () {
       return {
-
+        selectedWallet: "METAMASK"
       }
     },
     methods: {

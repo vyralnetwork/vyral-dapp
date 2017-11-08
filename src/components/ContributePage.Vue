@@ -43,7 +43,9 @@
   
   <p class="footer-txt">Get your referal Link once you have Complated your transaction</p>
   
-  <button class="transparent-btn">CLAIM MY REFERAL LINK</button>
+  <div class="text-center margin-top-xl margin-bottom-xl">
+    <router-link :to="{ name: 'ReferralLinkPage' }" class="transparent-btn">CLAIM MY REFERAL LINK</router-link>
+  </div>
   
 </div>
 </template>

@@ -24,35 +24,15 @@
       <div class="right-block">
           <div class="contributions-accept">CONTRIBUTIONS ACCEPTED FROM 1ST DECEMBER</div>
 
-          <countdown-timer timestamp="1512122400000"></countdown-timer>
-          
+          <countdown-timer :timestamp="launchDateTime"></countdown-timer>
+
           <div class="share-token-rate">SHARE TOKEN RATE</div>
           <div class="token-rate">1 ETH  = 100 ST </div>
           <button class="white-btn">SAVE YOUR SPOT</button>
       </div>
     </div>
     
-    <div class="contribute-status-bar">
-        <div class="status-line"></div>
-        <div class="oval">
-            <div class="oval-txt">1</div>
-        </div>
-        <div class="oval oval2">
-            <div class="oval-txt">2</div>
-        </div>
-        <div class="oval oval3">
-            <div class="oval-txt">3</div>
-        </div>
-        <div class="oval oval4">
-            <div class="oval-txt">4</div>
-        </div>
-        <div class="status-bar-txt">
-            <span class="confirm">CONFIRM</span>
-            <span class="select-wallet">SELECT YOUR WALLET</span>
-            <span class="contribute">CONTRIBUTE</span>
-            <span class="ref-link">YOUR REFERAL LINK</span>
-        </div>
-    </div>
+    <wizard-steps current="AGREE_TERMS"></wizard-steps>
 
     <ul class="checks-block">
 

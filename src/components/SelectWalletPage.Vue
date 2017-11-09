@@ -4,7 +4,9 @@
     <img src="/static/images/logo.png" alt="">
   </div>
 
-  <div class="contribute-status-bar">
+  <wizard-steps current="SELECT_WALLET"></wizard-steps>
+
+  <!-- <div class="contribute-status-bar">
     <div class="status-line"></div>
     <div class="oval-green">
       <img class="oval-ok" src="/static/images/ok icon.svg"/>
@@ -24,7 +26,7 @@
       <span class="contribute">CONTRIBUTE</span>
       <span class="ref-link">YOUR REFERAL LINK</span>
     </div>
-  </div>
+  </div> -->
   
   <p class="choose-the-wallet">CHOOSE THE WALLET YOU WISH TO CONTRIBUTE WITH</p>
   

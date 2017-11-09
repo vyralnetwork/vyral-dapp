@@ -3,7 +3,10 @@
   <div class="logo">
     <img src="/static/images/logo.png" alt="">
   </div>
-  <div class="contribute-status-bar">
+
+  <wizard-steps current="CONTRIBUTE"></wizard-steps>
+  
+  <!-- <div class="contribute-status-bar">
     <div class="status-line"></div>
     <div class="oval-green">
       <img class="oval-ok" src="/static/images/ok icon.svg"/>
@@ -23,7 +26,7 @@
       <span class="contribute">CONTRIBUTE</span>
       <span class="ref-link">YOUR REFERAL LINK</span>
     </div>
-  </div>
+  </div> -->
   
   <div class="choose-the-wallet">VYRAL NETWORK CONTRIBUTION ADDRESS</div>
   
@@ -77,6 +80,10 @@
               console.log('Great, you are on Ethereum Mainnet')
               this.isNetworkConnected = true;
 
+              const data = {};
+              getEncodedABIClientSide(web3, VyralConfig.abi, data, function(){
+                alert("here");
+              });
             }
           })
         })
@@ -92,10 +99,7 @@
       contribute: function () {
         if(! this.isNetworkConnected) return;
 
-        const data = {};
-        getEncodedABIClientSide(web3, VyralConfig.abi, data, function(){
-          alert("here");
-        });
+        
       },
 
       contractAddressCopySuccess: function(e){

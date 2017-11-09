@@ -30,50 +30,77 @@
   
   <p class="txt2"> Please ensure you are using a ERC-20 compatible wallet and you don’t send contributions via exchanges.</p>
   
-  
-  
-  <div class="img-bar">
-    <div>
-      <img src="/static/images/myetherwallet-logo.png" class="ether"/>
-      <span >MyEtherWallet</span>
-      <span class="selector" v-if="selectedWallet == 'MYETHERWALLET'"></span>
-    </div>
-    <div>
-      <span class="recom-txt">Recommended</span>
-      <img src="/static/images/metamask.png" class="metamask">
-      <span>Metamask</span>
-      <span class="selector" v-if="selectedWallet == 'METAMASK'"></span>
-    </div>
-    <div>
-      <img src="/static/images/parity.png" class="parity">
-      <span >Parity</span>
-      <span class="selector" v-if="selectedWallet == 'PARITY'"></span>
-    </div>
-    <div>
-      <img src="/static/images/i am token.png" class="ether">
-      <span >Iam Token</span>
-      <span class="selector" v-if="selectedWallet == 'IAMTOKEN'"></span>
-    </div>
-    <div>
-      <img src="/static/images/jaxx.png" class="jaxx">
-      <span>Jaxx</span>
-      <span class="selector" v-if="selectedWallet == 'JAXX'"></span>
-    </div>
-    <div>
-      <img src="/static/images/MIST.png" class="mist">
-      <span>Mist</span>
-      <span class="selector" v-if="selectedWallet == 'MIST'"></span>
-    </div>
-  </div>
-  
-  
+
+
+  <ul class="wallet-container">
+    <li class="wallet-type">
+      <label class="checkbox">
+        <input type="radio" v-model="selectedWallet" value="MYETHERWALLET"/>
+        <img src="/static/images/myetherwallet-logo.png" class="ether"/>
+        <span class="label">MyEtherWallet</span>
+      <span class="active" v-if="selectedWallet == 'MYETHERWALLET'"></span>
+      </label>
+    </li>
+
+
+    <li class="wallet-type">
+      <span class="recommended">Recommended</span>
+
+      <label class="checkbox">
+        <input type="radio" v-model="selectedWallet" value="METAMASK"/>
+        <img src="/static/images/metamask.png" class="ether"/>
+        <span class="label">Metamask</span>
+        <span class="active" v-if="selectedWallet == 'METAMASK'"></span>
+      </label>
+    </li>
+
+
+    <li class="wallet-type">
+      <label class="checkbox">
+        <input type="radio" v-model="selectedWallet" value="PARITY"/>
+        <img src="/static/images/parity.png" class="parity">
+        <span class="label">Parity</span>
+        <span class="active" v-if="selectedWallet == 'PARITY'"></span>
+      </label>
+    </li>
+
+
+    <li class="wallet-type">
+      <label class="checkbox">
+        <input type="radio" v-model="selectedWallet" value="IAMTOKEN"/>
+        <img src="/static/images/i am token.png" class="ether">
+        <span class="label">Iam Token</span>
+        <span class="active" v-if="selectedWallet == 'IAMTOKEN'"></span>
+      </label>
+    </li>
+
+
+    <li class="wallet-type">
+      <label class="checkbox">
+        <input type="radio" v-model="selectedWallet" value="JAXX"/>
+        <img src="/static/images/jaxx.png" class="jaxx">
+        <span class="label">Jaxx</span>
+        <span class="active" v-if="selectedWallet == 'JAXX'"></span>
+      </label>
+    </li>
+
+
+    <li class="wallet-type">
+      <label class="checkbox">
+        <input type="radio" v-model="selectedWallet" value="MIST"/>
+        <img src="/static/images/MIST.png" class="mist">
+        <span class="label">Mist</span>
+        <span class="active" v-if="selectedWallet == 'MIST'"></span>
+      </label>
+    </li>
+  </ul>
+
   <p class="footer-txt">Coinbase, Bittrex, poloniex, kraken, bitfinex,& all other exchanges are not compatible</p>
-  
 
   <div class="text-center margin-top-xl">
-    <router-link :to="{ name: 'ContributePage' }" class="red-btn large">Continue To Contribute</router-link>
+    <button class="red-btn large" @click="walletSelected()" v-bind:disabled="!selectedWallet">Continue To Contribute</button>
+    <!-- <router-link :to="{ name: 'ContributePage' }" class="red-btn large">Continue To Contribute</router-link> -->
   </div>
-  
 </div>
 </template>
 
@@ -86,7 +113,7 @@
       }
     },
     methods: {
-      contribute: function () {
+      walletSelected: function () {
         this.$router.push({
           name: 'ContributePage'
         })
@@ -94,8 +121,3 @@
     }
   }
 </script>
-
-<!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
-
-</style>

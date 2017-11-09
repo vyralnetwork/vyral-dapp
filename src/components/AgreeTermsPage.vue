@@ -92,17 +92,18 @@
             </label>
         </li>
         <li> 
-            <label class="checkbox">
-                <input type="checkbox" v-model="agreeToLossingContributionIfLess"/>
-                <span class="check-image"><img src="/static/images/ok icon.svg"/></span>
-                <span class= "check-txt">I understand that I will lose my contribution If it is less than 1 ETH & will not receive a refund.</span>
-            </label>
+          <label class="checkbox">
+            <input type="checkbox" v-model="agreeToLossingContributionIfLess"/>
+            <span class="check-image"><img src="/static/images/ok icon.svg"/></span>
+            <span class= "check-txt">I understand that I will lose my contribution If it is less than 1 ETH & will not receive a refund.</span>
+          </label>
         </li>
 
     </ul>
 
     <div class="text-center margin-top-xl">
-      <router-link :to="{ name: 'SelectWalletPage' }" class="red-btn" v-bind:disabled="!agreeToAllTermsAndConditions">Continue</router-link>
+      <button class="red-btn" @click="allTermsAgreed()" v-bind:disabled="!agreeToAllTermsAndConditions">Continue</button>
+      <!-- <router-link :to="{ name: 'SelectWalletPage' }" class="red-btn" v-bind:disabled="!agreeToAllTermsAndConditions">Continue</router-link> -->
     </div>
 
     <div class="footer-links">
@@ -121,9 +122,7 @@ import {VyralConfig} from '../utils/Config'
 
 export default {
   name: 'AgreeTermsPage',
-  // components: {
-  //   'Countdown': Countdown
-  // },
+
   data () {
     return {
       agreeTerms: false,
@@ -136,6 +135,7 @@ export default {
       launchDateTime: VyralConfig.launchDateTime
     }
   },
+
   computed: {
     agreeToAllTermsAndConditions: function(){
       return !!this.agreeTerms 
@@ -145,11 +145,14 @@ export default {
         && !!this.agreeToMinimumContribution
         && !!this.agreeToLossingContributionIfLess
     }
+  },
+
+  methods: {
+    allTermsAgreed(){
+      this.$router.push({
+        name: 'SelectWalletPage'
+      })
+    }
   }
 }
 </script>
-
-<!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
-
-</style>

@@ -413,14 +413,18 @@ ul
 	margin-top:11px;
 	text-decoration-line: underline;
 }
-.img-bar{
+.wallet-container{
 	margin-top:60px;
 	text-align:center;
 }
-.img-bar div{
+.wallet-container .wallet-type{
+    padding: 0 30px;
+    width: 100px;
     display: inline-block;
+    cursor: pointer;
 }
-.img-bar div span{
+
+.wallet-container .wallet-type .label{
 	display:block;
 	font-size: 12px;
 	font-weight: 300;	
@@ -428,16 +432,38 @@ ul
 	color: #FFFFFF;
 	margin-top:13px;
 }
+
+.wallet-container .wallet-type img{
+	max-width: 40px;
+	max-height: 40px;
+}
+
+.wallet-container .wallet-type .active {
+	height: 2px;
+	width: 40px;
+	border-radius: 56.7px;
+	background-color: #ED385E;
+	margin-left: 30px;
+	display: block;
+	margin-top: 10px;
+}
+
+.wallet-container .wallet-type .recommended {
+	color: #FFFFFF;
+	font-size: 10px;
+	font-style: italic;
+	font-weight: bold;
+	line-height: 12px;
+	margin-bottom:13px;
+	display: block;
+}
+
+
 .ether{
 	height:40px;
 	width:40px;
 }
-.img-bar div{
-	margin-left:105px;
-}
-.img-bar div:first-child{
-	margin-left:0px;
-}
+
 .metamask{
 	height: 36.6px;	width: 40px;
 }
@@ -455,7 +481,7 @@ ul
 	width: 65px;
 	top:-30px;
 }
-.img-bar-txt{
+.wallet-txt{
 	color: #FFFFFF;
 	font-size: 12px;	
 	line-height: 14px;
@@ -472,21 +498,8 @@ ul
 .token-txt{
 	margin-left:109px;
 }
-.selector {
-	height: 2px;
-	width: 42px;
-	border-radius: 56.7px;
-	background-color: #ED385E;
-	margin-left: 18px;
-}
-.recom-txt {
-	color: #FFFFFF;
-	font-size: 10px;
-	font-style: italic;
-	font-weight: bold;
-	line-height: 12px;
-	margin-bottom:13px;
-}
+
+
 .footer-txt{	
 		color: #FFFFFF;	
 		font-size: 14px;	

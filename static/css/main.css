@@ -19,6 +19,58 @@ button, a, input[type='checkbox']{
 	margin-bottom:39px;
 }
 
+
+.countdown-timer{
+	margin: 0;
+	padding: 0;
+}
+
+.countdown-timer li{
+	display: inline-block;
+	text-align: center;
+}
+
+.countdown-timer li.separator{
+	color: #ED385E;
+    padding-top: 13px;
+    vertical-align: top;
+    margin-left: 15px;
+}
+
+.count-day-hr-min-sec {
+	color: #ED385E;
+	font-size: 30.4px;
+	font-weight: 300;
+	line-height: 36px;
+	padding-top:4.4px;
+}
+.day-hr-min-sec{
+	color: #FFFFFF;	
+	font-size: 6.91px;	
+	line-height: 7px;
+	padding-top:4px;	
+}
+.days{
+	height: 7px;
+	width: 23.2px;
+	text-align:center;
+}
+.hrs{
+	height: 7px;
+	width: 26.4px;
+	text-align:center;
+}
+.mins {
+	height: 7px;
+	width: 17.6px;
+	text-align:center;
+}
+.sec{
+	height: 7px;	
+	width: 16px;
+	text-align:center;
+}
+
 /** background body **/
 .logo{
     width: 70%;
@@ -140,44 +192,7 @@ button, a, input[type='checkbox']{
 	line-height: 13px;
 	text-align: center;
 }
-.count-day-hr-min-sec {
-	color: #ED385E;
-	font-size: 30.4px;
-	font-weight: 300;
-	line-height: 36px;
-	padding-top:4.4px;
-}
-.day-hr-min-sec{
-	color: #FFFFFF;	
-	font-size: 6.91px;	
-	line-height: 7px;
-	padding-top:4px;	
-}
-.days{
-	height: 7px;
-	width: 23.2px;
-	text-align:center;
-	padding-left:9px;
-	
-}
-.hrs{
-	height: 7px;
-	width: 26.4px;
-	text-align:center;
-	padding-left:36.2px;
-}
-.mins {
-	height: 7px;
-	width: 17.6px;
-	text-align:center;
-	padding-left:33.8px;
-}
-.sec{
-	height: 7px;	
-	width: 16px;
-	text-align:center;
-	padding-left:41.4px;
-}
+
 
 .share-token-rate {
 	color: #FFFFFF;

@@ -24,7 +24,7 @@
       <div class="right-block">
           <div class="contributions-accept">CONTRIBUTIONS ACCEPTED FROM 1ST DECEMBER</div>
 
-          <Countdown date="01/12/2017 10:00:00 am"></Countdown>
+          <countdown-timer timestamp="1512122400000"></countdown-timer>
           
           <div class="share-token-rate">SHARE TOKEN RATE</div>
           <div class="token-rate">1 ETH  = 100 ST </div>

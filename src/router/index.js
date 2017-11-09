@@ -4,6 +4,7 @@ import AgreeTermsPage from '@/components/AgreeTermsPage'
 import SelectWalletPage from '@/components/SelectWalletPage'
 import ContributePage from '@/components/ContributePage'
 import ReferralLinkPage from '@/components/ReferralLinkPage'
+import "@/components/CountdownTimer.js"
 
 Vue.use(Router)
 

@@ -6,7 +6,7 @@ Vue.component("countdown-timer", {
   template: `
     <ul class="countdown-timer">
       <li>
-        <div class="count-day-hr-min-sec">{{days}}</div>
+        <div class="count-day-hr-min-sec">{{ days }}</div>
         <div class="day-hr-min-sec">
             <span class="days">DAYS</span>
         </div>
@@ -37,7 +37,6 @@ Vue.component("countdown-timer", {
 
   mounted() {
     setInterval(() => {
-      console.log("reset time")
       this.now = new Date().getTime();
     },1000);
   },
@@ -45,39 +44,29 @@ Vue.component("countdown-timer", {
   data() {
     return {
       now: new Date().getTime(),
-      date: new Date(this.timestamp)
     }
   },
 
   computed: {
-    days(){
-      return moment(new Date(1512122400000)).diff(this.now, "days")
+    timeStampDiff() {
+      return Math.trunc((this.timestamp - this.now) / 1000);
     },
-    hours(){
-      return moment(new Date(1512122400000)).diff(this.now, "hours") % 24;
-    },
-    minutes(){
-      return (moment(new Date(1512122400000)).diff(this.now, "minutes") % 24) % 60;
-    },
+
     seconds(){
-      console.log("Changing secs")
-      return ((moment(new Date(1512122400000)).diff(this.now, "seconds") % 24) % 60) % 60;
+      return this.timeStampDiff % 60;
+    },
+
+    minutes() {
+      return Math.trunc(this.timeStampDiff / 60) % 60;
+    },
+
+    hours() {
+      return Math.trunc(this.timeStampDiff / 60 / 60) % 24;
+    },
+
+    days() {
+      console.log(this.timestamp, this.now, this.timeStampDiff)
+      return Math.trunc(this.timeStampDiff / 60 / 60 / 24);
     }
-
-    // seconds() {
-    //   return (this.date - this.now) % 60;
-    // },
-
-    // minutes() {
-    //   return ((this.date - this.now) / 60) % 60;
-    // },
-
-    // hours() {
-    //   return ((this.date - this.now) / 60 / 60) % 24;
-    // },
-
-    // days() {
-    //   return ((this.date - this.now) / 60 / 60 / 24);
-    // }
   }
 });

@@ -28,13 +28,14 @@ button, a, input[type='checkbox']{
 .countdown-timer li{
 	display: inline-block;
 	text-align: center;
+	width: 30px;
 }
 
 .countdown-timer li.separator{
 	color: #ED385E;
     padding-top: 13px;
     vertical-align: top;
-    margin-left: 15px;
+    width: 15px;
 }
 
 .count-day-hr-min-sec {

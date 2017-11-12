@@ -100,8 +100,8 @@
   <p class="footer-txt">Coinbase, Bittrex, poloniex, kraken, bitfinex,& all other exchanges are not compatible</p>
 
   <div class="text-center margin-top-xl">
-    <button class="red-btn large" @click="walletSelected()" v-bind:disabled="!selectedWallet">Continue To Contribute</button>
-    <!-- <router-link :to="{ name: 'ContributePage' }" class="red-btn large">Continue To Contribute</router-link> -->
+    <a class="btn red-btn large" @click="walletSelected()" v-bind:disabled="!selectedWallet">Continue To Contribute</a>
+    <!-- <router-link :to="{ name: 'ContributePage' }" class="btn red-btn large">Continue To Contribute</router-link> -->
   </div>
 </div>
 </template>

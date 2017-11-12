@@ -28,7 +28,7 @@
 
           <div class="share-token-rate">SHARE TOKEN RATE</div>
           <div class="token-rate">1 ETH  = 100 ST </div>
-          <button class="white-btn">SAVE YOUR SPOT</button>
+          <a class="btn white-btn">SAVE YOUR SPOT</a>
       </div>
     </div>
     
@@ -82,8 +82,8 @@
     </ul>
 
     <div class="text-center margin-top-xl">
-      <button class="red-btn" @click="allTermsAgreed()" v-bind:disabled="!agreeToAllTermsAndConditions">Continue</button>
-      <!-- <router-link :to="{ name: 'SelectWalletPage' }" class="red-btn" v-bind:disabled="!agreeToAllTermsAndConditions">Continue</router-link> -->
+      <a class="btn red-btn" @click="allTermsAgreed()" v-bind:disabled="!agreeToAllTermsAndConditions">Continue</a>
+      <!-- <router-link :to="{ name: 'SelectWalletPage' }" class="btn red-btn" v-bind:disabled="!agreeToAllTermsAndConditions">Continue</router-link> -->
     </div>
 
     <div class="footer-links">

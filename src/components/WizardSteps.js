@@ -4,36 +4,28 @@ Vue.component("wizard-steps", {
     props: ['current'],
 
     template: `
-    <div class="contribute-status-bar">
-      <div class="status-line"></div>
-
-      <div class="oval-green">
-        <img class="oval-ok" src="/static/images/ok icon.svg" v-show="areTermsAgreed"/>
-        <div class="oval-txt" v-show="!areTermsAgreed">1</div>
-      </div>
-
-      <div class="oval-green oval2">
-        <img class="oval-ok" src="/static/images/ok icon.svg" v-show="isWalletSelected"/>
-        <div class="oval-txt" v-show="!isWalletSelected">2</div>
-      </div>
-
-      <div class="oval oval3">
-        <img class="oval-ok" src="/static/images/ok icon.svg" v-show="userHasContributed"/>
-        <div class="oval-txt" v-show="!userHasContributed">3</div>
-      </div>
-
-      <div class="oval oval4">
-        <img class="oval-ok" src="/static/images/ok icon.svg" v-show="referralLinkGenerated"/>
-        <div class="oval-txt" v-show="!referralLinkGenerated">4</div>
-      </div>
-
-      <div class="status-bar-txt">
-        <span class="confirm">CONFIRM</span>
-        <span class="select-wallet">SELECT YOUR WALLET</span>
-        <span class="contribute">CONTRIBUTE</span>
-        <span class="ref-link">YOUR REFERAL LINK</span>
-      </div>
-    </div>
+    <ul class="progress-tracker">
+  <li>
+    <div v-show="areTermsAgreed" class="step complete"><img class="oval-ok" src="/static/images/ok icon.svg"/></div>
+    <div class="step" v-show="!areTermsAgreed">1</div>
+    <div class="label">CONFIRM</div>
+  </li>
+  <li>
+    <div v-show="isWalletSelected" class="step complete"><img class="oval-ok" src="/static/images/ok icon.svg"/></div>
+    <div class="step" v-show="!isWalletSelected">2</div>
+    <div class="label">SELECT YOUR WALLET</div>
+  </li>
+  <li>
+    <div v-show="userHasContributed" class="step complete"><img class="oval-ok" src="/static/images/ok icon.svg"/></div>
+    <div class="step" v-show="!userHasContributed">3</div>
+    <div class="label">CONTRIBUTE</label>
+  </li>
+  <li>
+    <div v-show="referralLinkGenerated" class="step complete"><img class="oval-ok" src="/static/images/ok icon.svg"/></div>
+    <div class="step" v-show="!referralLinkGenerated">4</div>
+    <div class="label">YOUR REFERAL LINK</div>
+  </li>
+</ul>
     `,
 
     computed:{

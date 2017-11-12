@@ -1,3 +1,6 @@
+html,body, #app{
+	height: 100%;
+}
 body{
 	font-family: "Proxima Nova";
 	margin: 0;
@@ -6,7 +9,10 @@ body{
 button, a, input[type='checkbox']{
 	cursor: pointer;
 }
-
+a.btn{
+	padding: 12px 35px;
+	display: inline-block;
+}
 .text-center{
 	text-align: center;
 }
@@ -86,7 +92,7 @@ button, a, input[type='checkbox']{
 .ico-main{
 	overflow:auto;
 	display:block;
-	height: 901px;
+	height: 100%;
 	width: auto;
 	background-image:url("../images/ico-main.jpg");
 	background-repeat:no-repeat;
@@ -94,8 +100,8 @@ button, a, input[type='checkbox']{
 }
 .meta-main{
 	display:block;
+	height: 100%;
 	overflow:auto;
-	height: 901px;
 	width: auto;
 	background-image:url("../images/meta-main.jpg");
 	background-repeat:no-repeat;
@@ -104,6 +110,7 @@ button, a, input[type='checkbox']{
 .cont-main{
 	display:block;
 	height: 100%;
+	overflow: auto;
 	width: auto;
 	background-image:url("../images/cont-main.jpg");
 	background-repeat:no-repeat;
@@ -111,8 +118,8 @@ button, a, input[type='checkbox']{
 }
 .ref-main{
 	display:block;
+	height: 100%;
 	overflow:auto;
-	height: 901px;
 	width: auto;
 	background-image:url("../images/ref-main.jpg");
 	background-repeat:no-repeat;
@@ -215,62 +222,78 @@ button, a, input[type='checkbox']{
 	color: #ED385E;	
 	font-size: 13px;	
 	line-height: 16px;	
-	height: 40px;
-	width: 190px;
 	background-color: #FFFFFF;
 	box-shadow: 0 1px 2px 0 rgba(0,0,0,0.16);
-	border: none;
+}
+.white-btn:hover{
+	background-color: #D9D9D9;
+}
+.white-btn[disabled]{
+	background-color: #D9D9D9;
+	cursor: not-allowed;
 }
 
 /*** contribute status bar ***/
-.status-line {
-	height: 1px;
-	width: 700px;
-	background-color: #FFFFFF;
-	margin-top:67px;
-}
-.oval {
-	height: 30px;
-	width: 30px;
-    background-color: #FFFFFF;
-    margin-top: -14px;
-	border-radius: 50%;
-}
-.oval-green {
-	height: 30px;
-	width: 30px;
-    background:#50C035;
-    margin-top: -14px;
-	border-radius: 50%;
-}
+
 .oval-ok{
 	width: 14px;
     height: 23px;
-    padding-top: 3px;
-    padding-left: 8px;
+    vertical-align: middle;
 }
-.oval-txt{
-		height: 13px;
-		color: #000000;
-		font-size: 11.52px;	
-		font-weight: 300;	
-		line-height: 13px;	
-		margin:auto;
-		padding-top:9px;
-		text-align: center;
+
+ul.progress-tracker {
+  display: table;
+  width: 70%;
+  padding: 0;
+  margin: 50px auto;
 }
-.oval2{
-	margin-left:218px;
-	margin-top:-29px;
+ul.progress-tracker li {
+  display: table-cell;
+  text-align: center;
+  position: relative;
 }
-.oval3{
-	margin-left:453px;
-	margin-top:-31px;
+ul.progress-tracker li .step.complete {
+  background-color: #50C035;
 }
-.oval4{
-	margin-left:689px;
-	margin-top:-31px;
+ul.progress-tracker li .step {
+  width: 30px;
+  height: 30px;
+  margin: 0 auto;
+  text-align: center;
+  background-color: white;
+  border-radius: 30px;
+  line-height: 30px;
+  position: relative;
+  z-index: 1;
+  color: #000000;
+  font-size: 11.52px;
+  font-weight: normal;
 }
+ul.progress-tracker li .label {
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin-top: 10px;
+  color: #FFFFFF;
+	font-size: 12px;
+	line-height: 14px
+}
+ul.progress-tracker li::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  background-color: #fff;
+  height: 1px;
+  top: 12px;
+}
+ul.progress-tracker li:last-child:after {
+  content: '';
+  position: absolute;
+  width: 0%;
+}
+
+
+
 .status-bar-txt{
 	color: #FFFFFF;
 	font-size: 12px;	
@@ -342,29 +365,31 @@ ul
     line-height: 23px;
 }
 .red-btn{
-	margin:auto;
 	margin-top:39px;
 	color: #FFFFFF;	
-	font-size: 13px;	
+	font-size: 13px;
 	line-height: 16px;	
-	height: 40px;	
-	width: 190px;	
 	background-color: #ED385E;	
 	box-shadow: 0 1px 2px 0 rgba(0,0,0,0.16);
-	border:none;
-	padding: 10px 40px;
-	text-decoration: none;
+}
+.red-btn:hover{
+	background-color: #FA456B;
+}
+.red-btn[disabled]{	
+	background-color: #FA456B;	
+	cursor: not-allowed;
 }
 .footer-links{
 	margin:auto;
 	margin-top:44px;
+	margin-bottom:20px;
 	color: #FFFFFF;
 	font-size: 13.6px;
 	line-height: 17px;
 	width:348px;
 }
 .footer-links .vyral{
-	margin-left: 70PX;
+	margin-left: 70px;
 }
 .footer span{
 	display:inline-block;
@@ -431,11 +456,12 @@ ul
 	line-height: 14px;
 	color: #FFFFFF;
 	margin-top:13px;
+	cursor: pointer;
 }
 
 .wallet-container .wallet-type img{
-	max-width: 40px;
 	max-height: 40px;
+	cursor: pointer;
 }
 
 .wallet-container .wallet-type .active {
@@ -526,6 +552,10 @@ input {
 .input2{
 	margin-top:56px;
 }
+.input-grp input{
+	padding-right: 126px;
+	width: 343px;
+}
 .input-grp button{
 	color: #FFFFFF;
     font-size: 13px;
@@ -576,6 +606,10 @@ input {
 	padding: 10px 40px;
     text-decoration: none;
 }
+.transparent-btn:hover{
+	border-color: #ED385E;
+	color: #ED385E;	
+}
 .qrcode-container {
 	height: 360.9px;
 	width: 464.4px;
@@ -598,9 +632,10 @@ input {
 }
 .qrcode-container  input{
 	height: 32.89px;
-	width: 326.65px;
+	width: 238.65px;
 	border: 0.77px solid #979797;
 	margin-top:40px;
+	padding-right: 88px;
 }
 .qrcode-container button{
 	height: 34.89px;

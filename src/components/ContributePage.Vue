@@ -12,7 +12,7 @@
   
   <div class="qrcode-container">
     <p>Please send your contribution to the following address or QR code. Recommended Gas amount: 200,00</p>
-    <img src="/static/images/qr_code.jpg" alt="">
+    <canvas id="qrcode"></canvas>
     <div class="input-grp">
       <input type="text" placeholder="Contract ETH Address" v-model="contractAddress"/>
       <button type="button"
@@ -35,6 +35,7 @@
   import {getWeb3, getNetworkVersion} from '../utils/BlockchainHelpers'
   import {getEncodedABIClientSide} from '../utils/MicroServices'
   import {VyralConfig} from "../utils/Config"
+  const QRCode = require('qrcode')
 
   export default {
     name: 'ContibutePage',
@@ -42,26 +43,33 @@
       console.log('Before Create')
     },
 
-    created () {
+    mounted () {
       // Check if Web3 is installed via Metamask or Mist
-      setTimeout(() => {
-        getWeb3((web3) => {
-          getNetworkVersion(web3, (networkID) => {
-            console.log(networkID);
-            if (networkID !== VyralConfig.networks.mainnet) {
-              alert("Please switch to Ethereum Mainnet.")
-            } else{
-              console.log('Great, you are on Ethereum Mainnet')
-              this.isNetworkConnected = true;
+      // setTimeout(() => {
+      //   getWeb3((web3) => {
+      //     getNetworkVersion(web3, (networkID) => {
+      //       console.log(networkID);
+      //       if (networkID !== VyralConfig.networks.mainnet) {
+      //         alert("Please switch to Ethereum Mainnet.")
+      //       } else{
+      //         console.log('Great, you are on Ethereum Mainnet')
+      //         this.isNetworkConnected = true;
 
-              const data = {};
-              getEncodedABIClientSide(web3, VyralConfig.abi, data, function(){
-                alert("here");
-              });
-            }
-          })
-        })
-      }, 500);
+      //         const data = {};
+      //         getEncodedABIClientSide(web3, VyralConfig.abi, data, function(){
+      //           alert("here");
+      //         });
+      //       }
+      //     })
+      //   })
+      // }, 500);
+      
+      var canvas = document.getElementById('qrcode')
+
+      QRCode.toCanvas(canvas, VyralConfig.contractAddress, function (error) {
+        if (error) console.error(error)
+        console.log('success!');
+      })
     },
 
     data () {

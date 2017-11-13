@@ -511,6 +511,8 @@ ul
 .large{
 	width:226px;
 }
+
+
 input {
 	height: 43px;
 	width: 469px;
@@ -606,4 +608,53 @@ input {
 	height: 34.89px;
     width: 70.62px;
 	margin-left:-74px;
+}
+
+
+
+
+/**
+ * Progress Bar of Wizard
+ */
+ul.progress-tracker {
+  display: table;
+  width: 760px;
+  margin-top: 50px;
+  padding: 0;
+  margin: auto;
+}
+ul.progress-tracker li {
+  display: table-cell;
+  text-align: center;
+  position: relative;
+}
+ul.progress-tracker li .step {
+  width: 30px;
+  height: 30px;
+  margin: 0 auto;
+  text-align: center;
+  background-color: #50C035;
+  border-radius: 30px;
+  line-height: 30px;
+  position: relative;
+  z-index: 1;
+  font-size: 12px;
+}
+ul.progress-tracker li .label {
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin-top: 10px;
+  font-size: 12px;
+  text-transform: uppercase;
+  color: white;
+}
+ul.progress-tracker li::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  background-color: #efefef;
+  height: 5px;
+  left: 0;
+  top: 10px;
 }

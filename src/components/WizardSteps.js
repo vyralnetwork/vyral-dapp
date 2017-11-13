@@ -4,6 +4,7 @@ Vue.component("wizard-steps", {
     props: ['current'],
 
     template: `
+    <div>
     <div class="contribute-status-bar">
       <div class="status-line"></div>
 
@@ -33,6 +34,30 @@ Vue.component("wizard-steps", {
         <span class="contribute">CONTRIBUTE</span>
         <span class="ref-link">YOUR REFERAL LINK</span>
       </div>
+    </div>
+    
+    <ul class="progress-tracker">
+      <li class="complete">
+        <div class="step">1</div>
+        <div class="label">Biography</div>
+      </li>
+      <li class="complete">
+        <div class="step">2</div>
+        <div class="label">Superpowers</div>
+      </li>
+      <li class="active">
+        <div class="step">3</div>
+        <div class="label">Weapons</label>
+      </li>
+      <li>
+        <div class="step">4</div>
+        <div class="label">Photos</div>
+      </li>
+      <li>
+        <div class="step">5</div>
+        <div class="label">Reviews</div>
+      </li>
+    </ul>
     </div>
     `,
 

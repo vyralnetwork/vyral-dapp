@@ -1,5 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
+import VueClipboard from 'vue-clipboard2'
+
 import AgreeTermsPage from '@/components/AgreeTermsPage'
 import SelectWalletPage from '@/components/SelectWalletPage'
 import ContributePage from '@/components/ContributePage'
@@ -7,7 +9,15 @@ import ReferralLinkPage from '@/components/ReferralLinkPage'
 import "@/components/CountdownTimer.js"
 import "@/components/WizardSteps.js"
 
+// import vueConfig from 'vue-config'
+// const config = require("../utils/Config")
+
+
+
 Vue.use(Router)
+// Vue.use(vueConfig, config)
+Vue.use(VueClipboard)
+
 
 const routes = [
   {

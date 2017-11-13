@@ -16,6 +16,7 @@
     "moment": "^2.19.1",
     "vue": "^2.5.2",
     "vue-clipboard2": "0.0.6",
+    "vue-config": "^1.0.0",
     "vue-moment": "^2.1.0",
     "vue-router": "^3.0.1",
     "web3": "^1.0.0-beta.24"

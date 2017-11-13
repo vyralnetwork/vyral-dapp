@@ -1,7 +1,7 @@
 <template>
   <div class="ico-main">
     <div class="logo">
-      <img src="/static/images/logo.png" alt="">
+      <a href="/"><img src="/static/images/logo.png" alt="Vyral Network"></a>
     </div>
     
     <div class="content">
@@ -28,7 +28,7 @@
 
           <div class="share-token-rate">SHARE TOKEN RATE</div>
           <div class="token-rate">1 ETH  = 100 ST </div>
-          <button class="white-btn">SAVE YOUR SPOT</button>
+          <a class="btn white-btn">SAVE YOUR SPOT</a>
       </div>
     </div>
     
@@ -82,8 +82,8 @@
     </ul>
 
     <div class="text-center margin-top-xl">
-      <button class="red-btn" @click="allTermsAgreed()" v-bind:disabled="!agreeToAllTermsAndConditions">Continue</button>
-      <!-- <router-link :to="{ name: 'SelectWalletPage' }" class="red-btn" v-bind:disabled="!agreeToAllTermsAndConditions">Continue</router-link> -->
+      <a class="btn red-btn" @click="allTermsAgreed()" v-bind:disabled="!agreeToAllTermsAndConditions">Continue</a>
+      <!-- <router-link :to="{ name: 'SelectWalletPage' }" class="btn red-btn" v-bind:disabled="!agreeToAllTermsAndConditions">Continue</router-link> -->
     </div>
 
     <div class="footer-links">
@@ -94,16 +94,14 @@
 </template>
 
 <script>
-import Vue from 'vue'
-// import {Countdown} from './Countdown'
-// Vue.use(require('vue-moment'));
-
-import {VyralConfig} from '../utils/Config'
+import {VyralConfig} from "../utils/Config"
 
 export default {
   name: 'AgreeTermsPage',
 
   data () {
+
+
     return {
       agreeTerms: false,
       agreeToNotUsResident: false,

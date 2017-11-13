@@ -1,32 +1,10 @@
 <template>
   <div class="cont-main">
   <div class="logo">
-    <img src="/static/images/logo.png" alt="">
+    <a href="/"><img src="/static/images/logo.png" alt="Vyral Network"></a>
   </div>
 
   <wizard-steps current="CONTRIBUTE"></wizard-steps>
-  
-  <!-- <div class="contribute-status-bar">
-    <div class="status-line"></div>
-    <div class="oval-green">
-      <img class="oval-ok" src="/static/images/ok icon.svg"/>
-    </div>
-    <div class="oval-green oval2">
-      <img class="oval-ok" src="/static/images/ok icon.svg"/>
-    </div>
-    <div class="oval oval3">
-      <div class="oval-txt">3</div>
-    </div>
-    <div class="oval oval4">
-      <div class="oval-txt">4</div>
-    </div>
-    <div class="status-bar-txt">
-      <span class="confirm">CONFIRM</span>
-      <span class="select-wallet">SELECT YOUR WALLET</span>
-      <span class="contribute">CONTRIBUTE</span>
-      <span class="ref-link">YOUR REFERAL LINK</span>
-    </div>
-  </div> -->
   
   <div class="choose-the-wallet">VYRAL NETWORK CONTRIBUTION ADDRESS</div>
   
@@ -54,13 +32,9 @@
 </template>
 
 <script>
-  import Vue from 'vue'
-  import VueClipboard from 'vue-clipboard2'
-  import { getWeb3, getNetworkVersion  } from '../utils/BlockchainHelpers'
-  import { VyralConfig } from '../utils/Config'
+  import {getWeb3, getNetworkVersion} from '../utils/BlockchainHelpers'
   import {getEncodedABIClientSide} from '../utils/MicroServices'
-
-  Vue.use(VueClipboard)
+  import {VyralConfig} from "../utils/Config"
 
   export default {
     name: 'ContibutePage',

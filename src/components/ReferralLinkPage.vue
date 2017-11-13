@@ -1,31 +1,10 @@
 <template>
 <div class="ref-main">
     <div class="logo">
-        <img src="/static/images/logo.png" alt="">
+        <a href="/"><img src="/static/images/logo.png" alt="Vyral Network"></a>
     </div>
 
     <wizard-steps current="REFERAL_LINK"></wizard-steps>
-    <!-- <div class="contribute-status-bar">
-        <div class="status-line"></div>
-        <div class="oval-green">
-            <img class="oval-ok" src="/static/images/ok icon.svg"/>
-        </div>
-        <div class="oval-green oval2">
-            <img class="oval-ok" src="/static/images/ok icon.svg"/>
-        </div>
-        <div class="oval-green oval3">
-            <img class="oval-ok" src="/static/images/ok icon.svg"/>
-        </div>
-        <div class="oval-green oval4">
-            <div class="oval-txt">4</div>
-        </div>
-        <div class="status-bar-txt">
-            <span class="confirm">CONFIRM</span>
-            <span class="select-wallet">SELECT YOUR WALLET</span>
-            <span class="contribute">CONTRIBUTE</span>
-            <span class="ref-link">YOUR REFERAL LINK</span>
-        </div>
-    </div> -->
     
     <p class="choose-the-wallet">YOUR REFERAL KEY</p>
     
@@ -62,7 +41,7 @@
 
 
 <script>
-  import { VyralConfig } from '../utils/Config'
+  import {VyralConfig} from "../utils/Config"
 
   export default {
     name: 'ReferralLinkPage',

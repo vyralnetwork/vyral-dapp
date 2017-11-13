@@ -4,7 +4,6 @@ const networks = {
     ropsten: 3,
     rinkeby: 4,
     kovan: 42,
-    // oraclesTest: 12648430
 }
 
 const abi = [];
@@ -17,4 +16,5 @@ export const VyralConfig = {
     abi: abi,
     baseUrl: 'https://vyral.network',
     referralBaseUrl: 'https://vyral.network?referrer=',
+    referralCodePrefix: '0xec8ac4d8000000000000000000000000'
 };

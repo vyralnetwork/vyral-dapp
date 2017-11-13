@@ -65,7 +65,6 @@ Vue.component("countdown-timer", {
     },
 
     days() {
-      console.log(this.timestamp, this.now, this.timeStampDiff)
       return Math.trunc(this.timeStampDiff / 60 / 60 / 24);
     }
   }

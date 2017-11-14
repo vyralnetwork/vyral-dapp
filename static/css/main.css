@@ -130,6 +130,7 @@ a.btn{
     width: 70%;
     min-width:760px;
     margin: auto;
+    overflow: auto;
 }
 /** Vyral launch title **/
 .left-block{

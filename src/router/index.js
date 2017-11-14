@@ -23,12 +23,15 @@ const routes = [
   {
     path: '/',
     name: 'AgreeTermsPage',
-    component: AgreeTermsPage
+    component: AgreeTermsPage,
+    beforeEnter: (to, from, next) => {
+      next()
+    }
   },
   {
     path: '/select-wallet',
     name: 'SelectWalletPage',
-    component: SelectWalletPage
+    component: SelectWalletPage,
   },
   {
     path: '/contribute',

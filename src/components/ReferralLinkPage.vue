@@ -45,6 +45,18 @@
 
   export default {
     name: 'ReferralLinkPage',
+
+    mounted(){
+        if(! this.$store.getters.termsAgreed){
+            this.$router.push({name: "AgreeTermsPage"})
+        } else if(! this.$store.getters.selectedWallet){
+            this.$router.push({name: "SelectWalletPage"})
+        } else if (! this.$store.getters.hasContributed){
+            this.$router.push({name: "ContributePage"})
+        }
+
+    },
+
     data () {
       return {
         walletAddress: ""

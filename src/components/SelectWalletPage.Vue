@@ -87,13 +87,28 @@
 <script>
   export default {
     name: 'SelectWalletPage',
-    data () {
-      return {
-        selectedWallet: "METAMASK"
+
+    mounted() {
+      // check if user has agreed to all the terms or not
+      // if not, redirect to Home page
+      // TODO: Move this to before enter route filter
+      if(! this.$store.getters.termsAgreed){
+        this.$router.push({name: "AgreeTermsPage"})
       }
     },
+
+
+    data () {
+      return {
+        selectedWallet: this.$store.getters.selectedWallet
+      }
+    },
+
+
     methods: {
       walletSelected: function () {
+        this.$store.commit('selectWallet', this.selectedWallet)
+
         this.$router.push({
           name: 'ContributePage'
         })

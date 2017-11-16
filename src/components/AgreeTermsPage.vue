@@ -128,7 +128,7 @@ export default {
   methods: {
     allTermsAgreed(){
       // Save Agreed Terms state in Store
-      this.$store.commit("setAgreedTerms", true)
+      this.$store.dispatch("setTermsAgreed", true)
 
       this.$router.push({
         name: 'SelectWalletPage'

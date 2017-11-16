@@ -107,7 +107,7 @@
 
     methods: {
       walletSelected: function () {
-        this.$store.commit('selectWallet', this.selectedWallet)
+        this.$store.dispatch('setWallet', this.selectedWallet)
 
         this.$router.push({
           name: 'ContributePage'

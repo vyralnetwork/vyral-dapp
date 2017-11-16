@@ -8,11 +8,11 @@
   
   <div class="choose-the-wallet">VYRAL NETWORK CONTRIBUTION ADDRESS</div>
   
-  <p class="txt2"> Do not send ETH from exchanges. We recommending using MetaMask, MyEtherWallet, Mist or other ERC-20 compatible wallets.</p>
+  <p class="txt2">Do not send ETH from exchanges. We recommending using MetaMask, MyEtherWallet, Mist or other ERC-20 compatible wallets.</p>
   
   <div class="qrcode-container">
     <p>Please send your contribution to the following address or QR code. Recommended Gas amount: 200,00</p>
-    <canvas id="qrcode"></canvas>
+    <!-- <canvas id="qrcode"></canvas> -->
     <div class="input-grp">
       <input type="text" placeholder="Contract ETH Address" v-model="contractAddress"/>
       <button type="button"
@@ -57,61 +57,42 @@
 </template>
 
 <script>
-  import {getWeb3, getNetworkVersion} from '../utils/BlockchainHelpers'
-  import {getEncodedABIClientSide} from '../utils/MicroServices'
   import {VyralConfig} from "../utils/Config"
-  const QRCode = require('qrcode')
+  var abi = require("../contracts/VyralSale.json")
 
   export default {
-    name: 'ContibutePage',
+    name: 'ContributePage',
     beforeCreate () {
       console.log('Before Create')
     },
 
     mounted(){
-        if(! this.$store.getters.termsAgreed){
-            this.$router.push({name: "AgreeTermsPage"})
-        } else if(! this.$store.getters.selectedWallet){
-            this.$router.push({name: "SelectWalletPage"})
+      if(! this.$store.getters.termsAgreed){
+          this.$router.push({name: "AgreeTermsPage"})
+      } else if(! this.$store.getters.selectedWallet){
+          this.$router.push({name: "SelectWalletPage"})
+      }
+
+
+      if(this.$store.getters.selectedWallet === 'METAMASK'){
+        if(typeof web3 !== 'undefined'){
+          web3 = new Web3(web3.currentProvider)
+        } else{
+          web3 = new Web3(new Web3.providers.HttpProvider('http://localhost:8545'))
         }
 
+        var VyralContract = web3.eth.contract(abi);
 
-        // Check if Web3 is installed via Metamask or Mist
-        if(this.$store.getters.selectedWallet === 'METAMASK'){
-            setTimeout(() => {
-              getWeb3((web3) => {
-                getNetworkVersion(web3, (networkID) => {
-                  console.log(networkID);
-                  if (networkID !== VyralConfig.networks.mainnet) {
-                    alert("Please switch to Ethereum Mainnet.")
-                  } else{
-                    console.log('Great, you are on Ethereum Mainnet')
-                    this.isNetworkConnected = true;
+        var VyralToken = VyralContract.at("0x0c1f00e6749b1fda244d4e3b075efd8073e187ca");
 
-                    const data = {};
-
-                    // Buy Tokens
-                    web3
-                        .eth
-                        .contract(VyralConfig.abi)
-                        .at(VyralConfig.contractAddress)
-                        .buyTokens(/* Referral Key */);
-
-                    // getEncodedABIClientSide(web3, VyralConfig.abi, data, function(){
-                    //   // alert("here");
-                    // });
-                  }
-                })
-              })
-            }, 500);
-        }
-      
-      // var canvas = document.getElementById('qrcode')
-
-      // QRCode.toCanvas(canvas, VyralConfig.contractAddress, function (error) {
-      //   if (error) console.error(error)
-      //   console.log('success!');
-      // })
+        VyralToken.buyTokens(10, {
+          gas: 20000,
+          data: '0xec8ac4d80000000000000000000000000x0c1f00e6749b1fda244d4e3b075efd8073e187ca'
+        },
+          function(error, response){
+          console.log(arguments);
+        });
+      }
     },
 
     data () {
@@ -120,11 +101,11 @@
         contractAddress: VyralConfig.contractAddress
       };
     },
+
     methods: {
       metamaskSelected(){
         return this.selectedWallet === 'METAMASK'
       },
-
 
       myEtherWalletSelected(){
         return this.selectedWallet === 'MYETHERWALLET'
@@ -154,15 +135,9 @@
         alert("Copied: "+ e.text);
       },
 
-
       contractAddressCopyError(e){
         alert("Error");
       }
     }
   }
 </script>
-
-<!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
-
-</style>

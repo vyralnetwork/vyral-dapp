@@ -22,7 +22,7 @@
     "vue-router": "^3.0.1",
     "vuex": "^3.0.1",
     "vuex-persistedstate": "^2.3.2",
-    "web3": "^1.0.0-beta.24"
+    "web3": "github:ethereum/web3.js"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.2",

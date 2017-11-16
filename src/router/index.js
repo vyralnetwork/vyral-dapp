@@ -32,6 +32,11 @@ const routes = [
     path: '/select-wallet',
     name: 'SelectWalletPage',
     component: SelectWalletPage,
+    // beforeEnter(to, from, next) => {
+    //   if(!this.$store.getters.termsAgreed){
+    //     //redirect back
+    //   }
+    // }
   },
   {
     path: '/contribute',

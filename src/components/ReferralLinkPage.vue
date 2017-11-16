@@ -65,7 +65,7 @@
     computed: {
       referralLink(){
         if(this.walletAddress.length >  0){
-            return VyralConfig.referralBaseUrl + this.walletAddress
+            return VyralConfig.referralCodePrefix + this.walletAddress
         } else{
             return ''
         }

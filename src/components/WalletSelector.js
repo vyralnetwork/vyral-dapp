@@ -1,16 +1,11 @@
-<template>
-<div class="meta-main">
-  <div class="logo">
-    <a href="/"><img src="/static/images/logo.png" alt="Vyral Network"></a>
-  </div>
+import Vue from 'vue'
 
-  <wizard-steps current="SELECT_WALLET"></wizard-steps>
-  
-  <p class="choose-the-wallet">CHOOSE THE WALLET YOU WISH TO CONTRIBUTE WITH</p>
-  
-  <p class="txt2"> Please ensure you are using a ERC-20 compatible wallet and you don’t send contributions via exchanges.</p>
+Vue.component('WalletSelector', {
 
-  <ul class="wallet-container">
+    props: ['wallet'],
+
+    template: `
+        <ul class="wallet-container">
           <li class="wallet-type">
             <label class="checkbox">
               <input type="radio" v-model="wallet" value="MYETHERWALLET"/>
@@ -72,55 +67,9 @@
             </label>
           </li>
         </ul>
-
-  <p class="footer-txt">Coinbase, Bittrex, poloniex, kraken, bitfinex,& all other exchanges are not compatible</p>
-
-  <div class="text-center margin-top-xl">
-    <a class="btn red-btn large" @click="walletSelected()" v-bind:disabled="!selectedWallet">Continue To Contribute</a>
-    <!-- <router-link :to="{ name: 'ContributePage' }" class="btn red-btn large">Continue To Contribute</router-link> -->
-  </div>
-</div>
-</template>
-
-<script>
-  export default {
-    name: 'SelectWalletPage',
-
-    components: {
-      'selected-wallet': 'selected-wallet'
-    },
-
-    mounted() {
-      // check if user has agreed to all the terms or not
-      // if not, redirect to Home page
-      // TODO: Move this to before enter route filter
-      if(! this.$store.getters.termsAgreed){
-        this.$router.push({name: "AgreeTermsPage"})
-      }
-    },
-
-
-    data () {
-      return {
-        selectedWallet: this.$store.getters.selectedWallet
-      }
-    },
-
-
-    methods: {
-      walletSelected: function () {
-        this.$store.dispatch('setWallet', this.selectedWallet)
-
-        this.$router.push({
-          name: 'ContributePage'
-        })
-      }
-    },
+    `,
 
     computed: {
-      wallet(){
-        return this.selectedWallet
-      }
+
     }
-  }
-</script>
+})

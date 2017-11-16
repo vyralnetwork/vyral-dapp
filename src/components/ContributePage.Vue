@@ -62,9 +62,6 @@
 
   export default {
     name: 'ContributePage',
-    beforeCreate () {
-      console.log('Before Create')
-    },
 
     mounted(){
       if(! this.$store.getters.termsAgreed){
@@ -90,8 +87,15 @@
           data: '0xec8ac4d80000000000000000000000000x0c1f00e6749b1fda244d4e3b075efd8073e187ca'
         },
           function(error, response){
-          console.log(arguments);
+            if(error){
+              alert("Transaction Failed")
+            } else{
+              this.$store.dispatch("setContributedStatus", true)
+            }
         });
+
+        this.$store.dispatch("setContributedStatus", true)
+
       }
     },
 

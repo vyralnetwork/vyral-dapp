@@ -9,9 +9,11 @@ body{
 button, a, input[type='checkbox']{
     cursor: pointer;
 }
-a.btn{
+
+.btn{
     padding: 12px 35px;
     display: inline-block;
+    border: none;
 }
 .text-center{
     text-align: center;

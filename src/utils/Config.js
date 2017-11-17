@@ -11,7 +11,7 @@ const abi = [];
 
 export const VyralConfig = {
     launchDateTime: 1512122400000,
-    contractAddress: '0x0c1f00e6749b1fda244d4e3b075efd8073e187ca',
+    contractAddress: '0x47e23d1adf242d0b651312305b10ed198249fc0a',
     networks: networks,
     abi: abi,
     baseUrl: 'https://vyral.network',

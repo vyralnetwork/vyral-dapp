@@ -10,6 +10,7 @@ import store from './store'
 import "@/components/CountdownTimer.js"
 import "@/components/WizardSteps.js"
 import "@/components/WalletSelector.js"
+import "@/components/WalletInstructor.js"
 
 Vue.config.productionTip = false
 

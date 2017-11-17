@@ -10,74 +10,12 @@
   
   <p class="txt2"> Please ensure you are using a ERC-20 compatible wallet and you don’t send contributions via exchanges.</p>
 
-  <ul class="wallet-container">
-          <li class="wallet-type">
-            <label class="checkbox">
-              <input type="radio" v-model="wallet" value="MYETHERWALLET"/>
-              <img src="/static/images/myetherwallet-logo.png" class="ether"/>
-              <span class="label">MyEtherWallet</span>
-            <span class="active" v-if="wallet == 'MYETHERWALLET'"></span>
-            </label>
-          </li>
-
-
-          <li class="wallet-type">
-            <span class="recommended">Recommended</span>
-
-            <label class="checkbox">
-              <input type="radio" v-model="wallet" value="METAMASK"/>
-              <img src="/static/images/metamask.png" class="ether"/>
-              <span class="label">Metamask</span>
-              <span class="active" v-if="wallet == 'METAMASK'"></span>
-            </label>
-          </li>
-
-
-          <li class="wallet-type">
-            <label class="checkbox">
-              <input type="radio" v-model="wallet" value="PARITY"/>
-              <img src="/static/images/parity.png" class="parity">
-              <span class="label">Parity</span>
-              <span class="active" v-if="wallet == 'PARITY'"></span>
-            </label>
-          </li>
-
-
-          <li class="wallet-type">
-            <label class="checkbox">
-              <input type="radio" v-model="wallet" value="IAMTOKEN"/>
-              <img src="/static/images/i am token.png" class="ether">
-              <span class="label">Iam Token</span>
-              <span class="active" v-if="wallet == 'IAMTOKEN'"></span>
-            </label>
-          </li>
-
-
-          <li class="wallet-type">
-            <label class="checkbox">
-              <input type="radio" v-model="wallet" value="JAXX"/>
-              <img src="/static/images/jaxx.png" class="jaxx">
-              <span class="label">Jaxx</span>
-              <span class="active" v-if="wallet == 'JAXX'"></span>
-            </label>
-          </li>
-
-
-          <li class="wallet-type">
-            <label class="checkbox">
-              <input type="radio" v-model="wallet" value="MIST"/>
-              <img src="/static/images/MIST.png" class="mist">
-              <span class="label">Mist</span>
-              <span class="active" v-if="wallet == 'MIST'"></span>
-            </label>
-          </li>
-        </ul>
+  <wallet-selector :selectedWallet="selectedWallet" @walletSelected="walletSelected"></wallet-selector>
 
   <p class="footer-txt">Coinbase, Bittrex, poloniex, kraken, bitfinex,& all other exchanges are not compatible</p>
 
   <div class="text-center margin-top-xl">
-    <a class="btn red-btn large" @click="walletSelected()" v-bind:disabled="!selectedWallet">Continue To Contribute</a>
-    <!-- <router-link :to="{ name: 'ContributePage' }" class="btn red-btn large">Continue To Contribute</router-link> -->
+    <button class="btn red-btn large" @click="redirectToContributePage()" v-bind:disabled="!selectedWallet">Continue To Contribute</button>
   </div>
 </div>
 </template>
@@ -100,27 +38,23 @@
     },
 
 
-    data () {
-      return {
-        selectedWallet: this.$store.getters.selectedWallet
-      }
+    computed: {
+        selectedWallet(){
+          return this.$store.getters.selectedWallet
+        }
     },
 
 
     methods: {
-      walletSelected: function () {
-        this.$store.dispatch('setWallet', this.selectedWallet)
+      walletSelected(selectedWallet) {
+        this.$store.dispatch('setWallet', selectedWallet)
+      },
 
+      redirectToContributePage(){
         this.$router.push({
           name: 'ContributePage'
         })
       }
     },
-
-    computed: {
-      wallet(){
-        return this.selectedWallet
-      }
-    }
   }
 </script>

@@ -28,7 +28,7 @@
 
           <div class="share-token-rate">SHARE TOKEN RATE</div>
           <div class="token-rate">1 ETH  = 100 ST </div>
-          <a class="btn white-btn">SAVE YOUR SPOT</a>
+          <!-- <a class="btn white-btn">SAVE YOUR SPOT</a> -->
       </div>
     </div>
     
@@ -57,14 +57,14 @@
                 <span class= "check-txt">I confirm I am not sending from an exchange.</span>
             </label>
         </li>
-        <li> 
+        <li>
             <label class="checkbox">
                 <input type="checkbox" v-model="agreeToTimeToReceiveToken"/>
                 <span class="check-image"><img src="/static/images/ok icon.svg"/></span>
                 <span class= "check-txt">I understand that it may take up to 15 days from the time the contribution period ends to receive SHARE Tokens.</span>
             </label>
         </li>
-        <li> 
+        <li>
             <label class="checkbox">
                 <input type="checkbox" v-model="agreeToMinimumContribution"/>
                 <span class="check-image"><img src="/static/images/ok icon.svg"/></span>
@@ -82,8 +82,7 @@
     </ul>
 
     <div class="text-center margin-top-xl">
-      <a class="btn red-btn" @click="allTermsAgreed()" v-bind:disabled="!agreeToAllTermsAndConditions">Continue</a>
-      <!-- <router-link :to="{ name: 'SelectWalletPage' }" class="btn red-btn" v-bind:disabled="!agreeToAllTermsAndConditions">Continue</router-link> -->
+      <button class="btn red-btn" @click="allTermsAgreed()" v-bind:disabled="!agreeToAllTermsAndConditions">Continue</button>
     </div>
 
     <div class="footer-links">

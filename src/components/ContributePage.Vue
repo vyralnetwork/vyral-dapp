@@ -23,29 +23,7 @@
   </div>
 
 
-  <div class="text-center" v-show="metamaskSelected()">
-      Instruction to contribute via <strong>METAMASK</strong>.
-  </div>
-
-  <div class="text-center" v-show="myEtherWalletSelected()">
-      Instruction to contribute via <strong>My Ether Wallet</strong>.
-  </div>
-
-  <div class="text-center" v-show="paritySelected()">
-      Instruction to contribute via <strong>PARITY</strong>.
-  </div>
-
-  <div class="text-center" v-show="iMTokenSelected()">
-      Instruction to contribute via <strong>I AM TOKEN</strong>.
-  </div>
-
-  <div class="text-center" v-show="jaxxSelected()">
-      Instruction to contribute via <strong>JAXX</strong>.
-  </div>
-
-  <div class="text-center" v-show="mistSelected()">
-      Instruction to contribute via <strong>MIST</strong>.
-  </div>
+  <wallet-instructor :selectedWallet="selectedWallet"></wallet-instructor>
   
   <p class="footer-txt">Get your referal Link once you have Complated your transaction</p>
   
@@ -71,6 +49,8 @@
       }
 
 
+      // If user has selected Metamask Wallet,
+      // direct user to contribute via that.
       if(this.$store.getters.selectedWallet === 'METAMASK'){
         if(typeof web3 !== 'undefined'){
           web3 = new Web3(web3.currentProvider)
@@ -80,7 +60,7 @@
 
         var VyralContract = web3.eth.contract(abi);
 
-        var VyralToken = VyralContract.at("0x0c1f00e6749b1fda244d4e3b075efd8073e187ca");
+        var VyralToken = VyralContract.at(VyralContract.contractAddress);
 
         VyralToken.buyTokens(10, {
           gas: 20000,
@@ -107,29 +87,7 @@
     },
 
     methods: {
-      metamaskSelected(){
-        return this.selectedWallet === 'METAMASK'
-      },
-
-      myEtherWalletSelected(){
-        return this.selectedWallet === 'MYETHERWALLET'
-      },
-
-      paritySelected(){
-        return this.selectedWallet === 'PARITY'
-      },
-
-      iMTokenSelected(){
-        return this.selectedWallet === 'IAMTOKEN'
-      },
-
-      jaxxSelected(){
-        return this.selectedWallet === 'JAXX'
-      },
-
-      mistSelected(){
-        return this.selectedWallet === 'MIST'
-      },
+      
 
       contribute() {
         if(! this.isNetworkConnected) return;

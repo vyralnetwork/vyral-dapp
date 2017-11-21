@@ -12,7 +12,8 @@ export default new Vuex.Store({
     state: {
         selectedWallet: 'METAMASK',
         termsAgreed: false,
-        hasContributed: false
+        hasContributed: false,
+        contributionValue: 1,
     },
 
     getters: {
@@ -26,6 +27,10 @@ export default new Vuex.Store({
 
         hasContributed(state){
             return state.hasContributed
+        },
+
+        contributionValue(state){
+            return state.contributionValue
         }
     },
 
@@ -40,6 +45,10 @@ export default new Vuex.Store({
 
         setContributedStatus(state, hasContributed){
             state.hasContributed = hasContributed
+        },
+
+        setContributionValue(state, amount){
+            state.contributionValue = amount
         }
     },
 
@@ -54,6 +63,10 @@ export default new Vuex.Store({
 
         setContributedStatus(context, hasContributed){
             context.commit('setContributedStatus', hasContributed)
+        },
+
+        setContributionValue(context, amount){
+            context.commit('setContributionValue', amount)
         }
     },
 })

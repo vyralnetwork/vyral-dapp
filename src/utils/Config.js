@@ -9,7 +9,7 @@ const networks = {
 const abi = [];
 
 
-export const VyralConfig = {
+export default {
     launchDateTime: 1512122400000,
     contractAddress: '0x47e23d1adf242d0b651312305b10ed198249fc0a',
     networks: networks,

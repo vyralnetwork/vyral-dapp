@@ -20,7 +20,17 @@
       v-clipboard:success="contractAddressCopySuccess"
       v-clipboard:error="contractAddressCopyError">COPY</button>
     </div>
+
+    <div v-show="selectedWallet === 'METAMASK'">
+      <label>How much would you like to contribute</label>
+      <input type="number" placeholder="Amount to conribute in ETH" v-model="contributionAmount" min="1" step="0.25"/>
+
+      <button @click="contribute()">Contribute</button>
+    </div>
   </div>
+
+
+  
 
 
   <wallet-instructor :selectedWallet="selectedWallet"></wallet-instructor>
@@ -35,52 +45,23 @@
 </template>
 
 <script>
-  import {VyralConfig} from "../utils/Config"
+  import VyralConfig from "../utils/Config"
   var abi = require("../contracts/VyralSale.json")
 
   export default {
     name: 'ContributePage',
 
-    mounted(){
+    created(){
       if(! this.$store.getters.termsAgreed){
           this.$router.push({name: "AgreeTermsPage"})
       } else if(! this.$store.getters.selectedWallet){
           this.$router.push({name: "SelectWalletPage"})
       }
-
-
-      // If user has selected Metamask Wallet,
-      // direct user to contribute via that.
-      if(this.$store.getters.selectedWallet === 'METAMASK'){
-        if(typeof web3 !== 'undefined'){
-          web3 = new Web3(web3.currentProvider)
-        } else{
-          web3 = new Web3(new Web3.providers.HttpProvider('http://localhost:8545'))
-        }
-
-        var VyralContract = web3.eth.contract(abi);
-
-        var VyralToken = VyralContract.at(VyralContract.contractAddress);
-
-        VyralToken.buyTokens(10, {
-          gas: 20000,
-          data: '0xec8ac4d80000000000000000000000000x0c1f00e6749b1fda244d4e3b075efd8073e187ca'
-        },
-          function(error, response){
-            if(error){
-              alert("Transaction Failed")
-            } else{
-              this.$store.dispatch("setContributedStatus", true)
-            }
-        });
-
-        this.$store.dispatch("setContributedStatus", true)
-
-      }
     },
 
     data () {
       return {
+        contributionAmount: this.$store.getters.contributionValue,
         selectedWallet: this.$store.getters.selectedWallet,
         contractAddress: VyralConfig.contractAddress
       };
@@ -90,7 +71,47 @@
       
 
       contribute() {
-        if(! this.isNetworkConnected) return;
+        // If user has selected Metamask Wallet,
+        // direct user to contribute via that.
+        if(this.selectedWallet === 'METAMASK'){
+          if(typeof web3 !== 'undefined'){
+            web3 = new Web3(web3.currentProvider)
+          } else{
+            web3 = new Web3(new Web3.providers.HttpProvider('http://localhost:8545'))
+          }
+
+          if(web3.eth.accounts.length === 0){
+            alert("Hmmm! Looks like you have not logged into MetaMask yet. Please login and refresh this page.")
+            return;
+          }
+
+          web3.eth.defaultAccount = web.eth.accounts[0];
+
+          var VyralContractAby = web3.eth.contract(abi);
+
+          var VyralContract = VyralContractAby.at("0x8Ed05562dAc1631E9BFc82Ebc81321448C41BAb0");
+
+          // var data = VyralContract.buyTokens.getData({
+          //   _referrer: "0x8e62a66a8edc1478795b637e4722af1337057c0f"
+          // });
+
+          VyralContract.buyTokens.sendTransaction("0x8e62a66a8edc1478795b637e4722af1337057c0f", {
+            to: "0x47e23d1adf242d0b651312305b10ed198249fc0a",
+            from: web3.eth.defaultAccount,
+            value: web3.toWei(this.contributionAmount, 'ether'),
+            //data: data
+          },
+            function(error, response){
+              if(error){
+                alert("Transaction Failed")
+              } else{
+                this.$store.dispatch("setContributedStatus", true)
+              }
+          });
+
+          this.$store.dispatch("setContributedStatus", true)
+
+        }
       },
 
       contractAddressCopySuccess(e){

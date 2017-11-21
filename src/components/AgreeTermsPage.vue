@@ -93,7 +93,7 @@
 </template>
 
 <script>
-import {VyralConfig} from "../utils/Config"
+import VyralConfig from "../utils/Config"
 
 export default {
   name: 'AgreeTermsPage',

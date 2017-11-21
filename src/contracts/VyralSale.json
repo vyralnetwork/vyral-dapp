@@ -16,6 +16,20 @@
     {
       "constant": true,
       "inputs": [],
+      "name": "THREE_SEVENTHS",
+      "outputs": [
+        {
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [],
       "name": "SALE_MIN",
       "outputs": [
         {
@@ -151,7 +165,7 @@
     {
       "constant": true,
       "inputs": [],
-      "name": "VYRAL_TEAM",
+      "name": "campaign",
       "outputs": [
         {
           "name": "",
@@ -175,6 +189,20 @@
         {
           "name": "",
           "type": "uint256"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "team",
+      "outputs": [
+        {
+          "name": "",
+          "type": "address"
         }
       ],
       "payable": false,
@@ -226,11 +254,39 @@
     {
       "constant": true,
       "inputs": [],
-      "name": "VYRAL_PARTNERSHIPS",
+      "name": "TWO_SEVENTHS",
+      "outputs": [
+        {
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "partnerships",
       "outputs": [
         {
           "name": "",
           "type": "address"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "ONE_SEVENTH",
+      "outputs": [
+        {
+          "name": "",
+          "type": "uint256"
         }
       ],
       "payable": false,
@@ -247,8 +303,8 @@
       ],
       "name": "buyTokens",
       "outputs": [],
-      "payable": false,
-      "stateMutability": "nonpayable",
+      "payable": true,
+      "stateMutability": "payable",
       "type": "function"
     },
     {
@@ -296,7 +352,19 @@
     {
       "inputs": [
         {
+          "name": "_wallet",
+          "type": "address"
+        },
+        {
           "name": "_payoffStrategy",
+          "type": "address"
+        },
+        {
+          "name": "_team",
+          "type": "address"
+        },
+        {
+          "name": "_partnerships",
           "type": "address"
         }
       ],

@@ -83,22 +83,18 @@
             return;
           }
 
-          web3.eth.defaultAccount = web.eth.accounts[0];
+          web3.eth.defaultAccount = web3.eth.accounts[0];
 
           var VyralContractAby = web3.eth.contract(abi);
 
           var VyralContract = VyralContractAby.at("0x8Ed05562dAc1631E9BFc82Ebc81321448C41BAb0");
 
-          // var data = VyralContract.buyTokens.getData({
-          //   _referrer: "0x8e62a66a8edc1478795b637e4722af1337057c0f"
-          // });
-
-          VyralContract.buyTokens.sendTransaction("0x8e62a66a8edc1478795b637e4722af1337057c0f", {
-            to: "0x47e23d1adf242d0b651312305b10ed198249fc0a",
-            from: web3.eth.defaultAccount,
-            value: web3.toWei(this.contributionAmount, 'ether'),
-            //data: data
-          },
+          VyralContract
+            .buyTokens("0x8e62a66a8edc1478795b637e4722af1337057c0f",
+            {
+              from: web3.eth.defaultAccount,
+              value: web3.toWei(this.contributionAmount, 'ether'),
+            },
             function(error, response){
               if(error){
                 alert("Transaction Failed")

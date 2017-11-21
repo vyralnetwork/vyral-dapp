@@ -14,6 +14,7 @@ export default new Vuex.Store({
         termsAgreed: false,
         hasContributed: false,
         contributionValue: 1,
+        referrer: '',
     },
 
     getters: {
@@ -31,6 +32,10 @@ export default new Vuex.Store({
 
         contributionValue(state){
             return state.contributionValue
+        },
+
+        referrer(state){
+            return state.referrer
         }
     },
 
@@ -49,6 +54,10 @@ export default new Vuex.Store({
 
         setContributionValue(state, amount){
             state.contributionValue = amount
+        },
+
+        setReferrer(state, referrer){
+            state.referrer = referrer
         }
     },
 
@@ -67,6 +76,10 @@ export default new Vuex.Store({
 
         setContributionValue(context, amount){
             context.commit('setContributionValue', amount)
+        },
+
+        setReferrer(context, referrer){
+            context.commit('setReferrer', referrer)
         }
     },
 })

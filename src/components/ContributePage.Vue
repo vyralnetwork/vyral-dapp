@@ -68,8 +68,6 @@
     },
 
     methods: {
-      
-
       contribute() {
         // If user has selected Metamask Wallet,
         // direct user to contribute via that.

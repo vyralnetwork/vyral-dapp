@@ -23,5 +23,11 @@ new Vue({
   store,
   router,
   template: '<App/>',
-  components: { App }
+  components: { App },
+  mounted: function() {
+      let referrer = this.$route.query.referrer
+      if(referrer){
+        this.$store.dispatch('setReferrer', referrer)
+      }
+  },
 })

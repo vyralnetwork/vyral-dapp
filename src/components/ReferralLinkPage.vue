@@ -49,6 +49,14 @@
   export default {
     name: 'ReferralLinkPage',
 
+    data () {
+      return {
+        copyLabel: 'COPY',
+        textCopied: false,
+        walletAddress: this.$store.getters.contributionFromAddress,
+      }
+    },
+
     mounted(){
         if(! this.$store.getters.termsAgreed){
             this.$router.push({name: "AgreeTermsPage"})
@@ -60,13 +68,6 @@
 
     },
 
-    data () {
-      return {
-        copyLabel: 'COPY',
-        textCopied: false,
-        walletAddress: this.$store.getters.contributionFromAddress,
-      }
-    },
     computed: {
       referralLink(){
         if(this.walletAddress.length >  0){

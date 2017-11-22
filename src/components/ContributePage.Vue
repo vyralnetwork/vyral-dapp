@@ -54,14 +54,6 @@
   export default {
     name: 'ContributePage',
 
-    created(){
-      if(! this.$store.getters.termsAgreed){
-          this.$router.push({name: "AgreeTermsPage"})
-      } else if(! this.$store.getters.selectedWallet){
-          this.$router.push({name: "SelectWalletPage"})
-      }
-    },
-
     data () {
       return {
         copyLabel: "Copy",
@@ -69,7 +61,15 @@
         contributionAmount: this.$store.getters.contributionValue,
         selectedWallet: this.$store.getters.selectedWallet,
         contractAddress: VyralConfig.contractAddress
-      };
+      }
+    },
+
+    created(){
+      if(! this.$store.getters.termsAgreed){
+          this.$router.push({name: "AgreeTermsPage"})
+      } else if(! this.$store.getters.selectedWallet){
+          this.$router.push({name: "SelectWalletPage"})
+      }
     },
 
     methods: {

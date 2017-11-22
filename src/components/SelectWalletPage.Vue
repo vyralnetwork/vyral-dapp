@@ -24,6 +24,10 @@
   export default {
     name: 'SelectWalletPage',
 
+    data(){
+      return {}
+    },
+
     components: {
       'selected-wallet': 'selected-wallet'
     },

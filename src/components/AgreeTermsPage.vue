@@ -100,7 +100,6 @@ export default {
 
   data () {
 
-
     return {
       agreeTerms: false,
       agreeToNotUsResident: false,

@@ -127,6 +127,11 @@ button, a, input[type='checkbox']{
     background-repeat:no-repeat;
     background-size:cover;
 }
+
+.ref-main input{
+    width: 560px;
+}
+
 .content{
     padding-top: 50px;
     width: 70%;
@@ -570,6 +575,11 @@ input {
     background-color: #ED385E;
     margin-left: -113px;
 }
+
+.input-grp button.success{
+    background-color: #5ab000;
+}
+
 ::-webkit-input-placeholder { /* Chrome/Opera/Safari */
   color: #AEAEAE;
 }
@@ -614,11 +624,12 @@ input {
     color: #ED385E; 
 }
 .qrcode-container {
-    height: 360.9px;
+    height: 210px;
     width: 464.4px;
     background-color: #FFFFFF;
-    margin:auto;
-    margin-top:27px;
+    margin: auto;
+    margin-top: 27px;
+    padding-top: 15px;
     text-align: center;
 }
 .qrcode-container img{
@@ -644,4 +655,8 @@ input {
     height: 34.89px;
     width: 70.62px;
     margin-left:-74px;
+}
+
+.wallet-instructor{
+    margin-top: 20px;
 }

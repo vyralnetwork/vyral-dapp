@@ -20,6 +20,7 @@
     "vue-config": "^1.0.0",
     "vue-moment": "^2.1.0",
     "vue-router": "^3.0.1",
+    "vue-sweetalert2": "^1.0.7",
     "vuex": "^3.0.1",
     "vuex-persistedstate": "^2.3.2",
     "web3": "github:ethereum/web3.js"

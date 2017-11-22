@@ -2,6 +2,7 @@
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from 'vue'
 import VueClipboard from 'vue-clipboard2'
+import VueSweetalert2 from 'vue-sweetalert2';
 import App from './App'
 import router from './router'
 
@@ -15,6 +16,7 @@ import "@/components/WalletInstructor.js"
 Vue.config.productionTip = false
 
 Vue.use(VueClipboard)
+Vue.use(VueSweetalert2)
 
 
 /* eslint-disable no-new */

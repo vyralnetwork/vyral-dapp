@@ -8,20 +8,23 @@
     
     <p class="choose-the-wallet">YOUR REFERAL KEY</p>
     
-    <p class="txt3">Post your wallet address in the box below to create your Vyral Referral Key</p>
-    <a class="learn-txt">Learn how to create your referal key</a>
+    <p class="txt3" v-show="!walletAddress">Post your wallet address in the box below to create your Vyral Referral Key</p>
+    <a href="#" class="learn-txt">Learn how to create your referal key</a>
     
-    <div class="input-grp">
+    <div class="input-grp" v-show="!walletAddress">
         <input type="text" placeholder="Enter your wallet address" v-model="walletAddress"/>
         <button> CREATE </button>
     </div>
     
     <div class="input-grp">
-        <input type="text" class="input2" placeholder="Your referal key" v-model="referralLink"/>
-        <button 
+        <input type="text" class="input2" placeholder="Your referral key" v-model="referralLink"/>
+        <button type="button"
+          v-bind:class="{'success': textCopied}"
           v-clipboard:copy="referralLink"
           v-clipboard:success="referralLinkCopySuccess"
-          v-clipboard:error="referralLinkCopyError"> COPY </button>
+          v-clipboard:error="referralLinkCopyError">
+            {{ copyLabel }}
+          </button>
     </div>
     
     <div class="footer">
@@ -59,7 +62,9 @@
 
     data () {
       return {
-        walletAddress: ""
+        copyLabel: 'COPY',
+        textCopied: false,
+        walletAddress: this.$store.getters.contributionFromAddress,
       }
     },
     computed: {
@@ -74,7 +79,13 @@
 
     methods: {
       referralLinkCopySuccess: function(e){
-        alert("Copied: "+ e.text);
+        this.copyLabel = "✔ COPIED";
+        this.textCopied = true;
+
+        setTimeout(() => {
+          this.copyLabel = "COPY"
+          this.textCopied = false
+        }, 3000)
       },
 
 

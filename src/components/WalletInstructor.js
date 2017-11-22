@@ -5,29 +5,29 @@ Vue.component('wallet-instructor',{
     props: ['selectedWallet'],
 
     template: `
-    <div>
+    <div class='wallet-instructor'>
         <div class="text-center" v-show="metamaskSelected()">
-          Instruction to contribute via <strong>METAMASK</strong>.
+          <a href="#" target="_blank">Click here for instructions to contribute via <strong>METAMASK</strong></a>
         </div>
 
         <div class="text-center" v-show="myEtherWalletSelected()">
-          Instruction to contribute via <strong>My Ether Wallet</strong>.
+          <a href="#" target="_blank">Click here for instructions to contribute via <strong>My Ether Wallet</strong></a>
         </div>
 
         <div class="text-center" v-show="paritySelected()">
-          Instruction to contribute via <strong>PARITY</strong>.
+          <a href="#" target="_blank">Click here for instructions to contribute via <strong>PARITY</strong></a>
         </div>
 
         <div class="text-center" v-show="iMTokenSelected()">
-          Instruction to contribute via <strong>I AM TOKEN</strong>.
+          <a href="#" target="_blank">Click here for instructions to contribute via <strong>I AM TOKEN</strong></a>
         </div>
 
         <div class="text-center" v-show="jaxxSelected()">
-          Instruction to contribute via <strong>JAXX</strong>.
+          <a href="#" target="_blank">Click here for instructions to contribute via <strong>JAXX</strong></a>
         </div>
 
         <div class="text-center" v-show="mistSelected()">
-          Instruction to contribute via <strong>MIST</strong>.
+          <a href="#" target="_blank">Click here for instructions to contribute via <strong>MIST</strong></a>
         </div>
     </div>
     `,

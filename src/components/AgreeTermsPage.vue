@@ -39,42 +39,42 @@
         <li> 
             <label class="checkbox">
                 <input type="checkbox" v-model="agreeTerms"/>
-                <span class="check-image"><img src="/static/images/ok icon.svg"/></span>
+                <span class="check-image"><img src="/static/images/ok-icon.svg"/></span>
                 <span class= "check-txt">I confirm that I have read and agree to the Contribution Terms.</span>
             </label>
         </li>
         <li> 
             <label class="checkbox">
                 <input type="checkbox" v-model="agreeToNotUsResident"/>
-                <span class="check-image"><img src="/static/images/ok icon.svg"/></span>
+                <span class="check-image"><img src="/static/images/ok-icon.svg"/></span>
                 <span class= "check-txt">I confirm that I am not a citizen or resident of the United States or other unpermitted country.</span>
             </label>
         </li>
         <li> 
             <label class="checkbox">
                 <input type="checkbox" v-model="agreeToNotSendingViaExchange"/>
-                <span class="check-image"><img src="/static/images/ok icon.svg"/></span>
+                <span class="check-image"><img src="/static/images/ok-icon.svg"/></span>
                 <span class= "check-txt">I confirm I am not sending from an exchange.</span>
             </label>
         </li>
         <li>
             <label class="checkbox">
                 <input type="checkbox" v-model="agreeToTimeToReceiveToken"/>
-                <span class="check-image"><img src="/static/images/ok icon.svg"/></span>
+                <span class="check-image"><img src="/static/images/ok-icon.svg"/></span>
                 <span class= "check-txt">I understand that it may take up to 15 days from the time the contribution period ends to receive SHARE Tokens.</span>
             </label>
         </li>
         <li>
             <label class="checkbox">
                 <input type="checkbox" v-model="agreeToMinimumContribution"/>
-                <span class="check-image"><img src="/static/images/ok icon.svg"/></span>
+                <span class="check-image"><img src="/static/images/ok-icon.svg"/></span>
                 <span class= "check-txt">I confirm that my contribution is at least 1 ETH or higher and no more than 500 ETH.</span>
             </label>
         </li>
         <li> 
           <label class="checkbox">
             <input type="checkbox" v-model="agreeToLossingContributionIfLess"/>
-            <span class="check-image"><img src="/static/images/ok icon.svg"/></span>
+            <span class="check-image"><img src="/static/images/ok-icon.svg"/></span>
             <span class= "check-txt">I understand that I will lose my contribution If it is less than 1 ETH & will not receive a refund.</span>
           </label>
         </li>

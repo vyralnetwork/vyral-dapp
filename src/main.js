@@ -23,7 +23,7 @@ Vue.use(VeeValidate)
 
 /* eslint-disable no-new */
 new Vue({
-  el: '#root',
+  el: '#app',
   store,
   router,
   template: '<App/>',

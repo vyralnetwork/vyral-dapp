@@ -17,7 +17,7 @@
 
 
         <div class="input-group" v-show="!walletAddress">
-          <input type="text" class="form-control" placeholder="Contract ETH AddresEnter your wallet addresss" v-model="walletAddress">
+          <input type="text" class="form-control mono" placeholder="Contract ETH AddresEnter your wallet addresss" v-model="walletAddress">
           <span class="input-group-btn">
             <button class="btn btn-primary">Create</button>
           </span>
@@ -25,11 +25,10 @@
 
 
         <div class="input-group">
-          <input type="text" class="form-control" placeholder="Your Vyral Referral Code" v-model="referralLink">
+          <input type="text" class="form-control mono" placeholder="Your Vyral Referral Code" v-model="referralLink">
           <span class="input-group-btn">
             <button 
               class="btn btn-primary" 
-              type="button"
               v-bind:class="{'success': textCopied}"
               v-clipboard:copy="referralLink"
               v-clipboard:success="referralLinkCopySuccess"
@@ -37,6 +36,40 @@
           </span>
         </div><!-- /input-group -->
       </div>
+    </div>
+
+    <div class="text-center" v-show="referralLink">
+      <ul class="list-unstyled list-inline social-share">
+        <li>
+            <a class="btn btn-inverse facebook" target="_blank" v-bind:href="'https://www.facebook.com/sharer/sharer.php?u=https%3A//contribute.vyral.network/referrer/' + referralLink ">
+              <i class="fa fa-facebook"></i>
+            </a>
+        </li>
+
+        <li>
+            <a class="btn btn-inverse twitter" target="_blank" v-bind:href="'https://twitter.com/home?status=https%3A//contribute.vyral.network/referrer/' + referralLink ">
+              <i class="fa fa-twitter"></i>
+            </a>
+        </li>
+
+        <li>
+            <a class="btn btn-inverse linkedin" target="_blank" v-bind:href="'https://www.linkedin.com/shareArticle?mini=true&url=https%3A//contribute.vyral.network/referrer/' + referralLink ">
+              <i class="fa fa-linkedin"></i>
+            </a>
+        </li>
+
+        <li>
+            <a class="btn btn-inverse gplus" target="_blank" v-bind:href="'https://plus.google.com/share?url=https%3A//contribute.vyral.network/referrer/' + referralLink ">
+              <i class="fa fa-google-plus"></i>
+            </a>
+        </li>
+
+        <!-- <li>
+            <a class="btn btn-inverse email" target="_blank" v-bind:href="'//www.facebook.com/sharer/sharer.php?u=https%3A//contribute.vyral.network/referrer/' + referralLink ">
+              <i class="fa fa-envelope"></i>
+            </a>
+        </li> -->
+      </ul>
     </div>
     
     <div class="footer">
@@ -83,7 +116,7 @@
     computed: {
       referralLink(){
         if(this.walletAddress.length >  0){
-            return this.walletAddress
+            return "0xec8ac4d8000000000000000000000000".concat(this.walletAddress.replace("0x", ""))
         } else{
             return ''
         }

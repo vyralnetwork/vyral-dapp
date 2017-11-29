@@ -23,7 +23,7 @@
 
           <div class="form-group">
             <label>Referral Vyral Key</label>
-            <input type="text" class="form-control" placeholder="0x000000000000000000000000000" v-model="referralKey"/>
+            <input type="text" class="form-control mono" placeholder="0x000000000000000000000000000" v-model="referralKey"/>
           </div>
 
           <button type="button" class="btn btn-primary btn-block" @click="contribute()">Contribute</button>
@@ -34,7 +34,7 @@
         <div v-show="selectedWallet !== 'METAMASK'">
             <p>Please send your contribution to the following address. Recommended Gas amount: 200,00</p>
             <div class="input-group">
-              <input type="text" class="form-control" placeholder="Contract ETH Address" v-model="contractAddress">
+              <input type="text" class="form-control mono" placeholder="Contract ETH Address" v-model="contractAddress">
               <span class="input-group-btn">
                 <button 
                   class="btn btn-primary" 

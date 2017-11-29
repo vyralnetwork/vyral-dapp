@@ -25,6 +25,37 @@ input[type='radio']{
     border: none;
 }
 
+.mono{
+    font-size: 20px;
+    font-family: monospace;
+}
+
+
+.social-share a{
+    font-size: 30px;
+    padding: 10px;
+}
+
+.social-share a.facebook{
+    color: #3b5998;
+}
+
+.social-share a.twitter{
+    color: #1da1f2;
+}
+
+.social-share a.linkedin{
+    color: #0077b5;
+}
+
+.social-share a.gplus{
+    color: #dd4b39;
+}
+
+.social-share a.email{
+    color: #4285f4;
+}
+
 .btn-primary,
 .btn-primary:hover,
 .btn-primary.disabled:hover, 

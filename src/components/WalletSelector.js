@@ -8,7 +8,7 @@ Vue.component('wallet-selector', {
         <ul class="wallet-container">
           <li class="wallet-type">
             <label class="checkbox">
-              <input type="radio" @click="setWallet('MYETHERWALLET')" value="MYETHERWALLET"/>
+              <input type="radio" name="selectedWallet" @click="setWallet('MYETHERWALLET')" value="MYETHERWALLET"/>
               <img src="/static/images/myetherwallet-logo.png" class="ether"/>
               <span class="label">MyEtherWallet</span>
               <span class="active" v-if="wallet == 'MYETHERWALLET'"></span>
@@ -20,7 +20,7 @@ Vue.component('wallet-selector', {
             <span class="recommended">Recommended</span>
 
             <label class="checkbox">
-              <input type="radio" @click="setWallet('METAMASK')" value="METAMASK"/>
+              <input type="radio" name="selectedWallet" @click="setWallet('METAMASK')" value="METAMASK"/>
               <img src="/static/images/metamask.png" class="ether"/>
               <span class="label">Metamask</span>
               <span class="active" v-if="wallet == 'METAMASK'"></span>
@@ -30,7 +30,7 @@ Vue.component('wallet-selector', {
 
           <li class="wallet-type">
             <label class="checkbox">
-              <input type="radio" @click="setWallet('PARITY')" value="PARITY"/>
+              <input type="radio" name="selectedWallet" @click="setWallet('PARITY')" value="PARITY"/>
               <img src="/static/images/parity.png" class="parity">
               <span class="label">Parity</span>
               <span class="active" v-if="wallet == 'PARITY'"></span>
@@ -40,7 +40,7 @@ Vue.component('wallet-selector', {
 
           <li class="wallet-type">
             <label class="checkbox">
-              <input type="radio" @click="setWallet('METAMASK')" value="IAMTOKEN"/>
+              <input type="radio" name="selectedWallet" @click="setWallet('IAMTOKEN')" value="IAMTOKEN"/>
               <img src="/static/images/i-am-token.png" class="ether">
               <span class="label">Iam Token</span>
               <span class="active" v-if="wallet == 'IAMTOKEN'"></span>
@@ -50,7 +50,7 @@ Vue.component('wallet-selector', {
 
           <li class="wallet-type">
             <label class="checkbox">
-              <input type="radio" @click="setWallet('METAMASK')" value="JAXX"/>
+              <input type="radio" name="selectedWallet" @click="setWallet('JAXX')" value="JAXX"/>
               <img src="/static/images/jaxx.png" class="jaxx">
               <span class="label">Jaxx</span>
               <span class="active" v-if="wallet == 'JAXX'"></span>
@@ -60,7 +60,7 @@ Vue.component('wallet-selector', {
 
           <li class="wallet-type">
             <label class="checkbox">
-              <input type="radio" @click="setWallet('METAMASK')" value="MIST"/>
+              <input type="radio" name="selectedWallet" @click="setWallet('MIST')" value="MIST"/>
               <img src="/static/images/mist.png" class="mist">
               <span class="label">Mist</span>
               <span class="active" v-if="wallet == 'MIST'"></span>

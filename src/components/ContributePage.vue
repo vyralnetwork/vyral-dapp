@@ -1,47 +1,64 @@
 <template>
-  <div class="cont-main">
-  <div class="logo">
-    <a href="/"><img src="/static/images/logo.png" alt="Vyral Network"></a>
-  </div>
+<div class="cont-main">
+  <div class="container">
+    <div class="logo">
+      <a href="/"><img src="/static/images/logo.png" alt="Vyral Network"></a>
+    </div>
 
-  <wizard-steps current="CONTRIBUTE"></wizard-steps>
-  
-  <div class="choose-the-wallet">VYRAL NETWORK CONTRIBUTION ADDRESS</div>
-  
-  <p class="txt2">Do not send ETH from exchanges. We recommending using MetaMask, MyEtherWallet, Mist or other ERC-20 compatible wallets.</p>
-  
-  <div class="qrcode-container">
-    <div v-show="selectedWallet !== 'METAMASK'">
-      <p>Please send your contribution to the following address. Recommended Gas amount: 200,00</p>
-      <!-- <canvas id="qrcode"></canvas> -->
-      <div class="input-grp">
-        <input type="text" placeholder="Contract ETH Address" v-model="contractAddress"/>
-        <button type="button"
-        v-bind:class="{'success': textCopied}"
-        v-clipboard:copy="contractAddress"
-        v-clipboard:success="contractAddressCopySuccess"
-        v-clipboard:error="contractAddressCopyError">
-          {{ copyLabel }}
-        </button>
+    <wizard-steps current="CONTRIBUTE"></wizard-steps>
+    
+    <div class="choose-the-wallet">VYRAL NETWORK CONTRIBUTION ADDRESS</div>
+    
+    <p class="txt2">Do not send ETH from exchanges. We recommending using MetaMask, MyEtherWallet, Mist or other ERC-20 compatible wallets.</p>
+    
+    <div class="row">
+      <div class="col-md-6 col-md-offset-3 contribution-form">
+
+        <form v-show="selectedWallet === 'METAMASK'" >
+
+          <div class="form-group">
+            <label>Enter the amount like to contribute. Minimum contribution should be 1 ETH</label>
+            <input type="number" class="form-control" placeholder="10.0" v-model="contributionAmount" min="1" step="0.25">
+          </div>
+
+          <div class="form-group">
+            <label>Referral Vyral Key</label>
+            <input type="text" class="form-control" placeholder="0x000000000000000000000000000" v-model="referralKey"/>
+          </div>
+
+          <button type="button" class="btn btn-primary btn-block" @click="contribute()">Contribute</button>
+
+        </form>
+
+
+        <div v-show="selectedWallet !== 'METAMASK'">
+            <p>Please send your contribution to the following address. Recommended Gas amount: 200,00</p>
+            <div class="input-group">
+              <input type="text" class="form-control" placeholder="Contract ETH Address" v-model="contractAddress">
+              <span class="input-group-btn">
+                <button 
+                  class="btn btn-primary" 
+                  type="button"
+                  v-bind:class="{'success': textCopied}"
+                  v-clipboard:copy="contractAddress"
+                  v-clipboard:success="contractAddressCopySuccess"
+                  v-clipboard:error="contractAddressCopyError">{{ copyLabel }}</button>
+              </span>
+            </div><!-- /input-group -->
+          </form>
+
+          <wallet-instructor :selectedWallet="selectedWallet"></wallet-instructor>
+        </div>
+
       </div>
-
-      <wallet-instructor :selectedWallet="selectedWallet"></wallet-instructor>
-
     </div>
 
-    <div v-show="selectedWallet === 'METAMASK'" class="input-grp">
-      <p>Enter the amount like to contribute. Minimum contribution should be 1 ETH.</p>
-      <input type="number" placeholder="Amount to conribute in ETH" v-model="contributionAmount" min="1" step="0.25"/>
+    <p class="footer-txt">Get your Vyral Key once you have completed your transaction.</p>
 
-      <button type="button" @click="contribute()">Contribute</button>
-
+    <div class="text-center margin-top-xl margin-bottom-xl">
+      <router-link :to="{ name: 'ReferralLinkPage' }" class="transparent-btn">CLAIM MY VYRAL LINK</router-link>
     </div>
-  </div>
 
-  <p class="footer-txt">Get your referal Link once you have completed your transaction.</p>
-
-  <div class="text-center margin-top-xl margin-bottom-xl">
-    <router-link :to="{ name: 'ReferralLinkPage' }" class="transparent-btn">CLAIM MY REFERAL LINK</router-link>
   </div>
 
 </div>
@@ -60,7 +77,8 @@
         textCopied: false,
         contributionAmount: this.$store.getters.contributionValue,
         selectedWallet: this.$store.getters.selectedWallet,
-        contractAddress: VyralConfig.contractAddress
+        contractAddress: VyralConfig.contractAddress,
+        referralKey: ""
       }
     },
 
@@ -70,12 +88,21 @@
       } else if(! this.$store.getters.selectedWallet){
           this.$router.push({name: "SelectWalletPage"})
       }
+
+      // If it's not Metamask, we have no way to know if we should enable Referral Link or not.
+      if(this.selectedWallet !== 'METAMASK'){
+        this.$store.dispatch("setContributedStatus", true)
+      }
     },
 
     methods: {
       contribute() {
         const store = this.$store
         const swal = this.$swal
+
+        if(this.referralKey){
+          this.$store.dispatch("setReferrer", this.referralKey)
+        }
 
         // If user has selected Metamask Wallet,
         // direct user to contribute via that.
@@ -135,3 +162,17 @@
     }
   }
 </script>
+
+
+
+<style scoped>
+  .contribution-form{
+    background-color: #fff;
+    padding: 20px;
+  }
+
+  label{
+    font-weight: normal;
+    font-size: 12px;
+  }
+</style>

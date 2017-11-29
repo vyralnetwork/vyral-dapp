@@ -1,5 +1,6 @@
 <template>
 <div class="ref-main">
+  <div class="container">
     <div class="logo">
         <a href="/"><img src="/static/images/logo.png" alt="Vyral Network"></a>
     </div>
@@ -8,23 +9,34 @@
     
     <p class="choose-the-wallet">YOUR REFERAL KEY</p>
     
-    <p class="txt3" v-show="!walletAddress">Post your wallet address in the box below to create your Vyral Referral Key</p>
-    <a href="#" class="learn-txt">Learn how to create your referal key</a>
-    
-    <div class="input-grp" v-show="!walletAddress">
-        <input type="text" placeholder="Enter your wallet address" v-model="walletAddress"/>
-        <button> CREATE </button>
-    </div>
-    
-    <div class="input-grp">
-        <input type="text" class="input2" placeholder="Your referral key" v-model="referralLink"/>
-        <button type="button"
-          v-bind:class="{'success': textCopied}"
-          v-clipboard:copy="referralLink"
-          v-clipboard:success="referralLinkCopySuccess"
-          v-clipboard:error="referralLinkCopyError">
-            {{ copyLabel }}
-          </button>
+
+    <div class="row">
+      <div class="col-md-6 col-md-offset-3 margin-top-lg">
+        <p class="txt3" v-show="!walletAddress">Post your wallet address in the box below to create your Vyral Referral Key</p>
+        <a href="#" class="learn-txt">Learn how to create your referal key</a>
+
+
+        <div class="input-group" v-show="!walletAddress">
+          <input type="text" class="form-control" placeholder="Contract ETH AddresEnter your wallet addresss" v-model="walletAddress">
+          <span class="input-group-btn">
+            <button class="btn btn-primary">Create</button>
+          </span>
+        </div><!-- /input-group -->
+
+
+        <div class="input-group">
+          <input type="text" class="form-control" placeholder="Your Vyral Referral Code" v-model="referralLink">
+          <span class="input-group-btn">
+            <button 
+              class="btn btn-primary" 
+              type="button"
+              v-bind:class="{'success': textCopied}"
+              v-clipboard:copy="referralLink"
+              v-clipboard:success="referralLinkCopySuccess"
+              v-clipboard:error="referralLinkCopyError">{{ copyLabel }}</button>
+          </span>
+        </div><!-- /input-group -->
+      </div>
     </div>
     
     <div class="footer">
@@ -38,7 +50,7 @@
             <div class="balance-num">525</div>
         </span>
     </div>
-    
+  </div>
 </div>
 </template>
 
@@ -51,7 +63,7 @@
 
     data () {
       return {
-        copyLabel: 'COPY',
+        copyLabel: 'Copy',
         textCopied: false,
         walletAddress: this.$store.getters.contributionFromAddress,
       }
@@ -71,7 +83,7 @@
     computed: {
       referralLink(){
         if(this.walletAddress.length >  0){
-            return VyralConfig.referralCodePrefix + this.walletAddress
+            return this.walletAddress
         } else{
             return ''
         }
@@ -80,11 +92,11 @@
 
     methods: {
       referralLinkCopySuccess: function(e){
-        this.copyLabel = "✔ COPIED";
+        this.copyLabel = "✔ Copied";
         this.textCopied = true;
 
         setTimeout(() => {
-          this.copyLabel = "COPY"
+          this.copyLabel = "Copy"
           this.textCopied = false
         }, 3000)
       },
@@ -96,3 +108,19 @@
     }
   }
 </script>
+
+
+<style scoped>
+  .learn-txt{
+    margin-bottom: 50px;
+  }
+
+  .input-group{
+    margin-bottom: 30px;
+  }
+
+  .input-group-btn button{
+    width: 120px;
+  }
+
+</style>

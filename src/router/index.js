@@ -5,6 +5,7 @@ import AgreeTermsPage from '@/components/AgreeTermsPage'
 import SelectWalletPage from '@/components/SelectWalletPage'
 import ContributePage from '@/components/ContributePage'
 import ReferralLinkPage from '@/components/ReferralLinkPage'
+import ReferrerPage from '@/components/ReferrerPage'
 
 
 // import vueConfig from 'vue-config'
@@ -21,29 +22,26 @@ const routes = [
     path: '/',
     name: 'AgreeTermsPage',
     component: AgreeTermsPage,
-    beforeEnter: (to, from, next) => {
-      next()
-    }
   },
   {
     path: '/select-wallet',
     name: 'SelectWalletPage',
     component: SelectWalletPage,
-    // beforeEnter(to, from, next) => {
-    //   if(!this.$store.getters.termsAgreed){
-    //     //redirect back
-    //   }
-    // }
   },
   {
     path: '/contribute',
     name: 'ContributePage',
-    component: ContributePage
+    component: ContributePage,
   },
   {
     path: '/referral-link',
     name: 'ReferralLinkPage',
-    component: ReferralLinkPage
+    component: ReferralLinkPage,
+  },
+  {
+    path: '/referrer/:referrer',
+    name: 'ReferrerPage',
+    component: ReferrerPage,
   }
 ];
 

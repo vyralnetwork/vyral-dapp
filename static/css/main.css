@@ -1,4 +1,4 @@
-html,body, #app{
+html,body, .app{
     height: 100%;
 }
 body{
@@ -10,11 +10,45 @@ button, a, input[type='checkbox']{
     cursor: pointer;
 }
 
+
+input[type='radio']{
+    -webkit-appearance: none;
+}
+
+.margin-top-lg{
+    margin-top: 50px;
+}
+
 .btn{
-    padding: 12px 35px;
+    padding: 11px 35px;
     display: inline-block;
     border: none;
 }
+
+.btn-primary,
+.btn-primary:hover,
+.btn-primary.disabled:hover, 
+.btn-primary[disabled]:hover, 
+fieldset[disabled] .btn-primary:hover, 
+.btn-primary.disabled:focus,
+.btn-primary[disabled]:focus,
+fieldset[disabled] .btn-primary:focus,
+.btn-primary.disabled.focus,
+.btn-primary[disabled].focus,
+fieldset[disabled] .btn-primary.focus,
+.btn-primary:active:hover, 
+.btn-primary.active:hover, 
+.open>.dropdown-toggle.btn-primary:hover,
+.btn-primary:active:focus,
+.btn-primary.active:focus,
+.open>.dropdown-toggle.btn-primary:focus,
+.btn-primary:active.focus, 
+.btn-primary.active.focus, 
+.open>.dropdown-toggle.btn-primary.focus{
+    background-color: #ED385E;
+    border-color: #ED385E;
+}
+
 .text-center{
     text-align: center;
 }
@@ -82,9 +116,7 @@ button, a, input[type='checkbox']{
 
 /** background body **/
 .logo{
-    width: 70%;
-    min-width: 760px;
-    margin: 0 auto;
+    margin: 0 auto 50px;
     padding-top: 80px;
 }
 .logo img{
@@ -132,7 +164,7 @@ button, a, input[type='checkbox']{
     width: 560px;
 }
 
-.content{
+.detail{
     padding-top: 50px;
     width: 70%;
     min-width:760px;
@@ -166,7 +198,6 @@ button, a, input[type='checkbox']{
 }
 /** Vyral launch body **/
 .vyral-smart-contract {
-    height: 105px;
     width: 349px;
     color: #FFFFFF;
     font-size: 12.8px;
@@ -251,7 +282,7 @@ button, a, input[type='checkbox']{
 
 ul.progress-tracker {
   display: table;
-  width: 70%;
+  width: 100%;
   padding: 0;
   margin: 50px auto;
 }
@@ -283,8 +314,9 @@ ul.progress-tracker li .label {
   right: 0;
   margin-top: 10px;
   color: #FFFFFF;
-    font-size: 12px;
-    line-height: 14px
+  font-size: 12px;
+  line-height: 14px;
+  font-weight: normal;
 }
 ul.progress-tracker li::after {
   content: '';
@@ -330,48 +362,7 @@ ul
 {
     list-style:none;
 }
-.checkbox input {
-    display: none;
-}
 
-.check-image {
-    height: 17px;
-    width: 17px;    
-    border: 1px solid #979797;  
-    border-radius: 2px;
-    display: inline-block;
-    position:relative
-}
-.check-image img{
-    display:none;
-}
-.checkbox input:checked + span {
-        height: 19px;   
-        width: 19px;
-        border:none;
-        border-radius: 2px; 
-        background-color: #ED385E;
-}
-.checkbox input:checked + .check-image img{
-    display: block;
-    position:relative;
-    top: 6px;
-    left: 4px;
-}
-.checks-block{
-    width: 73%;
-    margin: auto;
-    min-width: 760px;
-    margin-top: 55px
-}
-.check-txt{
-    position: relative;
-    top: -6px;
-    left: 17px;
-    color: #FFFFFF;
-    font-size: 11.2px;
-    line-height: 23px;
-}
 .red-btn{
     margin-top:39px;
     color: #FFFFFF; 
@@ -452,7 +443,7 @@ ul
 }
 .wallet-container .wallet-type{
     padding: 0 30px;
-    width: 100px;
+    width: 140px;
     display: inline-block;
     cursor: pointer;
 }
@@ -477,9 +468,8 @@ ul
     width: 40px;
     border-radius: 56.7px;
     background-color: #ED385E;
-    margin-left: 30px;
     display: block;
-    margin-top: 10px;
+    margin: 10px auto;
 }
 
 .wallet-container .wallet-type .recommended {
@@ -499,21 +489,23 @@ ul
 }
 
 .metamask{
-    height: 36.6px; width: 40px;
+    height: 36.6px; 
+    width: 40px;
 }
 .parity{
-    height: 36.51px;    width: 50px;
+    height: 36.51px;
+    width: 50px;
 }
 .jaxx {
     height: 23.44px;
     width: 60px;
     position: relative;
-    top:-30px;
+    top:-10px;
 }
 .mist {
     position: relative;
     width: 65px;
-    top:-30px;
+    top:-10px;
 }
 .wallet-txt{
     color: #FFFFFF;
@@ -545,7 +537,7 @@ ul
 .large{
     width:226px;
 }
-input {
+/*input {
     height: 43px;
     width: 469px;
     border: 0.85px solid #FFFFFF;
@@ -553,7 +545,7 @@ input {
     margin-top:53px;
     padding-left:18px;
     color: #AEAEAE;
-}
+}*/
 .input-grp{
     text-align:center;
 }

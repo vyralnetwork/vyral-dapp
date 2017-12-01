@@ -1,5 +1,6 @@
 # vuedapp
 
+Dapp to Contribute to Vyral Crowdsale
 > A Vue.js project
 
 ## Build Setup

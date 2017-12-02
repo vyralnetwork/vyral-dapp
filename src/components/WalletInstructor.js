@@ -11,7 +11,7 @@ Vue.component('wallet-instructor',{
         </div>
 
         <div class="text-center" v-show="myEtherWalletSelected()">
-          <a href="https://blog.vyral.network/guides/home" target="_blank">Click here for instructions to purchase via <strong>My Ether Wallet</strong></a>
+          <a href="https://blog.vyral.network/guides/home" target="_blank">Click here for instructions to purchase via <strong>MyEtherWallet</strong></a>
         </div>
 
         <div class="text-center" v-show="paritySelected()">

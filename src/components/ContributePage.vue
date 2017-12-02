@@ -35,7 +35,7 @@
 
 
         <div v-show="selectedWallet !== 'METAMASK'">
-            <p>Please send your contribution to the following address. Recommended Gas Limit: 200000. Gas Price: 56 Gwei</p>
+            <p class="small">Please send your contribution to the following address. Recommended Gas Limit: 200000 Gas Price: 56 Gwei</p>
             <div class="input-group">
               <input type="text" class="form-control mono" placeholder="Contract ETH Address" v-model="contractAddress">
               <span class="input-group-btn">
@@ -61,16 +61,27 @@
       </div>
     </div>
 
-    <p class="footer-txt" v-show="! checkingTransaction">Get your Vyral Key once you have completed your transaction.</p>
-
-
     <div class="margin-top-xxl text-center text-muted" v-show="checkingTransaction">
       <i class="fa fa-spinner fa-pulse fa-4x white margin-top-xl margin-bottom-xl"></i>
       <p>Check transaction on <a v-bind:href="config.etherscanLink + hashKey" target="_blank">etherscan.io here</a></p>
     </div>
 
-    <div class="text-center margin-top-xl margin-bottom-xl" v-show="hasContributed">
-      <router-link :to="{ name: 'ReferralLinkPage' }" class="btn btn-primary">Claim my Vyral Referral Link</router-link>
+
+    <div v-show="selectedWallet !== 'MYETHERWALLET'">
+      <p class="footer-txt" v-show="! checkingTransaction">Get your Vyral Key once you have completed your transaction.</p>
+
+      <div class="text-center margin-top-xl margin-bottom-xl" v-show="hasContributed">
+        <router-link :to="{ name: 'ReferralLinkPage' }" class="btn btn-primary">Claim my Vyral Referral Link</router-link>
+      </div>
+    </div>
+
+
+    <div v-show="selectedWallet === 'MYETHERWALLET'">
+      <!-- <p class="footer-txt" v-show="! checkingTransaction"></p> -->
+
+      <div class="text-center margin-top-xl margin-bottom-xl" v-show="hasContributed">
+        <router-link :to="{ name: 'ReferralLinkPage' }" class="btn btn-link white" style="text-decoration: underline;">Get your Vyral Key once you have completed your transaction.</router-link>
+      </div>
     </div>
 
   </div>

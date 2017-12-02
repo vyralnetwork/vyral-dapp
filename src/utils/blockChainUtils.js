@@ -1,3 +1,4 @@
+import Web3 from 'web3'
 import {getConfig} from './config.js'
 const config = getConfig()
 const VyralSaleAbi = require("../contracts/VyralSale.json")
@@ -5,6 +6,8 @@ const ShareAbi = require("../contracts/Share.json")
 
 
 export function getWeb3(){
+    let web3 = window.web3;
+
     if(typeof web3 !== 'undefined'){
         web3 = new Web3(web3.currentProvider)
     } else{

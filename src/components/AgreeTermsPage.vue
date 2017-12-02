@@ -13,7 +13,7 @@
                 <div class="line-2"></div>
             </div>
             <div class="vyral-smart-contract">
-                 Vyral Smart Contracts powered a decentralized advertising 
+                 Vyral Smart Contracts powers a decentralized advertising 
                  Ecosystem of blockchain incentive programs from fueling viral
                  growth for crypto token sales to tokenizing reward programs for businesses
                 <div class="hard-cap">Hard Cap 546 / 47,777 ETH</div>
@@ -49,7 +49,7 @@
               <label class="checkbox">
                   <input type="checkbox" v-model="agreeToNotUsResident"/>
                   <span class="check-image"><img src="/static/images/ok-icon.svg"/></span>
-                  <span class= "check-txt">I confirm that I am not a citizen or resident of the US, UK, Canada, China, South Korea, North Korea, Seychelles or OFAC Sanctioned Countries..</span>
+                  <span class= "check-txt">I confirm that I am not a citizen or resident of the US, UK, Canada, China, South Korea, North Korea, Seychelles or OFAC Sanctioned Countries.</span>
               </label>
           </li>
           <li> 

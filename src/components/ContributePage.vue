@@ -41,7 +41,7 @@
 
 
         <div v-show="selectedWallet !== 'METAMASK'">
-            <p>Please send your contribution to the following address. Recommended Gas amount: 200,00</p>
+            <p>Please send your contribution to the following address. Recommended Gas Limit: 200000. Gas Price: 56 Gwei</p>
             <div class="input-group">
               <input type="text" class="form-control mono" placeholder="Contract ETH Address" v-model="contractAddress">
               <span class="input-group-btn">
@@ -149,7 +149,7 @@
             from: web3.eth.defaultAccount,
             value: web3.toWei(this.contributionAmount, 'ether'),
             gas: 200000,
-            gasPrice: 50000000000,
+            gasPrice: 56000000000,
           }
 
           web3.eth.sendTransaction(payload, this.referrer, (error, hashKey) => {
@@ -189,7 +189,7 @@
       },
 
       contractAddressCopySuccess(e){
-        this.copyLabel = "✔ Copied";
+        this.copyLabel = "Copied";
         this.textCopied = true;
 
         setTimeout(() => {

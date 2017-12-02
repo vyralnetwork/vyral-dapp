@@ -141,7 +141,7 @@ export default {
 
     methods: {
         referralLinkCopySuccess: function(e){
-            this.copyLabel = "✔ Copied";
+            this.copyLabel = "Copied";
             this.textCopied = true;
 
             setTimeout(() => {

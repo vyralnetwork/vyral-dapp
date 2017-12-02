@@ -1,5 +1,9 @@
 {
     "env": "production",
+
+    "recommendedGasPrice": 56000000000,
+    "recommendedGasLimit": 200000,
+
     "vyralSaleContractAddress": "0x708352CD28ea06e6bbD5C1a9408b4966Ac1226e4",
     "shareContractAddress": "0x6f69EF58ddEC9CD6EE428253c607A0ACD13Da05f",
     "baseUrl": "https://contribute.vyral.network",

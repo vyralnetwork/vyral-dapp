@@ -67,6 +67,12 @@ export default new Vuex.Store({
 
         setContributionFromAddress(state, address){
             state.contributionFromAddress = address
+        },
+
+        resetProgress(state){
+            state.termsAgreed = false
+            state.hasContributed = false
+            state.contributionFromAddress = false
         }
     },
 
@@ -93,6 +99,10 @@ export default new Vuex.Store({
 
         setContributionFromAddress(context, address){
             context.commit('setContributionFromAddress', address)
+        },
+
+        resetProgress(context){
+            context.commit('resetProgress')
         }
     },
 })

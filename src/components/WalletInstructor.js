@@ -7,27 +7,27 @@ Vue.component('wallet-instructor',{
     template: `
     <div class='wallet-instructor'>
         <div class="text-center" v-show="metamaskSelected()">
-          <a href="#" target="_blank">Click here for instructions to contribute via <strong>METAMASK</strong></a>
+          <a href="https://blog.vyral.network/guides/home" target="_blank">Click here for instructions to purchase via <strong>METAMASK</strong></a>
         </div>
 
         <div class="text-center" v-show="myEtherWalletSelected()">
-          <a href="#" target="_blank">Click here for instructions to contribute via <strong>My Ether Wallet</strong></a>
+          <a href="https://blog.vyral.network/guides/home" target="_blank">Click here for instructions to purchase via <strong>My Ether Wallet</strong></a>
         </div>
 
         <div class="text-center" v-show="paritySelected()">
-          <a href="#" target="_blank">Click here for instructions to contribute via <strong>PARITY</strong></a>
+          <a href="https://blog.vyral.network/guides/home" target="_blank">Click here for instructions to purchase via <strong>PARITY</strong></a>
         </div>
 
         <div class="text-center" v-show="iMTokenSelected()">
-          <a href="#" target="_blank">Click here for instructions to contribute via <strong>I AM TOKEN</strong></a>
+          <a href="https://blog.vyral.network/guides/home" target="_blank">Click here for instructions to purchase via <strong>I AM TOKEN</strong></a>
         </div>
 
         <div class="text-center" v-show="jaxxSelected()">
-          <a href="#" target="_blank">Click here for instructions to contribute via <strong>JAXX</strong></a>
+          <a href="https://blog.vyral.network/guides/home" target="_blank">Click here for instructions to purchase via <strong>JAXX</strong></a>
         </div>
 
         <div class="text-center" v-show="mistSelected()">
-          <a href="#" target="_blank">Click here for instructions to contribute via <strong>MIST</strong></a>
+          <a href="https://blog.vyral.network/guides/home" target="_blank">Click here for instructions to purchase via <strong>MIST</strong></a>
         </div>
     </div>
     `,

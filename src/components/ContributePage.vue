@@ -7,26 +7,26 @@
 
     <wizard-steps current="CONTRIBUTE"></wizard-steps>
     
-    <div class="choose-the-wallet">VYRAL NETWORK CONTRIBUTION ADDRESS</div>
+    <div class="choose-the-wallet" v-show="! checkingTransaction">VYRAL NETWORK CONTRIBUTION ADDRESS</div>
     
-    <p class="txt2">Do not send ETH from exchanges. We recommending using MetaMask, MyEtherWallet, Mist or other ERC-20 compatible wallets.</p>
+    <p class="txt2" v-show="! checkingTransaction">Do not send ETH from exchanges. We recommending using MetaMask, MyEtherWallet, Mist or other ERC-20 compatible wallets.</p>
     
-    <div class="row">
+    <div class="row" v-show="! checkingTransaction">
       <div class="col-md-6 col-md-offset-3 contribution-form">
 
         <form v-show="selectedWallet === 'METAMASK'" >
 
           <div class="form-group">
-            <label>Enter the amount like to contribute. Minimum contribution should be 1 ETH</label>
+            <label>Enter your contribution amount. Minimum <strong>1 ETH</strong>. Can contain decimal. eg. 1.45 ETH</label>
             <input type="number" class="form-control" placeholder="10.0" v-model="contributionAmount" min="1" step="0.25">
           </div>
 
           <div class="form-group">
-            <label>Referral Vyral Key</label>
-            <input type="text" class="form-control mono" placeholder="0x000000000000000000000000000" v-model="referralKey"/>
+            <label>Referral Vyral Key (optional)</label>
+            <input type="text" class="form-control mono" placeholder="0x000000000000000000000000000" v-model="referrer"/>
           </div>
 
-          <button type="button" class="btn btn-primary btn-block" @click="contribute()">Contribute</button>
+          <button type="button" class="btn btn-primary btn-block" @click="contribute()">Purchase</button>
 
         </form>
 
@@ -53,10 +53,16 @@
       </div>
     </div>
 
-    <p class="footer-txt">Get your Vyral Key once you have completed your transaction.</p>
+    <p class="footer-txt" v-show="! checkingTransaction">Get your Vyral Key once you have completed your transaction.</p>
 
-    <div class="text-center margin-top-xl margin-bottom-xl">
-      <router-link :to="{ name: 'ReferralLinkPage' }" class="transparent-btn">CLAIM MY VYRAL LINK</router-link>
+
+    <div class="margin-top-xxl text-center text-muted" v-show="checkingTransaction">
+      <i class="fa fa-spinner fa-pulse fa-2x"></i>
+      <p>Check transaction on <a v-bind:href="'https://ropsten.etherscan.io/tx/'+ hashKey" target="_blank">Etherscan.io here</a></p>
+    </div>
+
+    <div class="text-center margin-top-xl margin-bottom-xl" v-show="hasContributed">
+      <router-link :to="{ name: 'ReferralLinkPage' }" class="btn btn-primary">Claim my Vyral Referal Link</router-link>
     </div>
 
   </div>
@@ -65,20 +71,30 @@
 </template>
 
 <script>
-  import VyralConfig from "../utils/Config"
-  var abi = require("../contracts/VyralSale.json")
+  import {getConfig} from "../utils/config"
+  import {getWeb3, getVyralSaleContract} from "../utils/blockChainUtils"
+  import {randomLoadingMessage} from "../utils/loadingMessages"
+
+  const config = getConfig()
+
 
   export default {
     name: 'ContributePage',
 
     data () {
+
       return {
+        config: config,
         copyLabel: "Copy",
         textCopied: false,
         contributionAmount: this.$store.getters.contributionValue,
         selectedWallet: this.$store.getters.selectedWallet,
-        contractAddress: VyralConfig.contractAddress,
-        referralKey: ""
+        contractAddress: config.vyralSaleContractAddress,
+        referrer: this.$store.getters.referrer,
+        hasContributed: this.$store.getters.hasContributed,
+        checkingTransaction: false,
+        loadingMessage: randomLoadingMessage(),
+        hashKey: ""
       }
     },
 
@@ -97,21 +113,22 @@
 
     methods: {
       contribute() {
-        const store = this.$store
-        const swal = this.$swal
+        // const store = this.$store
+        // const swal = this.$swal
+        // const contractAddress = this.vyralSaleContractAddress
+        // const referrer = this.referrer
+        // const router = this.$router
 
-        if(this.referralKey){
-          this.$store.dispatch("setReferrer", this.referralKey)
+
+        if(this.referrer){
+          this.$store.dispatch("setReferrer", this.referrer)
         }
 
         // If user has selected Metamask Wallet,
         // direct user to contribute via that.
         if(this.selectedWallet === 'METAMASK'){
-          if(typeof web3 !== 'undefined'){
-            web3 = new Web3(web3.currentProvider)
-          } else{
-            web3 = new Web3(new Web3.providers.HttpProvider('http://localhost:8545'))
-          }
+          web3 = getWeb3()
+
 
           if(web3.eth.accounts.length === 0){
             return this.$swal('Oops!', 'Hmmm! Looks like you have not logged into MetaMask yet. Please login and refresh this page.', 'error')
@@ -119,28 +136,49 @@
 
           web3.eth.defaultAccount = web3.eth.accounts[0];
 
-          var VyralContractAby = web3.eth.contract(abi);
+          const VyralSaleContract = getVyralSaleContract(web3)
 
-          var VyralContract = VyralContractAby.at("0x8Ed05562dAc1631E9BFc82Ebc81321448C41BAb0");
+          const payload = {
+            to: config.vyralSaleContractAddress,
+            from: web3.eth.defaultAccount,
+            value: web3.toWei(this.contributionAmount, 'ether'),
+            gas: 200000,
+            gasPrice: 50000000000,
+          }
 
-          VyralContract
-            .buyTokens("0x8e62a66a8edc1478795b637e4722af1337057c0f",
-            {
-              from: web3.eth.defaultAccount,
-              value: web3.toWei(this.contributionAmount, 'ether'),
-            },
-            function(error, response){
-              console.log(arguments)
+          web3.eth.sendTransaction(payload, this.referrer, (error, hashKey) => {
+              this.hashKey = hashKey
+
               if(error){
-                swal('Oops!', error.message, 'error')
-                store.dispatch("setContributedStatus", false)
-              } else{
-                web3.eth.getTransaction(response, function(error, response){
-                  console.log(arguments)
-                  store.dispatch("setContributedStatus", true)
-                  store.dispatch("setContributionFromAddress", response.from)
-                })
+                this.$store.dispatch("setContributedStatus", false)
+                return this.$swal('Oops!', error.message, 'error')
               }
+
+
+              this.checkingTransaction = true;
+
+              var checkingTransactionStatusTimer = setInterval(() => {
+                var receipt = web3.eth.getTransactionReceipt(hashKey, (error, response) => {
+                  if(response && response.status){
+                    clearInterval(checkingTransactionStatusTimer)
+                    this.checkingTransaction = false
+
+                    if(response.status === '0x0'){
+                      this.$swal('Oops!', 'Transaction failed. Please try again', 'error')
+                    } else if(response.status === '0x1'){
+                      this.$store.dispatch("setContributedStatus", true)
+                      this.$store.dispatch("setContributionFromAddress", response.from)
+                      this.$router.push({
+                        name: 'ReferralLinkPage'
+                      })
+                    }
+                  }
+                })
+
+                this.loadingMessage = randomLoadingMessage()
+
+              }, 2500)
+
           });
 
         }

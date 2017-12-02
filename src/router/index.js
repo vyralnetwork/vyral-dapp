@@ -8,13 +8,7 @@ import ReferralLinkPage from '@/components/ReferralLinkPage'
 import ReferrerPage from '@/components/ReferrerPage'
 
 
-// import vueConfig from 'vue-config'
-// const config = require("../utils/Config")
-
-
-
 Vue.use(Router)
-// Vue.use(vueConfig, config)
 
 
 const routes = [

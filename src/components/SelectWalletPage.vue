@@ -9,9 +9,15 @@
     
     <p class="choose-the-wallet">CHOOSE THE WALLET YOU WISH TO CONTRIBUTE WITH</p>
     
-    <p class="txt2"> Please ensure you are using a ERC-20 compatible wallet and you don’t send contributions via exchanges.</p>
+
+    <div class="row wallet-warning text-center margin-top-lg">
+      <p class="col-md-6 col-md-offset-3">
+        Please ensure you are using a ERC-20 compatible wallet and you don’t send contributions via exchanges. Otherwise we cannot guarantee you will receive your SHARE tokens properly.
+      </p>
+    </div>
 
     <wallet-selector :selectedWallet="selectedWallet" @walletSelected="walletSelected"></wallet-selector>
+
     <p class="text-center" v-show="selectedWallet === 'METAMASK' && metamaskDisabled">
       <small class="alert alert-warning">
         <i class="fa fa-exclamation-triangle"></i>
@@ -19,7 +25,7 @@
       </small>
     </p>
 
-    <p class="footer-txt">Coinbase, Bittrex, poloniex, kraken, bitfinex,& all other exchanges are not compatible</p>
+    <p class="footer-txt">Coinbase, Bittrex, Poloniex, Kraken, Bitfinex, Freewallet & all other exchanges are not compatible.</p>
 
     <div class="text-center margin-top-xl">
       <button class="btn btn-md btn-primary" v-bind:class="{'disabled': !selectedWallet}" @click="redirectToContributePage()" v-bind:disabled="!selectedWallet">Continue To Contribute</button>

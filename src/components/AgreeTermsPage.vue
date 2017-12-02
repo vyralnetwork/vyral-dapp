@@ -16,39 +16,40 @@
                  Vyral Smart Contracts powered a decentralized advertising 
                  Ecosystem of blockchain incentive programs from fueling viral
                  growth for crypto token sales to tokenizing reward programs for businesses
-                <div class="hard-cap">Hard cap  6,000,000 </div>
-                <div class="max-mintable-tokens">MAX MINTABLE TOKENS : 21 MILLION</div>
+                <div class="hard-cap">Hard Cap 546 / 47,777 ETH</div>
             </div>
-            <div class="token-bar"></div>
+            <div class="contribution-progress-indicator progress margin-top-md">
+              <div class="progress-bar progress-bar-striped progress-bar-animated active" v-bind:style="{width: percentContributed + '%'}"></div>
+            </div>
         </div>
-        
+
         <div class="col-md-6">
             <div class="pull-right">
-              <div class="contributions-accept">CONTRIBUTIONS ACCEPTED FROM 1ST DECEMBER</div>
+              <div class="contributions-accept">PURCHASES ACCEPTED FROM 2ND DECEMBER</div>
 
-              <countdown-timer :timestamp="launchDateTime"></countdown-timer>
+              <countdown-timer :timestamp="launchDateTime" @timerStopped="resetTimer"></countdown-timer>
 
               <div class="share-token-rate">SHARE TOKEN RATE</div>
               <div class="token-rate">1 ETH  = 7000 SHARE</div>
             </div>
         </div>
       </div>
-      
+
       <wizard-steps current="AGREE_TERMS"></wizard-steps>
 
       <ul class="list-unstyled">
-          <li> 
+          <li>
               <label class="checkbox">
                   <input type="checkbox" v-model="agreeTerms"/>
                   <span class="check-image"><img src="/static/images/ok-icon.svg"/></span>
-                  <span class= "check-txt">I confirm that I have read and agree to the Contribution Terms.</span>
+                  <span class= "check-txt">I confirm that I have read and agree to the Purchase Terms.</span>
               </label>
           </li>
           <li> 
               <label class="checkbox">
                   <input type="checkbox" v-model="agreeToNotUsResident"/>
                   <span class="check-image"><img src="/static/images/ok-icon.svg"/></span>
-                  <span class= "check-txt">I confirm that I am not a citizen or resident of the United States or other unpermitted country.</span>
+                  <span class= "check-txt">I confirm that I am not a citizen or resident of the US, UK, Canada, China, South Korea, North Korea, & OFAC Sanctioned Countries.</span>
               </label>
           </li>
           <li> 
@@ -62,55 +63,72 @@
               <label class="checkbox">
                   <input type="checkbox" v-model="agreeToTimeToReceiveToken"/>
                   <span class="check-image"><img src="/static/images/ok-icon.svg"/></span>
-                  <span class= "check-txt">I understand that it may take up to 15 days from the time the contribution period ends to receive SHARE Tokens.</span>
+                  <span class= "check-txt">I understand that it may take up to 15 days from the time the purchase period ends to receive SHARE Tokens.</span>
               </label>
           </li>
           <li>
               <label class="checkbox">
                   <input type="checkbox" v-model="agreeToMinimumContribution"/>
                   <span class="check-image"><img src="/static/images/ok-icon.svg"/></span>
-                  <span class= "check-txt">I confirm that my contribution is at least 1 ETH or higher and no more than 500 ETH.</span>
+                  <span class= "check-txt">I confirm that my purchase is at least 1 ETH or higher and no more than 500 ETH.</span>
               </label>
           </li>
-          <li> 
-            <label class="checkbox">
-              <input type="checkbox" v-model="agreeToLossingContributionIfLess"/>
-              <span class="check-image"><img src="/static/images/ok-icon.svg"/></span>
-              <span class= "check-txt">I understand that I will lose my contribution If it is less than 1 ETH & will not receive a refund.</span>
-            </label>
-          </li>
-
       </ul>
 
       <div class="text-center margin-top-xl">
-        <button class="btn btn-primary" @click="allTermsAgreed()" v-bind:disabled="!agreeToAllTermsAndConditions">Continue</button>
+        <button class="btn btn-primary text-uppercase" @click="allTermsAgreed()" v-bind:disabled="!agreeToAllTermsAndConditions">
+          Continue
+        </button>
       </div>
 
-      <div class="footer-links">
-        <a>Terms & Conditions</a>
-        <a class="vyral">Vyral Network Whitepaper</a>
-      </div>
+
+      <ul class="list-unstyled list-inline text-center margin-top-xxl footer-links">
+        <li><a href="https://vyral.network/terms-and-conditions" class="text-muted" target="_blank">Terms & Conditions</a></li>
+        <li><a href="https://vyral.network/paper" class="text-muted" target="_blank">Whitepaper</a></li>
+      </ul>
     </div>
   </div>
 </template>
 
 <script>
-import VyralConfig from "../utils/Config"
+import {getConfig} from "../utils/config"
+import {getWeb3, getVyralSaleContract} from '../utils/blockChainUtils'
+import {getEndTime} from '../utils/vyralSchedule'
+const config = getConfig()
+const endTime = getEndTime()
+
+const soldBottomCap = 546
+const totalSupply = 47777
+
 
 export default {
   name: 'AgreeTermsPage',
 
-  data () {
+  mounted(){
+    // when user is on this page, lets reset everything
+    // as user is starting from scratch. EXCEPT REFERRER
+    this.$store.dispatch('resetProgress')
 
+
+    // this.getTotalSupply()
+    this.getSoldPresale()
+    // this.getSoldSale()
+  },
+
+
+  data () {
     return {
+      config: config,
       agreeTerms: false,
       agreeToNotUsResident: false,
       agreeToNotSendingViaExchange: false,
       agreeToTimeToReceiveToken: false,
       agreeToMinimumContribution: false,
-      agreeToLossingContributionIfLess: false,
 
-      launchDateTime: VyralConfig.launchDateTime
+      launchDateTime: endTime,
+
+      totalSupply: totalSupply,
+      sold : 546,
     }
   },
 
@@ -121,11 +139,18 @@ export default {
         && !!this.agreeToNotSendingViaExchange
         && !!this.agreeToTimeToReceiveToken
         && !!this.agreeToMinimumContribution
-        && !!this.agreeToLossingContributionIfLess
+    },
+
+    percentContributed(){
+      return Math.floor((this.sold / this.totalSupply) * 100)
     }
   },
 
   methods: {
+    resetTimer(){
+      this.launchDateTime = getEndTime()
+    },
+
     allTermsAgreed(){
       // Save Agreed Terms state in Store
       this.$store.dispatch("setTermsAgreed", true)
@@ -133,7 +158,44 @@ export default {
       this.$router.push({
         name: 'SelectWalletPage'
       })
-    }
+    },
+
+
+    getTotalSupply(){
+      let web3 = getWeb3()
+
+      web3.eth.defaultAccount = web3.eth.accounts[0];
+
+      let VyralSaleContract = getVyralSaleContract(web3)
+
+      VyralSaleContract.TOTAL_SUPPLY.call((error, response) => {
+        this.totalSupply = web3.fromWei(response, "ether" ).toNumber()
+      })
+    },
+
+
+    getSoldPresale(){
+      let web3 = getWeb3()
+
+      let VyralSaleContract = getVyralSaleContract(web3)
+
+      VyralSaleContract.soldPresale.call((error, response) => {
+        this.sold = soldBottomCap + web3.fromWei(response, "ether" ).toNumber();
+        // console.log(web3.fromWei(response, "ether" ).toNumber())
+      })
+
+    },
+
+
+    getSoldSale(){
+      let web3 = getWeb3()
+
+      let VyralSaleContract = getVyralSaleContract(web3)
+
+      VyralSaleContract.soldSale.call((error, response) => {
+        console.log(response)
+      });
+    },
   }
 }
 </script>
@@ -151,8 +213,8 @@ export default {
 
 .check-image {
     height: 19px;
-    width: 19px;    
-    border: 1px solid #979797;  
+    width: 19px;
+    border: 1px solid #979797;
     border-radius: 2px;
     display: inline-block;
     position:relative
@@ -161,10 +223,10 @@ export default {
     display:none;
 }
 .checkbox input:checked + span {
-    height: 19px;   
+    height: 19px;
     width: 19px;
     border:none;
-    border-radius: 2px; 
+    border-radius: 2px;
     background-color: #ED385E;
 }
 .checkbox input:checked + .check-image img{

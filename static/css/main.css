@@ -15,9 +15,6 @@ input[type='radio']{
     -webkit-appearance: none;
 }
 
-.margin-top-lg{
-    margin-top: 50px;
-}
 
 .btn{
     padding: 11px 35px;
@@ -84,12 +81,24 @@ fieldset[disabled] .btn-primary.focus,
     text-align: center;
 }
 
+.margin-top-md{
+    margin-top: 20px;
+}
+
+.margin-top-lg{
+    margin-top: 50px;
+}
+
 .margin-top-xl{
     margin-top:39px;
 }
 
 .margin-bottom-xl{
     margin-bottom:39px;
+}
+
+.margin-top-xxl{
+    margin-top: 100px;
 }
 
 
@@ -120,7 +129,7 @@ fieldset[disabled] .btn-primary.focus,
 }
 .day-hr-min-sec{
     color: #FFFFFF; 
-    font-size: 6.91px;  
+    font-size: 10px;  
     line-height: 7px;
     padding-top:4px;    
 }
@@ -250,12 +259,19 @@ fieldset[disabled] .btn-primary.focus,
     line-height: 13px;
     padding-top:6px;
 }
-.token-bar {
-    height: 3px;
+.contribution-progress-indicator {
     width: 400px;
-    border-radius: 64px;
-    background-color: #FFFFFF;
-    margin-top:50px;
+    border-radius: 5px;
+    height: 10px;
+}
+
+.progress-bar{
+    background-color: #ED385E;
+}
+
+.wallet-warning{
+    color: white;
+    font-size: 12px;
 }
 
 /** Contributions **/
@@ -282,7 +298,7 @@ fieldset[disabled] .btn-primary.focus,
     height: 34.4px;
     width: 209px;
     color: #EF395F;
-    font-size: 28.8px;
+    font-size: 23px;
     font-weight: 300;
     line-height: 35px;
     padding-top:5px;
@@ -409,26 +425,9 @@ ul
     background-color: #FA456B;  
     cursor: not-allowed;
 }
+
 .footer-links{
-    margin:auto;
-    margin-top:44px;
-    margin-bottom:20px;
-    color: #FFFFFF;
-    font-size: 13.6px;
-    line-height: 17px;
-    width:348px;
-}
-.footer-links .vyral{
-    margin-left: 70px;
-}
-.footer span{
-    display:inline-block;
-}
-.footer{
-    text-align:center;
-}
-.footer .mleft{
-    margin-left: 45px;
+    font-size: 12px;
 }
     
 /*************metamask page****************/
@@ -438,7 +437,7 @@ ul
     font-weight: 300;   
     line-height: 24px;  
     text-align: center;
-    margin-top:58px;
+    margin-top:100px;
 }
 .txt2 {
     margin: auto;

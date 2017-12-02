@@ -1,36 +1,22 @@
 [
     {
-      "constant": true,
+      "constant": false,
       "inputs": [],
-      "name": "saleBeginsAt",
+      "name": "startPresale",
       "outputs": [
         {
           "name": "",
-          "type": "uint64"
+          "type": "bool"
         }
       ],
       "payable": false,
-      "stateMutability": "view",
+      "stateMutability": "nonpayable",
       "type": "function"
     },
     {
       "constant": true,
       "inputs": [],
-      "name": "THREE_SEVENTHS",
-      "outputs": [
-        {
-          "name": "",
-          "type": "uint256"
-        }
-      ],
-      "payable": false,
-      "stateMutability": "view",
-      "type": "function"
-    },
-    {
-      "constant": true,
-      "inputs": [],
-      "name": "SALE_MIN",
+      "name": "saleCap",
       "outputs": [
         {
           "name": "",
@@ -44,11 +30,11 @@
     {
       "constant": true,
       "inputs": [],
-      "name": "TOKEN_NAME",
+      "name": "vestingWallet",
       "outputs": [
         {
           "name": "",
-          "type": "string"
+          "type": "address"
         }
       ],
       "payable": false,
@@ -58,11 +44,11 @@
     {
       "constant": true,
       "inputs": [],
-      "name": "SHARES_PER_ETH",
+      "name": "saleCapReached",
       "outputs": [
         {
           "name": "",
-          "type": "uint256"
+          "type": "bool"
         }
       ],
       "payable": false,
@@ -72,21 +58,7 @@
     {
       "constant": true,
       "inputs": [],
-      "name": "TOKEN_SYMBOL",
-      "outputs": [
-        {
-          "name": "",
-          "type": "string"
-        }
-      ],
-      "payable": false,
-      "stateMutability": "view",
-      "type": "function"
-    },
-    {
-      "constant": true,
-      "inputs": [],
-      "name": "saleDuration",
+      "name": "saleStartTimestamp",
       "outputs": [
         {
           "name": "",
@@ -100,7 +72,21 @@
     {
       "constant": true,
       "inputs": [],
-      "name": "weiRaised",
+      "name": "saleRate",
+      "outputs": [
+        {
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "MIN_CONTRIBUTION",
       "outputs": [
         {
           "name": "",
@@ -113,11 +99,118 @@
     },
     {
       "constant": false,
-      "inputs": [],
-      "name": "finalize",
-      "outputs": [],
+      "inputs": [
+        {
+          "name": "_saleStartTimestamp",
+          "type": "uint256"
+        },
+        {
+          "name": "_saleEndTimestamp",
+          "type": "uint256"
+        },
+        {
+          "name": "_saleRate",
+          "type": "uint256"
+        }
+      ],
+      "name": "initSale",
+      "outputs": [
+        {
+          "name": "",
+          "type": "bool"
+        }
+      ],
       "payable": false,
       "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "_on",
+          "type": "bool"
+        }
+      ],
+      "name": "toggleHALT",
+      "outputs": [
+        {
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "presaleRate",
+      "outputs": [
+        {
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "dateTime",
+      "outputs": [
+        {
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "HALT",
+      "outputs": [
+        {
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "soldPresale",
+      "outputs": [
+        {
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "presaleStartTimestamp",
+      "outputs": [
+        {
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
       "type": "function"
     },
     {
@@ -135,9 +228,23 @@
       "type": "function"
     },
     {
+      "constant": false,
+      "inputs": [],
+      "name": "finalizeSale",
+      "outputs": [
+        {
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
       "constant": true,
       "inputs": [],
-      "name": "saleFinalizedAt",
+      "name": "presaleCap",
       "outputs": [
         {
           "name": "",
@@ -151,11 +258,53 @@
     {
       "constant": true,
       "inputs": [],
-      "name": "TOKEN_DECIMALS",
+      "name": "shareToken",
       "outputs": [
         {
           "name": "",
-          "type": "uint8"
+          "type": "address"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "_referrer",
+          "type": "address"
+        }
+      ],
+      "name": "buySale",
+      "outputs": [],
+      "payable": true,
+      "stateMutability": "payable",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "VYRAL_REWARDS",
+      "outputs": [
+        {
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "presaleEndTimestamp",
+      "outputs": [
+        {
+          "name": "",
+          "type": "uint256"
         }
       ],
       "payable": false,
@@ -178,17 +327,12 @@
     },
     {
       "constant": true,
-      "inputs": [
-        {
-          "name": "",
-          "type": "address"
-        }
-      ],
-      "name": "purchases",
+      "inputs": [],
+      "name": "vestingRegistered",
       "outputs": [
         {
           "name": "",
-          "type": "uint256"
+          "type": "bool"
         }
       ],
       "payable": false,
@@ -196,17 +340,17 @@
       "type": "function"
     },
     {
-      "constant": true,
-      "inputs": [],
-      "name": "team",
-      "outputs": [
+      "constant": false,
+      "inputs": [
         {
-          "name": "",
+          "name": "_referrer",
           "type": "address"
         }
       ],
-      "payable": false,
-      "stateMutability": "view",
+      "name": "buyPresale",
+      "outputs": [],
+      "payable": true,
+      "stateMutability": "payable",
       "type": "function"
     },
     {
@@ -238,85 +382,36 @@
       "type": "function"
     },
     {
-      "constant": true,
-      "inputs": [],
-      "name": "SALE_MAX",
-      "outputs": [
-        {
-          "name": "",
-          "type": "uint256"
-        }
-      ],
-      "payable": false,
-      "stateMutability": "view",
-      "type": "function"
-    },
-    {
-      "constant": true,
-      "inputs": [],
-      "name": "TWO_SEVENTHS",
-      "outputs": [
-        {
-          "name": "",
-          "type": "uint256"
-        }
-      ],
-      "payable": false,
-      "stateMutability": "view",
-      "type": "function"
-    },
-    {
-      "constant": true,
-      "inputs": [],
-      "name": "partnerships",
-      "outputs": [
-        {
-          "name": "",
-          "type": "address"
-        }
-      ],
-      "payable": false,
-      "stateMutability": "view",
-      "type": "function"
-    },
-    {
-      "constant": true,
-      "inputs": [],
-      "name": "ONE_SEVENTH",
-      "outputs": [
-        {
-          "name": "",
-          "type": "uint256"
-        }
-      ],
-      "payable": false,
-      "stateMutability": "view",
-      "type": "function"
-    },
-    {
       "constant": false,
       "inputs": [
         {
-          "name": "_referrer",
+          "name": "_wallet",
           "type": "address"
-        }
-      ],
-      "name": "buyTokens",
-      "outputs": [],
-      "payable": true,
-      "stateMutability": "payable",
-      "type": "function"
-    },
-    {
-      "constant": false,
-      "inputs": [
+        },
         {
-          "name": "newOwner",
-          "type": "address"
+          "name": "_presaleStartTimestamp",
+          "type": "uint256"
+        },
+        {
+          "name": "_presaleEndTimestamp",
+          "type": "uint256"
+        },
+        {
+          "name": "_presaleCap",
+          "type": "uint256"
+        },
+        {
+          "name": "_presaleRate",
+          "type": "uint256"
         }
       ],
-      "name": "transferOwnership",
-      "outputs": [],
+      "name": "initPresale",
+      "outputs": [
+        {
+          "name": "",
+          "type": "bool"
+        }
+      ],
       "payable": false,
       "stateMutability": "nonpayable",
       "type": "function"
@@ -324,7 +419,49 @@
     {
       "constant": true,
       "inputs": [],
-      "name": "saleStatus",
+      "name": "PARTNERS",
+      "outputs": [
+        {
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "presaleCapReached",
+      "outputs": [
+        {
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [],
+      "name": "endPresale",
+      "outputs": [
+        {
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "phase",
       "outputs": [
         {
           "name": "",
@@ -336,13 +473,50 @@
       "type": "function"
     },
     {
-      "constant": true,
-      "inputs": [],
-      "name": "token",
+      "constant": false,
+      "inputs": [
+        {
+          "name": "_beneficiary",
+          "type": "address"
+        },
+        {
+          "name": "_tokens",
+          "type": "uint8"
+        }
+      ],
+      "name": "rewardBeneficiary",
       "outputs": [
         {
           "name": "",
-          "type": "address"
+          "type": "bool"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [],
+      "name": "startSale",
+      "outputs": [
+        {
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "saleEndTimestamp",
+      "outputs": [
+        {
+          "name": "",
+          "type": "uint256"
         }
       ],
       "payable": false,
@@ -350,36 +524,208 @@
       "type": "function"
     },
     {
+      "constant": true,
+      "inputs": [],
+      "name": "TEAM",
+      "outputs": [
+        {
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": false,
       "inputs": [
         {
-          "name": "_wallet",
-          "type": "address"
+          "name": "_presaleStartTimestamp",
+          "type": "uint256"
         },
         {
-          "name": "_payoffStrategy",
-          "type": "address"
+          "name": "_presaleEndTimestamp",
+          "type": "uint256"
         },
         {
-          "name": "_team",
-          "type": "address"
+          "name": "_presaleRate",
+          "type": "uint256"
         },
         {
-          "name": "_partnerships",
-          "type": "address"
+          "name": "_presaleCap",
+          "type": "uint256"
+        }
+      ],
+      "name": "decomission",
+      "outputs": [
+        {
+          "name": "",
+          "type": "bool"
         }
       ],
       "payable": false,
       "stateMutability": "nonpayable",
-      "type": "constructor"
+      "type": "function"
     },
     {
-      "payable": true,
-      "stateMutability": "payable",
-      "type": "fallback"
+      "constant": false,
+      "inputs": [
+        {
+          "name": "_presaleStartTimestamp",
+          "type": "uint256"
+        },
+        {
+          "name": "_presaleEndTimestamp",
+          "type": "uint256"
+        },
+        {
+          "name": "_presaleRate",
+          "type": "uint256"
+        },
+        {
+          "name": "_presaleCap",
+          "type": "uint256"
+        }
+      ],
+      "name": "setPresaleParams",
+      "outputs": [
+        {
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "name": "newOwner",
+          "type": "address"
+        }
+      ],
+      "name": "SALE_ALLOCATION",
+      "outputs": [
+        {
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "newOwner",
+          "type": "address"
+        },
+        {
+          "name": "_saleEndTimestamp",
+          "type": "uint256"
+        },
+        {
+          "name": "_saleRate",
+          "type": "uint256"
+        }
+      ],
+      "name": "transferOwnership",
+      "outputs": [
+        {
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "_saleStartTimestamp",
+          "type": "uint256"
+        },
+        {
+          "name": "_saleEndTimestamp",
+          "type": "uint256"
+        },
+        {
+          "name": "_saleRate",
+          "type": "uint256"
+        }
+      ],
+      "name": "setCrowdsaleParams",
+      "outputs": [
+        {
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "name": "_share",
+          "type": "address"
+        },
+        {
+          "name": "_vesting",
+          "type": "address"
+        },
+        {
+          "name": "_datetime",
+          "type": "address"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function",
+      "constant": true,
+      "name": "soldSale",
+      "outputs": [
+        {
+          "name": "",
+          "type": "uint256"
+        }
+      ]
+    },
+    {
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "constructor",
+      "inputs": [
+        {
+          "name": "_share",
+          "type": "address"
+        },
+        {
+          "name": "_vesting",
+          "type": "address"
+        },
+        {
+          "name": "_datetime",
+          "type": "address"
+        }
+      ]
     },
     {
       "anonymous": false,
       "inputs": [
+        {
+          "indexed": false,
+          "name": "phase",
+          "type": "uint8"
+        },
         {
           "indexed": false,
           "name": "buyer",
@@ -387,11 +733,57 @@
         },
         {
           "indexed": false,
-          "name": "amount",
+          "name": "contribution",
           "type": "uint256"
         }
       ],
-      "name": "LogPurchase",
+      "name": "LogContribution",
+      "type": "fallback",
+      "payable": true,
+      "stateMutability": "payable"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "name": "phase",
+          "type": "uint8"
+        },
+        {
+          "indexed": false,
+          "name": "buyer",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "name": "contribution",
+          "type": "uint256"
+        }
+      ],
+      "name": "LogContribution",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "name": "referrer",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "name": "invitee",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "name": "referralReward",
+          "type": "uint256"
+        }
+      ],
+      "name": "LogReferral",
       "type": "event"
     },
     {

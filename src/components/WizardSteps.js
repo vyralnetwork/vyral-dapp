@@ -30,7 +30,7 @@ Vue.component("wizard-steps", {
             </div>
         </router-link>
         <div class="step" v-show="!userHasContributed">3</div>
-        <div class="label">CONTRIBUTE</div>
+        <div class="label">PURCHASE</div>
       </li>
       <li>
         <router-link :to="{name:'ReferralLinkPage'}" v-show="referralLinkGenerated">

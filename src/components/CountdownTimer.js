@@ -1,3 +1,4 @@
+
 import Vue from 'vue'
 
 Vue.component("countdown-timer", {
@@ -7,14 +8,14 @@ Vue.component("countdown-timer", {
       <li>
         <div class="count-day-hr-min-sec">{{ days }}</div>
         <div class="day-hr-min-sec">
-            <span class="days">DAYS</span>
+            <span class="days">DAY</span>
         </div>
       </li>
       <li class="separator">:</li>
       <li>
         <div class="count-day-hr-min-sec">{{ hours }}</div>
         <div class="day-hr-min-sec">
-            <span class="hrs">HOURS</span>
+            <span class="hrs">HOUR</span>
         </div>
       </li>
       <li class="separator">:</li>
@@ -37,7 +38,11 @@ Vue.component("countdown-timer", {
   mounted() {
     setInterval(() => {
       this.now = new Date().getTime();
-    },1000);
+
+      if(this.timeStampDiff < 0){
+        this.$emit('timerStopped')
+      }
+    }, 1000);
   },
 
   data() {

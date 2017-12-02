@@ -16,7 +16,7 @@
 
 
                     <div class="input-group">
-                        <input type="text" class="form-control mono" placeholder="Contract ETH AddresEnter your wallet addresss" v-model="walletAddress" @blur="getBalance()">
+                        <input type="text" class="form-control mono" placeholder="Enter your wallet address you contributed from" v-model="walletAddress" @blur="getBalance()">
                         <span class="input-group-btn">
                             <button class="btn btn-primary">Create</button>
                         </span>

@@ -12,7 +12,7 @@
 
     <div class="row wallet-warning text-center margin-top-lg">
       <p class="col-md-6 col-md-offset-3">
-        Please ensure you are using a ERC-20 compatible wallet and you don’t send contributions via exchanges. Otherwise we cannot guarantee you will receive your SHARE tokens properly.
+        Please ensure you are using an ERC-20 compatible wallet and you are not sending from an exchange. Sending from an exchange will cause you to not receive any SHARE tokens and lose your entire purchase.
       </p>
     </div>
 
@@ -25,7 +25,7 @@
       </small>
     </p>
 
-    <p class="footer-txt">Coinbase, Bittrex, Poloniex, Kraken, Bitfinex, Freewallet & all other exchanges are not compatible.</p>
+    <p class="footer-txt">Coinbase, Bittrex, Poloniex, Kraken, Bitfinex, Freewallet & all other exchanges are NOT compatible.</p>
 
     <div class="text-center margin-top-xl">
       <button class="btn btn-md btn-primary" v-bind:class="{'disabled': !selectedWallet}" @click="redirectToContributePage()" v-bind:disabled="!selectedWallet">Continue To Purchase</button>

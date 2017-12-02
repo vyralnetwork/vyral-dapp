@@ -285,11 +285,9 @@ fieldset[disabled] .btn-primary.focus,
 }
 .contributions-accept {
     height: 14px;
-    width: 266px;
     color: #FFFFFF;
     font-size: 11.2px;
     line-height: 13px;
-    text-align: center;
 }
 
 
@@ -301,7 +299,6 @@ fieldset[disabled] .btn-primary.focus,
 }
 .token-rate{
     height: 34.4px;
-    width: 209px;
     color: #EF395F;
     font-size: 23px;
     font-weight: 300;

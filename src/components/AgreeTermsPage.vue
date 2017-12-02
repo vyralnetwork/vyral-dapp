@@ -25,12 +25,12 @@
 
         <div class="col-md-6">
             <div class="pull-right">
-              <div class="contributions-accept">PURCHASES ACCEPTED FROM 2ND DECEMBER</div>
+              <div class="contributions-accept">CURRENT PRE-SALE BONUS ENDS IN</div>
 
               <countdown-timer :timestamp="launchDateTime" @timerStopped="resetTimer"></countdown-timer>
 
               <div class="share-token-rate">SHARE TOKEN RATE</div>
-              <div class="token-rate">1 ETH  = 7000 SHARE</div>
+              <div class="token-rate">1 ETH  = 7000 SHARE + BONUS</div>
             </div>
         </div>
       </div>
@@ -49,21 +49,21 @@
               <label class="checkbox">
                   <input type="checkbox" v-model="agreeToNotUsResident"/>
                   <span class="check-image"><img src="/static/images/ok-icon.svg"/></span>
-                  <span class= "check-txt">I confirm that I am not a citizen or resident of the US, UK, Canada, China, South Korea, North Korea, & OFAC Sanctioned Countries.</span>
+                  <span class= "check-txt">I confirm that I am not a citizen or resident of the US, UK, Canada, China, South Korea, North Korea, Seychelles or OFAC Sanctioned Countries..</span>
               </label>
           </li>
           <li> 
               <label class="checkbox">
                   <input type="checkbox" v-model="agreeToNotSendingViaExchange"/>
                   <span class="check-image"><img src="/static/images/ok-icon.svg"/></span>
-                  <span class= "check-txt">I confirm I am not sending from an exchange.</span>
+                  <span class= "check-txt">I confirm I am not sending from an exchange otherwise this will cause a loss of my entire purchase with no right to refund.</span>
               </label>
           </li>
           <li>
               <label class="checkbox">
                   <input type="checkbox" v-model="agreeToTimeToReceiveToken"/>
                   <span class="check-image"><img src="/static/images/ok-icon.svg"/></span>
-                  <span class= "check-txt">I understand that it may take up to 15 days from the time the purchase period ends to receive SHARE Tokens.</span>
+                  <span class= "check-txt">I understand that the public sale date has not been announced and it may take up to 7 days from the conclusion of the public sale to receive SHARE Tokens.</span>
               </label>
           </li>
           <li>
@@ -83,7 +83,7 @@
 
 
       <ul class="list-unstyled list-inline text-center margin-top-xxl footer-links">
-        <li><a href="https://vyral.network/terms-and-conditions" class="text-muted" target="_blank">Terms & Conditions</a></li>
+        <li><a href="https://vyral.network/terms-and-conditions/Vyral-Terms-and-Conditions.pdf" class="text-muted" target="_blank">Terms & Conditions</a></li>
         <li><a href="https://vyral.network/paper" class="text-muted" target="_blank">Whitepaper</a></li>
       </ul>
     </div>

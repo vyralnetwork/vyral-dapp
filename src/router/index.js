@@ -41,7 +41,7 @@ const routes = [
 
 export default new Router({
   routes: routes,
-  mode: 'history',
+  // mode: 'history',
   scrollBehavior: function(to, from, savedPosition) {
     return savedPosition || {x: 0, y: 0}
   }

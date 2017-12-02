@@ -9,12 +9,19 @@
     
     <div class="choose-the-wallet" v-show="! checkingTransaction">VYRAL NETWORK CONTRIBUTION ADDRESS</div>
     
-    <p class="txt2" v-show="! checkingTransaction">Do not send ETH from exchanges. We recommending using MetaMask, MyEtherWallet, Mist or other ERC-20 compatible wallets.</p>
+    <p class="small white margin-top-xl margin-bottom-xl col-md-6 col-md-offset-3" v-show="! checkingTransaction">
+      Please ensure you are using an ERC-20 compatible wallet and you are not sending from an exchange. Sending from an exchange will cause you to not receive any SHARE tokens and lose your entire purchase.
+    </p>
     
     <div class="row" v-show="! checkingTransaction">
-      <div class="col-md-6 col-md-offset-3 contribution-form">
+      <div class="col-md-8 col-md-offset-2 contribution-form">
 
-        <form v-show="selectedWallet === 'METAMASK'" >
+        <form v-show="selectedWallet === 'METAMASK'">
+
+          <div class="alert alert-warning text-center" v-show="typeof web3 === 'undefined'">
+            <i class="fa fa-exclamation-triangle"></i>
+            You have selected Metamask but it is not turned on.
+          </div>
 
           <div class="form-group">
             <label>Enter your contribution amount. Minimum <strong>1 ETH</strong>. Can contain decimal. eg. 1.45 ETH</label>
@@ -24,7 +31,7 @@
 
           <div class="form-group">
             <label>Referral Vyral Key (optional)</label>
-            <input type="text" class="form-control mono" placeholder="0x000000000000000000000000000" name="referrer" v-model="referrer" v-validate="{regex:/^(https:\/\/contribute\.vyral\.network\/referrer\/)?(0x)?[0-9a-f]{40}$/i}" @blur="linkToKey()" />
+            <input type="text" class="form-control mono" placeholder="0x000000000000000000000000000" name="referrer" v-model="referrer" v-validate="{regex:/^(https:\/\/contribute\.vyral\.network\/#\/referrer\/)?(0x)?[0-9a-f]{40}$/i}" @blur="linkToKey()" />
             <span v-show="errors.has('referrer')" class="small text-danger">Referrer address is not correct</span>
           </div>
 

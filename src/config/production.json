@@ -1,10 +1,10 @@
 {
     "env": "production",
-    "vyralSaleContractAddress": "0x708352cd28ea06e6bbd5c1a9408b4966ac1226e4",
-    "shareContractAddress": "0x6f69ef58ddec9cd6ee428253c607a0acd13da05f",
+    "vyralSaleContractAddress": "0x708352CD28ea06e6bbD5C1a9408b4966Ac1226e4",
+    "shareContractAddress": "0x6f69EF58ddEC9CD6EE428253c607A0ACD13Da05f",
     "baseUrl": "https://contribute.vyral.network",
-    "referralBaseUrl": "https://contribute.vyral.network/referrer/",
+    "referralBaseUrl": "https://contribute.vyral.network/#/referrer/",
     "referralKeyPrefix": "0x8bbb9fca000000000000000000000000",
     "infura": "https://mainnet.infura.io/A3Yn1ptLQtN3eaUqHoYN",
-    "etherscanLink": "https://mainnet.etherscan.io/tx/"
+    "etherscanLink": "https://etherscan.io/tx/"
 }

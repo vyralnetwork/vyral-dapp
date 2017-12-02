@@ -131,7 +131,11 @@
 
     computed:{
       referralCode(){
-        return config.referralKeyPrefix + this.referrer.replace("0x", "")
+        if(this.referrer.length > 0){
+          return config.referralKeyPrefix + this.referrer.replace("0x", "")
+        } else{
+          return ''
+        }
       }
     },
 
@@ -149,7 +153,7 @@
         // If user has selected Metamask Wallet,
         // direct user to contribute via that.
         if(this.selectedWallet === 'METAMASK'){
-          web3 = getWeb3()
+          let web3 = getWeb3()
 
 
           if(web3.eth.accounts.length === 0){
@@ -168,7 +172,7 @@
             gasPrice: 56000000000,
           }
 
-          web3.eth.sendTransaction(payload, this.referralCode, (error, hashKey) => {
+          VyralSaleContract.buyPresale(this.referrer, payload, (error, hashKey) => {
               this.hashKey = hashKey
 
               if(error){

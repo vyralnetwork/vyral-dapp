@@ -42,6 +42,29 @@
       "type": "function"
     },
     {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "_beneficiary",
+          "type": "address"
+        },
+        {
+          "name": "_tokens",
+          "type": "uint256"
+        }
+      ],
+      "name": "distributeTimelockedTokens",
+      "outputs": [
+        {
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
       "constant": true,
       "inputs": [],
       "name": "saleCapReached",
@@ -67,6 +90,29 @@
       ],
       "payable": false,
       "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "_beneficiary",
+          "type": "address"
+        },
+        {
+          "name": "_tokens",
+          "type": "uint256"
+        }
+      ],
+      "name": "rewardBeneficiary",
+      "outputs": [
+        {
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "nonpayable",
       "type": "function"
     },
     {
@@ -267,6 +313,44 @@
       ],
       "payable": false,
       "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "_newCampaign",
+          "type": "address"
+        }
+      ],
+      "name": "setCampaign",
+      "outputs": [
+        {
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "_newVesting",
+          "type": "address"
+        }
+      ],
+      "name": "setVesting",
+      "outputs": [
+        {
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "nonpayable",
       "type": "function"
     },
     {
@@ -474,29 +558,6 @@
     },
     {
       "constant": false,
-      "inputs": [
-        {
-          "name": "_beneficiary",
-          "type": "address"
-        },
-        {
-          "name": "_tokens",
-          "type": "uint8"
-        }
-      ],
-      "name": "rewardBeneficiary",
-      "outputs": [
-        {
-          "name": "",
-          "type": "bool"
-        }
-      ],
-      "payable": false,
-      "stateMutability": "nonpayable",
-      "type": "function"
-    },
-    {
-      "constant": false,
       "inputs": [],
       "name": "startSale",
       "outputs": [
@@ -539,24 +600,7 @@
     },
     {
       "constant": false,
-      "inputs": [
-        {
-          "name": "_presaleStartTimestamp",
-          "type": "uint256"
-        },
-        {
-          "name": "_presaleEndTimestamp",
-          "type": "uint256"
-        },
-        {
-          "name": "_presaleRate",
-          "type": "uint256"
-        },
-        {
-          "name": "_presaleCap",
-          "type": "uint256"
-        }
-      ],
+      "inputs": [],
       "name": "decomission",
       "outputs": [
         {
@@ -601,12 +645,7 @@
     },
     {
       "constant": true,
-      "inputs": [
-        {
-          "name": "newOwner",
-          "type": "address"
-        }
-      ],
+      "inputs": [],
       "name": "SALE_ALLOCATION",
       "outputs": [
         {
@@ -622,25 +661,31 @@
       "constant": false,
       "inputs": [
         {
-          "name": "newOwner",
+          "name": "_newAddress",
           "type": "address"
-        },
-        {
-          "name": "_saleEndTimestamp",
-          "type": "uint256"
-        },
-        {
-          "name": "_saleRate",
-          "type": "uint256"
         }
       ],
-      "name": "transferOwnership",
+      "name": "replaceDecomissioned",
       "outputs": [
         {
           "name": "",
           "type": "bool"
         }
       ],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "newOwner",
+          "type": "address"
+        }
+      ],
+      "name": "transferOwnership",
+      "outputs": [],
       "payable": false,
       "stateMutability": "nonpayable",
       "type": "function"
@@ -673,74 +718,38 @@
       "type": "function"
     },
     {
-      "inputs": [
-        {
-          "name": "_share",
-          "type": "address"
-        },
-        {
-          "name": "_vesting",
-          "type": "address"
-        },
-        {
-          "name": "_datetime",
-          "type": "address"
-        }
-      ],
-      "payable": false,
-      "stateMutability": "view",
-      "type": "function",
       "constant": true,
+      "inputs": [],
       "name": "soldSale",
       "outputs": [
         {
           "name": "",
           "type": "uint256"
         }
-      ]
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
     },
     {
-      "payable": false,
-      "stateMutability": "nonpayable",
-      "type": "constructor",
       "inputs": [
         {
           "name": "_share",
           "type": "address"
         },
         {
-          "name": "_vesting",
-          "type": "address"
-        },
-        {
           "name": "_datetime",
           "type": "address"
         }
-      ]
+      ],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "constructor"
     },
     {
-      "anonymous": false,
-      "inputs": [
-        {
-          "indexed": false,
-          "name": "phase",
-          "type": "uint8"
-        },
-        {
-          "indexed": false,
-          "name": "buyer",
-          "type": "address"
-        },
-        {
-          "indexed": false,
-          "name": "contribution",
-          "type": "uint256"
-        }
-      ],
-      "name": "LogContribution",
-      "type": "fallback",
       "payable": true,
-      "stateMutability": "payable"
+      "stateMutability": "payable",
+      "type": "fallback"
     },
     {
       "anonymous": false,

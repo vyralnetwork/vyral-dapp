@@ -99,7 +99,7 @@ import {getEndTime} from '../utils/vyralSchedule'
 const config = getConfig()
 const endTime = getEndTime()
 
-const soldBottomCap = 546
+const soldBottomCap =  713 //546 + 167
 const totalSupply = 47777
 
 
@@ -144,7 +144,7 @@ export default {
     },
 
     percentContributed(){
-      return Math.floor((this.sold / this.totalSupply) * 100)
+      return Math.ceil((this.sold / this.totalSupply) * 100)
     }
   },
 
@@ -182,8 +182,8 @@ export default {
       let VyralSaleContract = getVyralSaleContract(web3)
 
       VyralSaleContract.soldPresale.call((error, response) => {
+        console.log(web3.fromWei(response, "ether" ).toNumber())
         this.sold = soldBottomCap + web3.fromWei(response, "ether" ).toNumber();
-        // console.log(web3.fromWei(response, "ether" ).toNumber())
       })
 
     },

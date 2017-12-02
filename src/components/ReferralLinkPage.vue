@@ -24,7 +24,7 @@
 
 
                     <div class="input-group">
-                        <input type="text" class="form-control mono" placeholder="Your Vyral Referral Code" v-model="referralLink">
+                        <input type="text" class="form-control mono" placeholder="Your Vyral Referral Link" v-model="referralLink" readonly="readonly">
                         <span class="input-group-btn">
                             <button 
                             class="btn btn-primary" 

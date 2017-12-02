@@ -99,7 +99,7 @@ import {getEndTime} from '../utils/vyralSchedule'
 const config = getConfig()
 const endTime = getEndTime()
 
-const soldBottomCap =  713 //546 + 167
+const soldBottomCap =  546
 const totalSupply = 47777
 
 
@@ -177,14 +177,30 @@ export default {
 
 
     getSoldPresale(){
-      let web3 = getWeb3()
+      const BigNumber = require("bignumber.js");
+      const Web3 = require('web3');
+      const web3 = new Web3(new Web3.providers.HttpProvider('https://mainnet.infura.io/A3Yn1ptLQtN3eaUqHoYN'));
+      const VyralSaleAbi = require("../contracts/VyralSale.json");
 
-      let VyralSaleContract = getVyralSaleContract(web3)
+      let VyralSale = web3.eth.contract(VyralSaleAbi);
+      let vyralSale = VyralSale.at("0x708352CD28ea06e6bbD5C1a9408b4966Ac1226e4");
+      let soldPresale = vyralSale.soldPresale();
+      let tokens = new BigNumber(soldPresale).div(new BigNumber(10).pow(18));
 
-      VyralSaleContract.soldPresale.call((error, response) => {
-        console.log(web3.fromWei(response, "ether" ).toNumber())
-        this.sold = soldBottomCap + web3.fromWei(response, "ether" ).toNumber();
-      })
+
+      this.sold = soldBottomCap + parseInt(tokens.toNumber())
+
+      // let web3 = getWeb3()
+
+      // let VyralSaleContract = getVyralSaleContract(web3)
+
+      // var sold = VyralSaleContract.soldPresale.call((error, response) => {
+      //   console.log(web3.fromWei(response, "ether" ).toNumber())
+      //   this.sold = soldBottomCap + web3.fromWei(response, "ether" ).toNumber();
+      // })
+
+
+      // console.log(sold)
 
     },
 

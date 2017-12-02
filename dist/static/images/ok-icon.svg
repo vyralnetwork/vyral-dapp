@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="11px" height="8px" viewBox="0 0 11 8" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 46.1 (44463) - http://www.bohemiancoding.com/sketch -->
+    <title>Ok Icon</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="ico-page" transform="translate(-275.000000, -540.000000)" fill="#FFFFFF">
+            <g id="checkbox" transform="translate(271.000000, 534.000000)">
+                <g id="check-box">
+                    <path d="M8.55021586,13.1308716 L14.08961,7.43681585 C14.4145744,7.10759318 14.4145744,6.57551614 14.08961,6.24629347 C13.7638123,5.91790218 13.23637,5.91790218 12.9114055,6.24629347 L7.66697913,11.64355 L5.75588607,9.57962681 C5.43092162,9.25123551 4.90347931,9.25123551 4.57768161,9.57962681 C4.25188391,9.90884948 4.25188391,10.4409265 4.57768161,10.7701492 L6.78290916,13.1308716 C7.01954995,13.3686435 7.33201577,13.5 7.66697913,13.5 C8.00110925,13.5 8.31524156,13.3686435 8.55021586,13.1308716 Z" id="Ok-Icon"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

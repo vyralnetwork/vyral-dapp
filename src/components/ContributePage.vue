@@ -75,7 +75,6 @@
 <script>
   import {getConfig} from "../utils/config"
   import {getWeb3, getVyralSaleContract} from "../utils/blockChainUtils"
-  import {randomLoadingMessage} from "../utils/loadingMessages"
 
   const config = getConfig()
 
@@ -95,7 +94,6 @@
         referrer: this.$store.getters.referrer,
         hasContributed: this.$store.getters.hasContributed,
         checkingTransaction: false,
-        loadingMessage: randomLoadingMessage(),
         hashKey: ""
       }
     },
@@ -109,6 +107,7 @@
 
       // If it's not Metamask, we have no way to know if we should enable Referral Link or not.
       if(this.selectedWallet !== 'METAMASK'){
+        this.hasContributed = true
         this.$store.dispatch("setContributedStatus", true)
       }
     },
@@ -176,8 +175,6 @@
                     }
                   }
                 })
-
-                this.loadingMessage = randomLoadingMessage()
 
               }, 2500)
 

@@ -1,0 +1,689 @@
+html,body, .app{
+    height: 100%;
+}
+body{
+    font-family: "Proxima Nova";
+    margin: 0;
+    padding: 0;
+}
+button, a, input[type='checkbox']{
+    cursor: pointer;
+}
+
+
+input[type='radio']{
+    -webkit-appearance: none;
+}
+
+
+.btn{
+    padding: 11px 35px;
+    display: inline-block;
+    border: none;
+}
+
+.mono{
+    font-size: 20px;
+    font-family: monospace;
+}
+
+
+.social-share a{
+    font-size: 30px;
+    padding: 10px;
+}
+
+.social-share a.facebook{
+    color: #3b5998;
+}
+
+.social-share a.twitter{
+    color: #1da1f2;
+}
+
+.social-share a.linkedin{
+    color: #0077b5;
+}
+
+.social-share a.gplus{
+    color: #dd4b39;
+}
+
+.social-share a.email{
+    color: #4285f4;
+}
+
+.btn-primary,
+.btn-primary:hover,
+.btn-primary.disabled:hover, 
+.btn-primary[disabled]:hover, 
+fieldset[disabled] .btn-primary:hover, 
+.btn-primary.disabled:focus,
+.btn-primary[disabled]:focus,
+fieldset[disabled] .btn-primary:focus,
+.btn-primary.disabled.focus,
+.btn-primary[disabled].focus,
+fieldset[disabled] .btn-primary.focus,
+.btn-primary:active:hover, 
+.btn-primary.active:hover, 
+.open>.dropdown-toggle.btn-primary:hover,
+.btn-primary:active:focus,
+.btn-primary.active:focus,
+.open>.dropdown-toggle.btn-primary:focus,
+.btn-primary:active.focus, 
+.btn-primary.active.focus, 
+.open>.dropdown-toggle.btn-primary.focus{
+    background-color: #ED385E;
+    border-color: #ED385E;
+}
+
+.text-center{
+    text-align: center;
+}
+
+.margin-top-md{
+    margin-top: 20px;
+}
+
+.margin-top-lg{
+    margin-top: 50px;
+}
+
+.margin-top-xl{
+    margin-top:39px;
+}
+
+.margin-bottom-xl{
+    margin-bottom:39px;
+}
+
+.margin-top-xxl{
+    margin-top: 100px;
+}
+
+
+.countdown-timer{
+    margin: 0;
+    padding: 0;
+}
+
+.countdown-timer li{
+    display: inline-block;
+    text-align: center;
+    width: 30px;
+}
+
+.countdown-timer li.separator{
+    color: #ED385E;
+    padding-top: 13px;
+    vertical-align: top;
+    width: 15px;
+}
+
+.count-day-hr-min-sec {
+    color: #ED385E;
+    font-size: 30.4px;
+    font-weight: 300;
+    line-height: 36px;
+    padding-top:4.4px;
+}
+.day-hr-min-sec{
+    color: #FFFFFF; 
+    font-size: 10px;  
+    line-height: 7px;
+    padding-top:4px;    
+}
+.days{
+    height: 7px;
+    width: 23.2px;
+    text-align:center;
+}
+.hrs{
+    height: 7px;
+    width: 26.4px;
+    text-align:center;
+}
+.mins {
+    height: 7px;
+    width: 17.6px;
+    text-align:center;
+}
+.sec{
+    height: 7px;    
+    width: 16px;
+    text-align:center;
+}
+
+
+.white{
+    color: white !important;
+}
+
+/** background body **/
+.logo{
+    margin: 0 auto 50px;
+    padding-top: 80px;
+}
+.logo img{
+    width: 131px;
+    height: 47px;
+}
+.ico-main{
+    overflow:auto;
+    display:block;
+    height: 100%;
+    width: auto;
+    background-image:url("../images/ico-main.jpg");
+    background-repeat:no-repeat;
+    background-size:cover;
+}
+.meta-main{
+    display:block;
+    height: 100%;
+    overflow:auto;
+    width: auto;
+    background-image:url("../images/meta-main.jpg");
+    background-repeat:no-repeat;
+    background-size:cover;
+}
+.cont-main{
+    display:block;
+    height: 100%;
+    overflow: auto;
+    width: auto;
+    background-image:url("../images/cont-main.jpg");
+    background-repeat:no-repeat;
+    background-size:cover;
+}
+.ref-main{
+    display:block;
+    height: 100%;
+    overflow:auto;
+    width: auto;
+    background-image:url("../images/ref-main.jpg");
+    background-repeat:no-repeat;
+    background-size:cover;
+}
+
+.ref-main input{
+    width: 560px;
+}
+
+.detail{
+    padding-top: 50px;
+    width: 70%;
+    min-width:760px;
+    margin: auto;
+    overflow: auto;
+}
+/** Vyral launch title **/
+.left-block{
+    float:left;
+}
+.line-1 {
+    height: 1px;
+    width: 295px;
+    margin-left:84px;
+    background-color: #ED385E;
+}
+.the-vyral-network-la {
+    height: 32px;
+    /*width: 350px;*/
+    color: #FFFFFF;
+    font-size: 18px;
+    font-weight: 300;
+    letter-spacing: 4px;
+    line-height: 30px;
+    padding-left:14px;
+}
+.line-2 {
+    height: 1px;
+    width: 295px;
+    background-color: #ED385E;
+}
+/** Vyral launch body **/
+.vyral-smart-contract {
+    width: 349px;
+    color: #FFFFFF;
+    font-size: 12.8px;
+    font-weight: 300;
+    line-height: 16px;
+    padding-top:27px;
+}
+.hard-cap {
+    color: #ED385E;
+    font-size: 20px;
+    font-weight: 300;
+    line-height: 24px;
+    padding-top:30px;
+}
+.max-mintable-tokens {
+    color: #FFFFFF;
+    font-size: 11.52px;
+    font-weight: 300;
+    line-height: 13px;
+    padding-top:6px;
+}
+.contribution-progress-indicator {
+    width: 400px;
+    border-radius: 5px;
+    height: 10px;
+}
+
+.progress-bar{
+    background-color: #ED385E;
+}
+
+.wallet-warning{
+    color: white;
+    font-size: 12px;
+}
+
+/** Contributions **/
+.right-block{
+    float:right;
+}
+.contributions-accept {
+    height: 14px;
+    width: 266px;
+    color: #FFFFFF;
+    font-size: 11.2px;
+    line-height: 13px;
+    text-align: center;
+}
+
+
+.share-token-rate {
+    color: #FFFFFF;
+    font-size: 11.2px;
+    line-height: 13px;
+    padding-top:23px;
+}
+.token-rate{
+    height: 34.4px;
+    width: 209px;
+    color: #EF395F;
+    font-size: 23px;
+    font-weight: 300;
+    line-height: 35px;
+    padding-top:5px;
+}
+.white-btn{
+    margin-top:19.6px;
+    color: #ED385E; 
+    font-size: 13px;    
+    line-height: 16px;  
+    background-color: #FFFFFF;
+    box-shadow: 0 1px 2px 0 rgba(0,0,0,0.16);
+}
+.white-btn:hover{
+    background-color: #D9D9D9;
+}
+.white-btn[disabled]{
+    background-color: #D9D9D9;
+    cursor: not-allowed;
+}
+
+/*** contribute status bar ***/
+
+.oval-ok{
+    width: 14px;
+    height: 23px;
+    vertical-align: middle;
+}
+
+ul.progress-tracker {
+  display: table;
+  width: 100%;
+  padding: 0;
+  margin: 50px auto;
+}
+ul.progress-tracker li {
+  display: table-cell;
+  text-align: center;
+  position: relative;
+}
+ul.progress-tracker li .step.complete {
+  background-color: #50C035;
+}
+ul.progress-tracker li .step {
+  width: 30px;
+  height: 30px;
+  margin: 0 auto;
+  text-align: center;
+  background-color: white;
+  border-radius: 30px;
+  line-height: 30px;
+  position: relative;
+  z-index: 1;
+  color: #000000;
+  font-size: 11.52px;
+  font-weight: normal;
+}
+ul.progress-tracker li .label {
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin-top: 10px;
+  color: #FFFFFF;
+  font-size: 12px;
+  line-height: 14px;
+  font-weight: normal;
+}
+ul.progress-tracker li::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  background-color: #fff;
+  height: 1px;
+  top: 12px;
+}
+ul.progress-tracker li:last-child:after {
+  content: '';
+  position: absolute;
+  width: 0%;
+}
+
+
+
+.status-bar-txt{
+    color: #FFFFFF;
+    font-size: 12px;    
+    line-height: 14px;
+    margin-top:13px;
+}
+.confirm{
+    margin-left:-8px;
+}
+.select-wallet{
+    margin-left:125px;  
+}
+.contribute{
+    margin-left:132px;  
+}
+.ref-link{
+    margin-left:142px;  
+}
+.contribute-status-bar{
+    width: 760px;
+    margin: auto;
+    clear: both;
+    padding-top: 20px;
+}
+ul 
+{
+    list-style:none;
+}
+
+.red-btn{
+    margin-top:39px;
+    color: #FFFFFF; 
+    font-size: 13px;
+    line-height: 16px;  
+    background-color: #ED385E;  
+    box-shadow: 0 1px 2px 0 rgba(0,0,0,0.16);
+}
+.red-btn:hover{
+    background-color: #FA456B;
+}
+.red-btn[disabled]{ 
+    background-color: #FA456B;  
+    cursor: not-allowed;
+}
+
+.footer-links{
+    font-size: 12px;
+}
+    
+/*************metamask page****************/
+.choose-the-wallet {        
+    color: #ED385E; 
+    font-size: 20px;    
+    font-weight: 300;   
+    line-height: 24px;  
+    text-align: center;
+    margin-top:100px;
+}
+.txt2 {
+    margin: auto;
+    color: #FFFFFF;
+    font-size: 12px;
+    font-weight: 300;
+    line-height: 14px;
+    text-align: center;
+    margin-top:27px;
+    height: 34px;   
+    width: 362px;
+}
+.txt3{
+    color: #FFFFFF;
+    font-size: 16px;    
+    line-height: 19px;  
+    text-align: center;
+    margin-top:27px;
+}
+.learn-txt {
+    color: #FFFFFF;
+    font-size: 12px;
+    font-weight: bold;
+    line-height: 14px;
+    text-align: center;
+    display:block;
+    margin-top:11px;
+    text-decoration-line: underline;
+}
+.wallet-container{
+    margin-top:60px;
+    text-align:center;
+}
+.wallet-container .wallet-type{
+    padding: 0 30px;
+    width: 140px;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.wallet-container .wallet-type .label{
+    display:block;
+    font-size: 12px;
+    font-weight: 300;   
+    line-height: 14px;
+    color: #FFFFFF;
+    margin-top:13px;
+    cursor: pointer;
+}
+
+.wallet-container .wallet-type img{
+    max-height: 40px;
+    cursor: pointer;
+}
+
+.wallet-container .wallet-type .active {
+    height: 2px;
+    width: 40px;
+    border-radius: 56.7px;
+    background-color: #ED385E;
+    display: block;
+    margin: 10px auto;
+}
+
+.wallet-container .wallet-type .recommended {
+    color: #FFFFFF;
+    font-size: 10px;
+    font-style: italic;
+    font-weight: bold;
+    line-height: 12px;
+    margin-bottom:13px;
+    display: block;
+}
+
+
+.ether{
+    height:40px;
+    width:40px;
+}
+
+.metamask{
+    height: 36.6px; 
+    width: 40px;
+}
+.parity{
+    height: 36.51px;
+    width: 50px;
+}
+.jaxx {
+    height: 23.44px;
+    width: 60px;
+    position: relative;
+    top:-10px;
+}
+.mist {
+    position: relative;
+    width: 65px;
+    top:-10px;
+}
+.wallet-txt{
+    color: #FFFFFF;
+    font-size: 12px;    
+    line-height: 14px;
+    margin-top:14px;
+    font-weight: 300;
+    margin-left:304px;
+}
+.meta-txt{
+    margin-left:105px;
+}
+.parity-txt{
+    margin-left:105px;
+}
+.token-txt{
+    margin-left:109px;
+}
+
+
+.footer-txt{    
+        color: #FFFFFF; 
+        font-size: 14px;    
+        font-weight: 300;   
+        line-height: 17px;  
+        text-align: center;
+        margin-top:31px;
+}
+.large{
+    width:226px;
+}
+/*input {
+    height: 43px;
+    width: 469px;
+    border: 0.85px solid #FFFFFF;
+    background-color: #FFFFFF;
+    margin-top:53px;
+    padding-left:18px;
+    color: #AEAEAE;
+}*/
+.input-grp{
+    text-align:center;
+}
+.input2{
+    margin-top:56px;
+}
+.input-grp input{
+    padding-right: 126px;
+    width: 343px;
+}
+.input-grp button{
+    color: #FFFFFF;
+    font-size: 13px;
+    line-height: 16px;
+    text-align: center;
+    height: 47px;
+    width: 109px;
+    border: none;
+    background-color: #ED385E;
+    margin-left: -113px;
+}
+
+.input-grp button.success{
+    background-color: #5ab000;
+}
+
+::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+  color: #AEAEAE;
+}
+::-moz-placeholder { /* Firefox 19+ */
+  color: #AEAEAE;
+}
+:-ms-input-placeholder { /* IE 10+ */
+  color: #AEAEAE;
+}
+:-moz-placeholder { /* Firefox 18- */
+  color: #AEAEAE;
+}
+.balance-title{
+    margin-top:52px;
+    text-align:center;
+    color: #FFFFFF;
+    font-size: 14px;    
+    line-height: 17px;
+}
+.balance-num{
+    color: #ED385E; 
+    font-size: 48px;    
+    line-height: 58px;
+    margin-top:4px;
+    text-align:center;
+}
+.transparent-btn{
+    box-sizing: border-box;
+    height: 41px;
+    width: 227px;
+    border: 1px solid #FFFFFF;
+    background:transparent;
+    box-shadow: 0 1px 2px 0 rgba(0,0,0,0.16);
+    color: #FFFFFF; 
+    font-size: 13px;    
+    line-height: 16px;
+    padding: 10px 40px;
+    text-decoration: none;
+}
+.transparent-btn:hover{
+    border-color: #ED385E;
+    color: #ED385E; 
+}
+.qrcode-container {
+    height: 210px;
+    width: 464.4px;
+    background-color: #FFFFFF;
+    margin: auto;
+    margin-top: 27px;
+    padding-top: 15px;
+    text-align: center;
+}
+.qrcode-container img{
+    margin-top: 30px;
+}
+.qrcode-container  p{
+    height: 37px;
+    width: 362px;
+    color: #272727;
+    font-size: 12.24px;
+    line-height: 16px;
+    margin:auto;
+    padding-top:37px;
+}
+.qrcode-container  input{
+    height: 32.89px;
+    width: 238.65px;
+    border: 0.77px solid #979797;
+    margin-top:40px;
+    padding-right: 88px;
+}
+.qrcode-container button{
+    height: 34.89px;
+    width: 70.62px;
+    margin-left:-74px;
+}
+
+.wallet-instructor{
+    margin-top: 20px;
+}

@@ -17,12 +17,6 @@
       <div class="col-md-8 col-md-offset-2 contribution-form">
 
         <form v-show="selectedWallet === 'METAMASK'">
-
-          <div class="alert alert-warning text-center" v-show="typeof web3 === 'undefined'">
-            <i class="fa fa-exclamation-triangle"></i>
-            You have selected Metamask but it is not turned on.
-          </div>
-
           <div class="form-group">
             <label>Enter your contribution amount. Minimum <strong>1 ETH</strong>. Can contain decimal. eg. 1.45 ETH</label>
             <input type="number" class="form-control" placeholder="10.0" name="contributionAmount" v-model="contributionAmount" min="1" max="500" step="0.25" v-validate="'required|min_value:1|max_value:500'">

@@ -12,7 +12,7 @@
 
     <div class="row wallet-warning text-center margin-top-lg">
       <p class="col-md-6 col-md-offset-3">
-        Please ensure you are using an ERC-20 compatible wallet and you are not sending from an exchange. Sending from an exchange will cause you to not receive any SHARE tokens and lose your entire purchase.
+        Please ensure you are using an ERC-20 compatible wallet and you are not sending from an exchange. Sending from an exchange will cause you to not receive any tokens and lose your entire purchase.
       </p>
     </div>
 

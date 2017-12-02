@@ -10,7 +10,7 @@
     <div class="choose-the-wallet" v-show="! checkingTransaction">VYRAL NETWORK CONTRIBUTION ADDRESS</div>
     
     <p class="small white margin-top-xl margin-bottom-xl col-md-6 col-md-offset-3" v-show="! checkingTransaction">
-      Please ensure you are using an ERC-20 compatible wallet and you are not sending from an exchange. Sending from an exchange will cause you to not receive any SHARE tokens and lose your entire purchase.
+      Please ensure you are using an ERC-20 compatible wallet and you are not sending from an exchange. Sending from an exchange will cause you to not receive any tokens and lose your entire purchase.
     </p>
     
     <div class="row" v-show="! checkingTransaction">

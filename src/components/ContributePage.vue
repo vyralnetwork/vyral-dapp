@@ -117,15 +117,17 @@
 
     created(){
       if(! this.$store.getters.termsAgreed){
-          this.$router.push({name: "AgreeTermsPage"})
+        this.$router.push({name: "AgreeTermsPage"})
       } else if(! this.$store.getters.selectedWallet){
-          this.$router.push({name: "SelectWalletPage"})
+        this.$router.push({name: "SelectWalletPage"})
       }
 
       // If it's not Metamask, we have no way to know if we should enable Referral Link or not.
       if(this.selectedWallet !== 'METAMASK'){
         this.hasContributed = true
         this.$store.dispatch("setContributedStatus", true)
+      } else{
+        this.hasContributed = false
       }
     },
 

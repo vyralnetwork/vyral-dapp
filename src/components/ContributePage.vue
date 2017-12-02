@@ -52,7 +52,7 @@
 
 
           <div class="text-center margin-top-xl" v-show="selectedWallet === 'MYETHERWALLET'">
-            <a class="btn btn-primary" v-bind:href="'https://www.myetherwallet.com/?to=' + contractAddress +'&gaslimit=200000&data='+ referralCode +'#send-transaction'" target="_blank">Click here to contribute via  MY ETHER WALLET</a>
+            <a class="btn btn-primary" v-bind:href="'https://www.myetherwallet.com/?to=' + contractAddress +'&gaslimit=200000&data='+ referralCode +'#send-transaction'" target="_blank">Click here to contribute via MyEtherWallet</a>
           </div>
 
           <wallet-instructor :selectedWallet="selectedWallet"></wallet-instructor>

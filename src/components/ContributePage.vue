@@ -114,12 +114,6 @@
 
     methods: {
       contribute() {
-        // const store = this.$store
-        // const swal = this.$swal
-        // const contractAddress = this.vyralSaleContractAddress
-        // const referrer = this.referrer
-        // const router = this.$router
-
 
         if(this.referrer){
           this.$store.dispatch("setReferrer", this.referrer)

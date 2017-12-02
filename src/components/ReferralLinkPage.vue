@@ -15,8 +15,8 @@
                     <p class="txt3" v-show="!walletAddress">Post your wallet address in the box below to create your Vyral Referral Key:</p>
 
 
-                    <div class="input-group" v-show="!walletAddress">
-                        <input type="text" class="form-control mono" placeholder="Contract ETH AddresEnter your wallet addresss" v-model="walletAddress">
+                    <div class="input-group">
+                        <input type="text" class="form-control mono" placeholder="Contract ETH AddresEnter your wallet addresss" v-model="walletAddress" @blur="getBalance()">
                         <span class="input-group-btn">
                             <button class="btn btn-primary">Create</button>
                         </span>
@@ -68,19 +68,19 @@
             </div>
 
 
-            <ul class="list-unstyled list-inline margin-top-xl row text-center">
+            <ul class="list-unstyled list-inline margin-top-xl row text-center" v-show="walletAddress">
                 <li class="col-md-4 col-md-offset-2">
-                    <div class="balance-title">Your SHARE Balance</div>
+                    <div class="balance-title margin-bottom-xl">Your SHARE Balance</div>
                     <div class="balance-num" v-show="! loadingVyralBalance">{{ vyralBalance - vyralLockedBalance }}</div>
                     <div class="text-center" v-show="loadingVyralBalance">
-                        <i class="fa fa-2x fa-spinner"></i>
+                        <i class="fa fa-2x fa-spinner white fa-pulse"></i>
                     </div>
                 </li>
                 <li class="col-md-4">
-                    <div class="balance-title">Your SHARE Bonus</div>
+                    <div class="balance-title margin-bottom-xl">Your SHARE Bonus</div>
                     <div class="balance-num" v-show="! loadingVyralLockedBalance">{{ vyralLockedBalance }}</div>
                     <div class="text-center" v-show="loadingVyralLockedBalance">
-                        <i class="fa fa-2x fa-spinner"></i>
+                        <i class="fa fa-2x fa-spinner white fa-pulse"></i>
                     </div>
                 </li>
             </ul>
@@ -124,10 +124,9 @@ export default {
         }
 
 
-        if(this.referralLink){
+        if(this.walletAddress){
             this.getBalance()
         }
-
     },
 
     computed: {

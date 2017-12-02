@@ -76,6 +76,8 @@
       </ul>
 
       <div class="text-center margin-top-xl">
+        <p class="text-danger text-center" v-show="!agreeToAllTermsAndConditions">You must agree to all terms in order to continue</p>
+
         <button class="btn btn-primary text-uppercase" @click="allTermsAgreed()" v-bind:disabled="!agreeToAllTermsAndConditions">
           Continue
         </button>

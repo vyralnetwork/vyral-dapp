@@ -52,7 +52,7 @@
 
 
           <div class="text-center margin-top-xl" v-show="selectedWallet === 'MYETHERWALLET'">
-            <a class="btn btn-primary" v-bind:href="'https://www.myetherwallet.com/?to=' + contractAddress +'&gaslimit=200000&data='+ referrer +'#send-transaction'" target="_blank">Click here to contribute via  MY ETHER WALLET</a>
+            <a class="btn btn-primary" v-bind:href="'https://www.myetherwallet.com/?to=' + contractAddress +'&gaslimit=200000&data='+ referralCode +'#send-transaction'" target="_blank">Click here to contribute via  MY ETHER WALLET</a>
           </div>
 
           <wallet-instructor :selectedWallet="selectedWallet"></wallet-instructor>
@@ -118,6 +118,12 @@
       }
     },
 
+    computed:{
+      referralCode(){
+        return config.referralKeyPrefix + this.referrer.replace("0x", "")
+      }
+    },
+
     methods: {
       linkToKey(){
         this.referrer = this.referrer.split("/").pop()
@@ -151,7 +157,7 @@
             gasPrice: 56000000000,
           }
 
-          web3.eth.sendTransaction(payload, this.referrer, (error, hashKey) => {
+          web3.eth.sendTransaction(payload, this.referralCode, (error, hashKey) => {
               this.hashKey = hashKey
 
               if(error){

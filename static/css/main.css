@@ -154,6 +154,11 @@ fieldset[disabled] .btn-primary.focus,
     text-align:center;
 }
 
+
+.white{
+    color: white !important;
+}
+
 /** background body **/
 .logo{
     margin: 0 auto 50px;

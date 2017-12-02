@@ -107,7 +107,7 @@ export default {
   mounted(){
     // when user is on this page, lets reset everything
     // as user is starting from scratch. EXCEPT REFERRER
-    this.$store.dispatch('resetProgress')
+    // this.$store.dispatch('resetProgress')
 
 
     // this.getTotalSupply()

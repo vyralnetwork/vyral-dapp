@@ -7,7 +7,7 @@
 
     <wizard-steps current="SELECT_WALLET"></wizard-steps>
     
-    <p class="choose-the-wallet">CHOOSE THE WALLET YOU WISH TO CONTRIBUTE WITH</p>
+    <p class="choose-the-wallet">CHOOSE THE WALLET YOU WISH TO PURCHASE WITH</p>
     
 
     <div class="row wallet-warning text-center margin-top-lg">
@@ -28,7 +28,7 @@
     <p class="footer-txt">Coinbase, Bittrex, Poloniex, Kraken, Bitfinex, Freewallet & all other exchanges are not compatible.</p>
 
     <div class="text-center margin-top-xl">
-      <button class="btn btn-md btn-primary" v-bind:class="{'disabled': !selectedWallet}" @click="redirectToContributePage()" v-bind:disabled="!selectedWallet">Continue To Contribute</button>
+      <button class="btn btn-md btn-primary" v-bind:class="{'disabled': !selectedWallet}" @click="redirectToContributePage()" v-bind:disabled="!selectedWallet">Continue To Purchase</button>
     </div>
   </div>
 </div>

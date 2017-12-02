@@ -18,12 +18,14 @@
 
           <div class="form-group">
             <label>Enter your contribution amount. Minimum <strong>1 ETH</strong>. Can contain decimal. eg. 1.45 ETH</label>
-            <input type="number" class="form-control" placeholder="10.0" v-model="contributionAmount" min="1" step="0.25">
+            <input type="number" class="form-control" placeholder="10.0" name="contributionAmount" v-model="contributionAmount" min="1" max="500" step="0.25" v-validate="'required|min_value:1|max_value:500'">
+            <span v-show="errors.has('contributionAmount')" class="small text-danger">Minimum contribution is 1 ETH and maximum is 500 ETH</span>
           </div>
 
           <div class="form-group">
             <label>Referral Vyral Key (optional)</label>
-            <input type="text" class="form-control mono" placeholder="0x000000000000000000000000000" v-model="referrer"/>
+            <input type="text" class="form-control mono" placeholder="0x000000000000000000000000000" name="referrer" v-model="referrer" v-validate="{regex:/^(0x)?[0-9a-f]{40}$/i}" />
+            <span v-show="errors.has('referrer')" class="small text-danger">Referrer address is not correct</span>
           </div>
 
           <button type="button" class="btn btn-primary btn-block" @click="contribute()">Purchase</button>
@@ -57,12 +59,12 @@
 
 
     <div class="margin-top-xxl text-center text-muted" v-show="checkingTransaction">
-      <i class="fa fa-spinner fa-pulse fa-2x"></i>
-      <p>Check transaction on <a v-bind:href="'https://ropsten.etherscan.io/tx/'+ hashKey" target="_blank">Etherscan.io here</a></p>
+      <i class="fa fa-spinner fa-pulse fa-4x white margin-top-xl margin-bottom-xl"></i>
+      <p>Check transaction on <a v-bind:href="config.etherscanLink + hashKey" target="_blank">etherscan.io here</a></p>
     </div>
 
     <div class="text-center margin-top-xl margin-bottom-xl" v-show="hasContributed">
-      <router-link :to="{ name: 'ReferralLinkPage' }" class="btn btn-primary">Claim my Vyral Referal Link</router-link>
+      <router-link :to="{ name: 'ReferralLinkPage' }" class="btn btn-primary">Claim my Vyral Referral Link</router-link>
     </div>
 
   </div>

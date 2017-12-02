@@ -1,4 +1,3 @@
-import Config from "../config/dev.js"
 import {getConfig} from './config.js'
 const config = getConfig()
 const VyralSaleAbi = require("../contracts/VyralSale.json")

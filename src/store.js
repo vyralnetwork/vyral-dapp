@@ -13,7 +13,7 @@ export default new Vuex.Store({
         selectedWallet: 'METAMASK',
         termsAgreed: false,
         hasContributed: false,
-        contributionValue: 1,
+        contributionValue: 1.0,
         contributionFromAddress: '',
         referrer: '',
     },
@@ -32,7 +32,7 @@ export default new Vuex.Store({
         },
 
         contributionValue(state){
-            return state.contributionValue
+            return parseFloat(state.contributionValue)
         },
 
         referrer(state){

@@ -5,15 +5,14 @@
                 <a href="/"><img src="/static/images/logo.png" alt="Vyral Network"></a>
             </div>
 
-            <wizard-steps current="REFERAL_LINK"></wizard-steps>
+            <wizard-steps current="REFERRAL_LINK"></wizard-steps>
 
-            <p class="choose-the-wallet margin-top-xl">YOUR REFERAL LINK</p>
+            <p class="choose-the-wallet margin-top-xl">YOUR REFERRAL LINK</p>
 
 
             <div class="row">
                 <div class="col-md-12 margin-top-lg">
                     <p class="txt3" v-show="!walletAddress">Post your wallet address in the box below to create your Vyral Referral Key:</p>
-                    <!-- <a href="#" class="learn-txt">Learn how to create your referal key</a> -->
 
 
                     <div class="input-group" v-show="!walletAddress">
@@ -40,28 +39,28 @@
 
 
             <div class="text-center" v-show="referralLink">
-                <h3 class="text-center hero" style="color: white;">Earn more SHARE tokens by sharing your referal key</h3>
+                <h3 class="text-center hero" style="color: white;">Earn more SHARE tokens by sharing your referral key</h3>
                 <ul class="list-unstyled list-inline social-share">
                     <li>
-                        <a class="btn btn-inverse facebook" target="_blank" v-bind:href="'https://www.facebook.com/sharer/sharer.php?u=https%3A//contribute.vyral.network/referrer/' + referralLink ">
+                        <a class="btn btn-inverse facebook white" target="_blank" v-bind:href="'https://www.facebook.com/sharer/sharer.php?u=' + referralLink ">
                             <i class="fa fa-facebook"></i>
                         </a>
                     </li>
 
                     <li>
-                        <a class="btn btn-inverse twitter" target="_blank" v-bind:href="'https://twitter.com/home?status=https%3A//contribute.vyral.network/referrer/' + referralLink ">
+                        <a class="btn btn-inverse twitter white" target="_blank" v-bind:href="'https://twitter.com/home?status=' + referralLink ">
                             <i class="fa fa-twitter"></i>
                         </a>
                     </li>
 
                     <li>
-                        <a class="btn btn-inverse linkedin" target="_blank" v-bind:href="'https://www.linkedin.com/shareArticle?mini=true&url=https%3A//contribute.vyral.network/referrer/' + referralLink ">
+                        <a class="btn btn-inverse linkedin white" target="_blank" v-bind:href="'https://www.linkedin.com/shareArticle?mini=true&url=' + referralLink ">
                             <i class="fa fa-linkedin"></i>
                         </a>
                     </li>
 
                     <li>
-                        <a class="btn btn-inverse gplus" target="_blank" v-bind:href="'https://plus.google.com/share?url=https%3A//contribute.vyral.network/referrer/' + referralLink ">
+                        <a class="btn btn-inverse gplus white" target="_blank" v-bind:href="'https://plus.google.com/share?url=' + referralLink ">
                             <i class="fa fa-google-plus"></i>
                         </a>
                     </li>
@@ -91,8 +90,10 @@
 
 
 <script>
-import VyralConfig from "../config/dev.js"
+import {getConfig} from "../utils/config"
 import {getWeb3, getShareContract} from "../utils/blockChainUtils"
+
+const config = getConfig()
 
 var abi = require("../contracts/Share.json")
 
@@ -104,8 +105,8 @@ export default {
             copyLabel: 'Copy',
             textCopied: false,
             walletAddress: this.$store.getters.contributionFromAddress,
-            contractAddress: VyralConfig.vyralSaleContractAddress,
-            referralBaseUrl: VyralConfig.referralBaseUrl,
+            contractAddress: config.vyralSaleContractAddress,
+            referralBaseUrl: config.referralBaseUrl,
             vyralBalance: 0,
             vyralLockedBalance: 0,
             loadingVyralBalance: true,
@@ -136,7 +137,7 @@ export default {
             } else{
                 return ''
             }
-        }
+        },
     },
 
     methods: {

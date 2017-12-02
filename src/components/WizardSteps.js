@@ -39,22 +39,22 @@ Vue.component("wizard-steps", {
             </div>
         </router-link>
         <div class="step" v-show="!referralLinkGenerated">4</div>
-        <div class="label">YOUR REFERAL LINK</div>
+        <div class="label">YOUR REFERRAL LINK</div>
       </li>
     </ul>
     `,
 
     computed:{
         areTermsAgreed(){
-            return this.current === 'SELECT_WALLET' || this.current === 'CONTRIBUTE' || this.current === 'REFERAL_LINK'
+            return this.current === 'SELECT_WALLET' || this.current === 'CONTRIBUTE' || this.current === 'REFERRAL_LINK'
         },
 
         isWalletSelected(){
-            return this.current === 'CONTRIBUTE' || this.current === 'REFERAL_LINK'
+            return this.current === 'CONTRIBUTE' || this.current === 'REFERRAL_LINK'
         },
 
         userHasContributed(){
-            return this.current === 'REFERAL_LINK'
+            return this.current === 'REFERRAL_LINK'
         },
 
         referralLinkGenerated(){

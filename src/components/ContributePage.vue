@@ -24,7 +24,7 @@
 
           <div class="form-group">
             <label>Referral Vyral Key (optional)</label>
-            <input type="text" class="form-control mono" placeholder="0x000000000000000000000000000" name="referrer" v-model="referrer" v-validate="{regex:/^(0x)?[0-9a-f]{40}$/i}" />
+            <input type="text" class="form-control mono" placeholder="0x000000000000000000000000000" name="referrer" v-model="referrer" v-validate="{regex:/^(https:\/\/contribute\.vyral\.network\/referrer\/)?(0x)?[0-9a-f]{40}$/i}" @blur="linkToKey()" />
             <span v-show="errors.has('referrer')" class="small text-danger">Referrer address is not correct</span>
           </div>
 
@@ -113,6 +113,10 @@
     },
 
     methods: {
+      linkToKey(){
+        this.referrer = this.referrer.split("/").pop()
+      },
+
       contribute() {
 
         if(this.referrer){

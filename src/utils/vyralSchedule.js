@@ -4,7 +4,7 @@ export function getEndTime(){
     // 2nd Dec 10:59
     // 2nd Dec 14:59
     // 3rd Dec 23:59 to 24 Dec 23:59 reset every day to that day's end
-    // 
+    //
     // 2/12 10:59  - 1512230399000
     // 2/12 14:59  - 1512244799000
     // 2/12 23:59  - 1512277199000

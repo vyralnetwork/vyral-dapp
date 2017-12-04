@@ -70,20 +70,25 @@
 
             <ul class="list-unstyled list-inline margin-top-xl row text-center" v-show="walletAddress">
                 <li class="col-md-4 col-md-offset-2">
-                    <div class="balance-title margin-bottom-xl">Your SHARE Balance</div>
-                    <div class="balance-num" v-show="! loadingVyralBalance">{{ vyralBalance - vyralLockedBalance }}</div>
+                    <div class="balance-title margin-bottom-xl">
+                        <a target="_blank" v-bind:href="etherscanTokenLink + shareContractAddress + '?a=' + walletAddress">Your SHARE Balance</a>
+                    </div>
+                    <div class="balance-num" v-show="! loadingVyralBalance"><a target="_blank" v-bind:href="etherscanTokenLink + shareContractAddress + '?a=' + walletAddress">{{ vyralBalance - vyralLockedBalance }}</a></div>
                     <div class="text-center" v-show="loadingVyralBalance">
                         <i class="fa fa-2x fa-spinner white fa-pulse"></i>
                     </div>
                 </li>
                 <li class="col-md-4">
-                    <div class="balance-title margin-bottom-xl">Your SHARE Bonus</div>
-                    <div class="balance-num" v-show="! loadingVyralLockedBalance">{{ vyralLockedBalance }}</div>
+                    <div class="balance-title margin-bottom-xl">
+                        <a target="_blank" v-bind:href="etherscanTokenLink + shareContractAddress + '?a=' + walletAddress">Your SHARE Bonus</a>
+                    </div>
+                    <div class="balance-num" v-show="! loadingVyralLockedBalance"><a target="_blank" v-bind:href="etherscanTokenLink + shareContractAddress + '?a=' + walletAddress">{{ vyralLockedBalance }}</a></div>
                     <div class="text-center" v-show="loadingVyralLockedBalance">
                         <i class="fa fa-2x fa-spinner white fa-pulse"></i>
                     </div>
                 </li>
             </ul>
+
         </div>
     </div>
 </template>
@@ -105,12 +110,14 @@ export default {
             copyLabel: 'Copy',
             textCopied: false,
             walletAddress: this.$store.getters.contributionFromAddress,
-            contractAddress: config.vyralSaleContractAddress,
+            vyralSaleContractAddress:config.vyralSaleContractAddress,
+            shareContractAddress: config.shareContractAddress,
             referralBaseUrl: config.referralBaseUrl,
             vyralBalance: 0,
             vyralLockedBalance: 0,
             loadingVyralBalance: true,
             loadingVyralLockedBalance: true,
+            etherscanTokenLink: config.etherscanTokenLink
         }
     },
 
@@ -131,7 +138,7 @@ export default {
 
     computed: {
         referralLink(){
-            if(this.walletAddress.length >  0){
+            if(this.walletAddress && this.walletAddress.length >  0){
                 return this.referralBaseUrl + this.walletAddress
             } else{
                 return ''

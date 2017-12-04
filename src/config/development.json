@@ -2,11 +2,12 @@
     "env": "development",
     "recommendedGasPrice": 56000000000,
     "recommendedGasLimit": 200000,
-    "vyralSaleContractAddress": "0x9fbfad066906fc102d0caffa6d9d07766bc8a50d",
-    "shareContractAddress": "0xdc42ebd2e83474acbb84bbd3333c2a7e6745588e",
+    "vyralSaleContractAddress": "0x3e7da6a49a018f5220ac3ac5dc5d0eaeec9fca2e",
+    "shareContractAddress": "0x5d481ebcda620bae9ee205286a97276c1f0e1bb9",
     "baseUrl": "https://contribute.vyral.network",
     "referralBaseUrl": "https://contribute.vyral.network/#/referrer/",
     "referralKeyPrefix": "0x8bbb9fca000000000000000000000000",
     "infura": "https://ropsten.infura.io/A3Yn1ptLQtN3eaUqHoYN",
-    "etherscanLink": "https://ropsten.etherscan.io/tx/"
+    "etherscanTransactionLink": "https://ropsten.etherscan.io/tx/",
+    "etherscanTokenLink": "https://ropsten.etherscan.io/token/"
 }

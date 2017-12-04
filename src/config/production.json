@@ -10,5 +10,6 @@
     "referralBaseUrl": "https://contribute.vyral.network/#/referrer/",
     "referralKeyPrefix": "0x8bbb9fca000000000000000000000000",
     "infura": "https://mainnet.infura.io/A3Yn1ptLQtN3eaUqHoYN",
-    "etherscanLink": "https://etherscan.io/tx/"
+    "etherscanTransactionLink": "https://etherscan.io/tx/",
+    "etherscanTokenLink": "https://etherscan.io/token/"
 }

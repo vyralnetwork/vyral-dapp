@@ -17,7 +17,7 @@
                     <div class="input-group with-error-message">
                         <input type="text" class="form-control mono" placeholder="Enter your wallet address you contributed from" v-model="walletAddress" @keyup="validateWalletAddress()">
                         <span class="input-group-btn">
-                            <button class="btn btn-primary">Create</button>
+                            <button @click="createReferralLink()" class="btn btn-primary">Create</button>
                         </span>
                     </div><!-- /input-group -->
                     <p class="small text-danger" v-show="walletAddressError">{{ walletAddressError }}</p>
@@ -98,6 +98,7 @@ import {getConfig} from "../utils/config"
 import {getWeb3, getShareContract} from "../utils/blockChainUtils"
 
 const config = getConfig()
+const ethUtil = require('ethereumjs-util')
 
 var abi = require("../contracts/Share.json")
 
@@ -118,7 +119,8 @@ export default {
             loadingVyralBalance: true,
             loadingVyralLockedBalance: true,
             walletAddressError: "",
-            etherscanTokenLink: config.etherscanTokenLink
+            etherscanTokenLink: config.etherscanTokenLink,
+            referralLink: ''
         }
     },
 
@@ -139,15 +141,26 @@ export default {
 
     computed: {
         referralLink(){
-            if(this.walletAddress && this.walletAddress.length >  0){
-                return this.referralBaseUrl + this.walletAddress
-            } else{
-                return ''
-            }
+            // if(this.walletAddress && this.walletAddress.length >  0){
+            //     return this.referralBaseUrl + this.walletAddress
+            // } else{
+            //     return ''
+            // }
+            return this.referralLink
         },
     },
 
     methods: {
+        createReferralLink(){
+            if (this.walletAddress
+                && this.walletAddress.length > 0
+                && ethUtil.isValidAddress(this.walletAddress))
+            {
+                this.referralLink = this.referralBaseUrl + this.walletAddress
+            } else {
+                this.referralLink = ''
+            }
+        },
         validateWalletAddress(){
             this.walletAddress = this.walletAddress
                                     .replace("https://etherscan.io/address/", "")

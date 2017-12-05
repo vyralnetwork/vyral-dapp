@@ -63,12 +63,12 @@
 
     <div class="margin-top-xxl text-center text-muted" v-show="checkingTransaction">
       <i class="fa fa-spinner fa-pulse fa-4x white margin-top-xl margin-bottom-xl"></i>
-      <p>Check transaction on <a v-bind:href="config.etherscanLink + hashKey" target="_blank">etherscan.io here</a></p>
+      <p>Check Pending Transaction on <a v-bind:href="config.etherscanTransactionLink + hashKey" target="_blank">etherscan.io here</a></p>
     </div>
 
 
-    <div v-show="selectedWallet !== 'MYETHERWALLET'">
-      <p class="footer-txt" v-show="! checkingTransaction">Get your Vyral Key once you have completed your transaction.</p>
+    <div v-show="selectedWallet === 'METAMASK'">
+      <p class="footer-txt" v-show="!checkingTransaction">Get your Vyral Key once you have completed your transaction.</p>
 
       <div class="text-center margin-top-xl margin-bottom-xl" v-show="hasContributed">
         <router-link :to="{ name: 'ReferralLinkPage' }" class="btn btn-primary">Claim my Vyral Referral Link</router-link>
@@ -76,9 +76,7 @@
     </div>
 
 
-    <div v-show="selectedWallet === 'MYETHERWALLET'">
-      <!-- <p class="footer-txt" v-show="! checkingTransaction"></p> -->
-
+    <div v-show="selectedWallet !== 'METAMASK'">
       <div class="text-center margin-top-xl margin-bottom-xl" v-show="hasContributed">
         <router-link :to="{ name: 'ReferralLinkPage' }" class="btn btn-link white" style="text-decoration: underline;">Get your Vyral Key once you have completed your transaction.</router-link>
       </div>
@@ -136,7 +134,7 @@
         if(this.referrer.length > 0){
           return config.referralKeyPrefix + this.referrer.replace("0x", "")
         } else{
-          return ''
+          return null
         }
       }
     },
@@ -174,40 +172,46 @@
             gasPrice: 56000000000,
           }
 
-          VyralSaleContract.buyPresale(this.referrer, payload, (error, hashKey) => {
-              this.hashKey = hashKey
+          if(this.referrer){
+            VyralSaleContract.buyPresale(this.referrer, payload, this.transactionCallback);
+          } else {
+            web3.eth.sendTransaction(payload, this.transactionCallback)
+            // VyralSaleContract.buyPresale(payload, this.transactionCallback);
+          }
 
-              if(error){
-                this.$store.dispatch("setContributedStatus", false)
-                return this.$swal('Oops!', error.message, 'error')
-              }
-
-
-              this.checkingTransaction = true;
-
-              var checkingTransactionStatusTimer = setInterval(() => {
-                var receipt = web3.eth.getTransactionReceipt(hashKey, (error, response) => {
-                  if(response && response.status){
-                    clearInterval(checkingTransactionStatusTimer)
-                    this.checkingTransaction = false
-
-                    if(response.status === '0x0'){
-                      this.$swal('Oops!', 'Transaction failed. Please try again', 'error')
-                    } else if(response.status === '0x1'){
-                      this.$store.dispatch("setContributedStatus", true)
-                      this.$store.dispatch("setContributionFromAddress", response.from)
-                      this.$router.push({
-                        name: 'ReferralLinkPage'
-                      })
-                    }
-                  }
-                })
-
-              }, 2500)
-
-          });
 
         }
+      },
+
+      transactionCallback(error, hashKey){
+        this.hashKey = hashKey
+
+        if(error){
+          this.$store.dispatch("setContributedStatus", false)
+          return this.$swal('Oops!', error.message, 'error')
+        }
+
+        this.checkingTransaction = true;
+
+        var checkingTransactionStatusTimer = setInterval(() => {
+          var receipt = web3.eth.getTransactionReceipt(hashKey, (error, response) => {
+            if(response && response.status){
+              clearInterval(checkingTransactionStatusTimer)
+              this.checkingTransaction = false
+
+              if(response.status === '0x0'){
+                this.$swal('Oops!', 'Transaction failed. Please try again', 'error')
+              } else if(response.status === '0x1'){
+                this.$store.dispatch("setContributedStatus", true)
+                this.$store.dispatch("setContributionFromAddress", response.from)
+                this.$router.push({
+                  name: 'ReferralLinkPage'
+                })
+              }
+            }
+          })
+
+        }, 2500)
       },
 
       contractAddressCopySuccess(e){

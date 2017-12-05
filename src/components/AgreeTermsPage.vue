@@ -16,7 +16,7 @@
                  Vyral Smart Contracts powers a decentralized advertising 
                  Ecosystem of blockchain incentive programs from fueling viral
                  growth for crypto token sales to tokenizing reward programs for businesses
-                <div class="hard-cap">Pre-sale Hard Cap {{ sold }} / 17,777 ETH</div>
+                <div class="hard-cap">Pre-sale Hard Cap {{ sold }} / 10,000 ETH</div>
             </div>
             <div class="contribution-progress-indicator progress margin-top-md">
               <div class="progress-bar progress-bar-striped progress-bar-animated active" v-bind:style="{width: percentContributed + '%'}"></div>
@@ -100,7 +100,7 @@ const config = getConfig()
 const endTime = getEndTime()
 
 const soldBottomCap =  546
-const totalSupply = 17777
+const totalSupply = 10000
 
 
 export default {

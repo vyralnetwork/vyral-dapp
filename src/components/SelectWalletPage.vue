@@ -67,8 +67,7 @@
       this.metamaskStatusChecker = setInterval(this.checkMetaMaskStatus, 1000)
     },
 
-    unmounted(){
-        console.log("unmounted")
+    beforeDestroy(){
         clearInterval(this.metamaskStatusChecker)
     },
 

@@ -24,9 +24,11 @@
           </div>
 
           <div class="form-group">
-            <label>Referral Vyral Key (optional)</label>
-            <input type="text" class="form-control mono" placeholder="0x000000000000000000000000000" name="referrer" v-model="referrer" v-validate="{regex:/^(https:\/\/contribute\.vyral\.network\/#\/referrer\/)?(0x)?[0-9a-f]{40}$/i}" @blur="linkToKey()" />
-            <span v-show="errors.has('referrer')" class="small text-danger">Referrer address is not correct</span>
+            <label @click="toggleReferralKeyField()" class="pointer-cursor">Have Vyral Referral Key?</label>
+            <input type="text" v-show="showReferralKeyField" class="form-control mono" placeholder="0x000000000000000000000000000" name="referrer" v-model="referrer" v-validate="{regex:/^(https:\/\/contribute\.vyral\.network\/#\/referrer\/)?(0x)?[0-9a-f]{40}$/i}" @blur="linkToKey()" autocomplete="off" />
+            <span v-show="errors.has('referrer') && showReferralKeyField" class="small text-danger">Referrer address is not correct</span>
+
+            <p class="small text-muted" v-show="showReferralKeyField">If you don't have a Referral Vyral Key it won't impact on your purchase</p>
           </div>
 
           <button type="button" class="btn btn-primary btn-block" @click="contribute()">Purchase</button>
@@ -109,7 +111,8 @@
         referrer: this.$store.getters.referrer,
         hasContributed: this.$store.getters.hasContributed,
         checkingTransaction: false,
-        hashKey: ""
+        hashKey: "",
+        showReferralKeyField: false,
       }
     },
 
@@ -140,6 +143,10 @@
     },
 
     methods: {
+      toggleReferralKeyField(){
+        this.showReferralKeyField = !this.showReferralKeyField
+      },
+
       linkToKey(){
         this.referrer = this.referrer.split("/").pop()
       },
@@ -242,5 +249,14 @@
   label{
     font-weight: normal;
     font-size: 12px;
+  }
+
+  .pointer-cursor{
+    cursor: pointer;
+    text-decoration: none;
+  }
+
+  .pointer-cursor:hover{
+    text-decoration: underline;
   }
 </style>

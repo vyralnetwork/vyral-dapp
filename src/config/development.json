@@ -9,5 +9,6 @@
     "referralBaseUrl": "https://contribute.vyral.network/#/referrer/",
     "referralKeyPrefix": "0x8bbb9fca000000000000000000000000",
     "infura": "https://ropsten.infura.io/A3Yn1ptLQtN3eaUqHoYN",
-    "etherscanLink": "https://ropsten.etherscan.io/tx/"
+    "etherscanTransactionLink": "https://ropsten.etherscan.io/tx/",
+    "etherscanTokenLink": "https://ropsten.etherscan.io/token/"
 }

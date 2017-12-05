@@ -4,7 +4,7 @@
       <div class="logo">
         <a href="/"><img src="/static/images/logo.png" alt="Vyral Network"></a>
       </div>
-      
+
       <div class="row">
         <div class="col-md-6">
             <div class= "launch-title">

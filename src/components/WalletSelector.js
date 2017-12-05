@@ -5,7 +5,7 @@ Vue.component('wallet-selector', {
     props: ['selectedWallet'],
 
     template: `
-        <ul class="wallet-container">
+        <ul class="wallet-container list-unstyled">
           <li class="wallet-type">
             <label class="checkbox">
               <input type="radio" name="selectedWallet" @click="setWallet('MYETHERWALLET')" value="MYETHERWALLET"/>
@@ -22,7 +22,7 @@ Vue.component('wallet-selector', {
             <label class="checkbox">
               <input type="radio" name="selectedWallet" @click="setWallet('METAMASK')" value="METAMASK"/>
               <img src="/static/images/metamask.png" class="ether"/>
-              <span class="label">Metamask</span>
+              <span class="label">MetaMask</span>
               <span class="active" v-if="wallet == 'METAMASK'"></span>
             </label>
           </li>

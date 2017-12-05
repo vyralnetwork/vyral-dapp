@@ -120,7 +120,7 @@
         this.$router.push({name: "SelectWalletPage"})
       }
 
-      // If it's not Metamask, we have no way to know if we should enable Referral Link or not.
+      // If it's not MetaMask, we have no way to know if we should enable Referral Link or not.
       if(this.selectedWallet !== 'METAMASK'){
         this.hasContributed = true
         this.$store.dispatch("setContributedStatus", true)
@@ -150,7 +150,7 @@
           this.$store.dispatch("setReferrer", this.referrer)
         }
 
-        // If user has selected Metamask Wallet,
+        // If user has selected MetaMask Wallet,
         // direct user to contribute via that.
         if(this.selectedWallet === 'METAMASK'){
           let web3 = getWeb3()

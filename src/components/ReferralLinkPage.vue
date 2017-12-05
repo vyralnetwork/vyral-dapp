@@ -12,16 +12,15 @@
 
             <div class="row">
                 <div class="col-md-12 margin-top-lg">
-                    <p class="txt3" v-show="!walletAddress">Post your wallet address in the box below to create your Vyral Referral Key:</p>
+                    <p class="hero white text-center">Post your wallet address in the box below to create your Vyral Referral Key:</p>
 
-
-                    <div class="input-group">
-                        <input type="text" class="form-control mono" placeholder="Enter your wallet address you contributed from" v-model="walletAddress" @blur="getBalance()">
+                    <div class="input-group with-error-message">
+                        <input type="text" class="form-control mono" placeholder="Enter your wallet address you contributed from" v-model="walletAddress" @keyup="validateWalletAddress()">
                         <span class="input-group-btn">
                             <button class="btn btn-primary">Create</button>
                         </span>
                     </div><!-- /input-group -->
-
+                    <p class="small text-danger" v-show="walletAddressError">{{ walletAddressError }}</p>
 
                     <div class="input-group">
                         <input type="text" class="form-control mono" placeholder="Your Vyral Referral Link" v-model="referralLink" readonly="readonly">
@@ -106,11 +105,13 @@ export default {
             textCopied: false,
             walletAddress: this.$store.getters.contributionFromAddress,
             contractAddress: config.vyralSaleContractAddress,
+            multisigAddress: config.multisigAddress,
             referralBaseUrl: config.referralBaseUrl,
             vyralBalance: 0,
             vyralLockedBalance: 0,
             loadingVyralBalance: true,
             loadingVyralLockedBalance: true,
+            walletAddressError: ""
         }
     },
 
@@ -140,6 +141,23 @@ export default {
     },
 
     methods: {
+        validateWalletAddress(){
+            this.walletAddress = this.walletAddress
+                                    .replace("https://etherscan.io/address/", "")
+                                    .replace("https://contribute.vyral.network/#/referrer/", "")
+
+            if(this.walletAddress === this.contractAddress){
+                this.walletAddressError = 'This is the contract address. Please enter the address your contributed from.'
+            } else if(this.walletAddress === this.multisigAddress){
+                this.walletAddressError = 'This is the multisig address. Please enter the address your contributed from.'
+            } else if(! /(0x)?[0-9a-f]{40}$/.test(this.walletAddress) ){
+                this.walletAddressError = 'Please enter correct wallet address'
+            } else{
+                this.walletAddressError = ""
+                this.getBalance()
+            }
+
+        },
         referralLinkCopySuccess: function(e){
             this.copyLabel = "Copied";
             this.textCopied = true;
@@ -181,6 +199,11 @@ export default {
 <style scoped>
 .input-group{
     margin-bottom: 30px;
+}
+
+.text-danger{
+    margin-top: -30px;
+    margin-bottom: 30px
 }
 
 .input-group-btn button{

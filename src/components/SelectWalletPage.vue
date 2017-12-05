@@ -18,16 +18,22 @@
 
     <wallet-selector :selectedWallet="selectedWallet" @walletSelected="walletSelected"></wallet-selector>
 
-    <p class="text-center" v-show="selectedWallet === 'METAMASK' && metamaskDisabled">
-      <small class="alert alert-warning">
-        <i class="fa fa-exclamation-triangle"></i>
-        Looks like you have not enabled MetaMask. Please enable and login if you wish to use Metamask.
-      </small>
-    </p>
+    <div class="row">
+      <p class="text-center well well-sm text-info col-md-8 col-md-offset-2" v-show="selectedWallet === 'METAMASK' && metamaskDisabled">
+          <i class="fa fa-exclamation-triangle"></i>
+          You have selected MetaMask but not installed it.
+          <a class="btn btn-info btn-sm metamask-install-btn" href="https://chrome.google.com/webstore/detail/metamask/nkbihfbeogaeaoehlefnkodbefgpgknn?hl=en" target="_blank">Install MetaMask</a>
+      </p>
+
+      <p class="text-center well well-sm text-info col-md-8 col-md-offset-2" v-show="selectedWallet === 'METAMASK' && metamaskLocked">
+          <i class="fa fa-exclamation-triangle"></i>
+          Your MetaMask is locked. Please login to unlock MetaMask.
+      </p>
+    </div>
 
     <p class="footer-txt">Coinbase, Bittrex, Poloniex, Kraken, Bitfinex, Freewallet & all other exchanges are NOT compatible.</p>
 
-    <div class="text-center margin-top-xl">
+    <div class="text-center margin-top-xl" v-show="!(selectedWallet === 'METAMASK' && (metamaskDisabled || metamaskLocked))">
       <button class="btn btn-md btn-primary" v-bind:class="{'disabled': !selectedWallet}" @click="redirectToContributePage()" v-bind:disabled="!selectedWallet">Continue To Purchase</button>
     </div>
   </div>
@@ -40,7 +46,9 @@
 
     data(){
       return {
-        metamaskDisabled: typeof web3 === 'undefined'
+        metamaskDisabled: false,
+        metamaskLocked: false,
+        metamaskStatusChecker: ""
       }
     },
 
@@ -55,6 +63,13 @@
       if(! this.$store.getters.termsAgreed){
         this.$router.push({name: "AgreeTermsPage"})
       }
+
+      this.metamaskStatusChecker = setInterval(this.checkMetaMaskStatus, 1000)
+    },
+
+    unmounted(){
+        console.log("unmounted")
+        clearInterval(this.metamaskStatusChecker)
     },
 
 
@@ -66,6 +81,18 @@
 
 
     methods: {
+
+        checkMetaMaskStatus(){
+            this.metamaskDisabled = false
+            this.metamaskLocked = false
+
+            if(typeof web3 === 'undefined'){
+                this.metamaskDisabled = true
+            } else if(typeof web3 !== 'undefined' && typeof web3.eth.defaultAccount === 'undefined'){
+                this.metamaskLocked = true
+            }
+        },
+
       walletSelected(selectedWallet) {
         this.$store.dispatch('setWallet', selectedWallet)
       },
@@ -81,6 +108,9 @@
 
 
 <style type="text/css">
+.metamask-install-btn{
+  margin-left: 30px;
+}
 input[type='radio']{
   display: none;
 }

@@ -40,10 +40,10 @@ Vue.component('wallet-selector', {
 
           <li class="wallet-type">
             <label class="checkbox">
-              <input type="radio" name="selectedWallet" @click="setWallet('IAMTOKEN')" value="IAMTOKEN"/>
+              <input type="radio" name="selectedWallet" @click="setWallet('IMTOKEN')" value="IMTOKEN"/>
               <img src="/static/images/i-am-token.png" class="ether">
-              <span class="label">Iam Token</span>
-              <span class="active" v-if="wallet == 'IAMTOKEN'"></span>
+              <span class="label">imToken</span>
+              <span class="active" v-if="wallet == 'IMTOKEN'"></span>
             </label>
           </li>
 

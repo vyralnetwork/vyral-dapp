@@ -154,17 +154,19 @@ export default {
                                     .replace("https://contribute.vyral.network/#/referrer/", "")
 
             if(this.walletAddress === this.contractAddress){
-                this.walletAddressError = 'This is the contract address. Please enter the address your contributed from.'
+                this.walletAddressError = 'This is the contract address. Please enter the address you contributed from.'
+            } else if(this.walletAddress === this.shareContractAddress){
+                this.walletAddressError = 'This is the SHARE address. Please enter the address you contributed from.'
             } else if(this.walletAddress === this.multisigAddress){
-                this.walletAddressError = 'This is the multisig address. Please enter the address your contributed from.'
+                this.walletAddressError = 'This is the multisig address. Please enter the address you contributed from.'
             } else if(! /(0x)?[0-9a-f]{40}$/.test(this.walletAddress) ){
                 this.walletAddressError = 'Please enter correct wallet address'
             } else{
                 this.walletAddressError = ""
                 this.getBalance()
             }
-
         },
+        
         referralLinkCopySuccess: function(e){
             this.copyLabel = "Copied";
             this.textCopied = true;

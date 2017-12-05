@@ -46,7 +46,7 @@ Vue.component('wallet-instructor',{
         },
 
         iMTokenSelected(){
-          return this.selectedWallet === 'IAMTOKEN'
+          return this.selectedWallet === 'IMTOKEN'
         },
 
         jaxxSelected(){

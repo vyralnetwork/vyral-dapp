@@ -37,7 +37,7 @@
 
 
         <div v-show="selectedWallet !== 'METAMASK'">
-            <p class="small">Please send your contribution to the following address. Recommended Gas Limit: 200000 Gas Price: 56 Gwei</p>
+            <p class="small">Please send your contribution to the following address. Recommended Gas Limit: 1000000 Gas Price: 56 Gwei</p>
             <div class="input-group">
               <input type="text" class="form-control mono" placeholder="Contract ETH Address" v-model="contractAddress">
               <span class="input-group-btn">
@@ -175,7 +175,7 @@
             to: config.vyralSaleContractAddress,
             from: web3.eth.defaultAccount,
             value: web3.toWei(this.contributionAmount, 'ether'),
-            gas: 200000,
+            gas: 1000000,
             gasPrice: 56000000000,
           }
 

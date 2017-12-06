@@ -40,35 +40,35 @@
       <ul class="list-unstyled">
           <li>
               <label class="checkbox">
-                  <input type="checkbox" v-model="agreeTerms"/>
+                  <input type="checkbox" v-model="agreeTerms" @click="attemptedToContinue = false"/>
                   <span class="check-image"><img src="/static/images/ok-icon.svg"/></span>
                   <span class= "check-txt">I confirm that I have read and agree to the Purchase Terms.</span>
               </label>
           </li>
           <li> 
               <label class="checkbox">
-                  <input type="checkbox" v-model="agreeToNotUsResident"/>
+                  <input type="checkbox" v-model="agreeToNotUsResident" @click="attemptedToContinue = false"/>
                   <span class="check-image"><img src="/static/images/ok-icon.svg"/></span>
                   <span class= "check-txt">I confirm that I am not a citizen or resident of the US, UK, Canada, China, South Korea, North Korea, Seychelles or OFAC Sanctioned Countries.</span>
               </label>
           </li>
           <li> 
               <label class="checkbox">
-                  <input type="checkbox" v-model="agreeToNotSendingViaExchange"/>
+                  <input type="checkbox" v-model="agreeToNotSendingViaExchange" @click="attemptedToContinue = false"/>
                   <span class="check-image"><img src="/static/images/ok-icon.svg"/></span>
                   <span class= "check-txt">I confirm I am not sending from an exchange otherwise this will cause a loss of my entire purchase with no right to refund.</span>
               </label>
           </li>
           <li>
               <label class="checkbox">
-                  <input type="checkbox" v-model="agreeToTimeToReceiveToken"/>
+                  <input type="checkbox" v-model="agreeToTimeToReceiveToken" @click="attemptedToContinue = false"/>
                   <span class="check-image"><img src="/static/images/ok-icon.svg"/></span>
                   <span class= "check-txt">I understand that the public sale date has not been announced and it may take up to 7 days from the conclusion of the public sale to receive SHARE Tokens.</span>
               </label>
           </li>
           <li>
               <label class="checkbox">
-                  <input type="checkbox" v-model="agreeToMinimumContribution"/>
+                  <input type="checkbox" v-model="agreeToMinimumContribution" @click="attemptedToContinue = false"/>
                   <span class="check-image"><img src="/static/images/ok-icon.svg"/></span>
                   <span class= "check-txt">I confirm that my purchase is at least 1 ETH or higher and no more than 500 ETH.</span>
               </label>
@@ -76,9 +76,9 @@
       </ul>
 
       <div class="text-center margin-top-xl">
-        <p class="text-danger text-center" v-show="!agreeToAllTermsAndConditions">You must agree to all terms in order to continue</p>
+        <p class="text-danger text-center" v-show="!agreeToAllTermsAndConditions && attemptedToContinue">You must agree to all terms in order to continue</p>
 
-        <button class="btn btn-primary text-uppercase" @click="allTermsAgreed()" v-bind:disabled="!agreeToAllTermsAndConditions">
+        <button class="btn btn-primary text-uppercase" @click="allTermsAgreed()" v-bind:class="{disabled: !agreeToAllTermsAndConditions}">
           Continue
         </button>
       </div>
@@ -131,6 +131,8 @@ export default {
 
       totalSupply: totalSupply,
       sold : 546,
+
+      attemptedToContinue: false,
     }
   },
 
@@ -154,12 +156,16 @@ export default {
     },
 
     allTermsAgreed(){
-      // Save Agreed Terms state in Store
-      this.$store.dispatch("setTermsAgreed", true)
+      this.attemptedToContinue = true
 
-      this.$router.push({
-        name: 'SelectWalletPage'
-      })
+      if(this.agreeToAllTermsAndConditions){
+        // Save Agreed Terms state in Store
+        this.$store.dispatch("setTermsAgreed", true)
+
+        this.$router.push({
+          name: 'SelectWalletPage'
+        })
+      }
     },
 
 

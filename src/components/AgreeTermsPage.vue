@@ -2,7 +2,7 @@
   <div class="ico-main">
     <div class="container">
       <div class="logo">
-        <a href="/"><img src="/static/images/logo.png" alt="Vyral Network"></a>
+        <a href="https://vyral.network"><img src="/static/images/logo.png" alt="Vyral Network"></a>
       </div>
 
       <div class="row">

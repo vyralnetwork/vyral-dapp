@@ -65,7 +65,7 @@
 
     <div class="margin-top-xxl text-center text-muted" v-show="checkingTransaction">
       <i class="fa fa-spinner fa-pulse fa-4x white margin-top-xl margin-bottom-xl"></i>
-      <p>Check Pending Transaction on <a v-bind:href="config.etherscanTransactionLink + hashKey" target="_blank">etherscan.io here</a></p>
+      <p>Transaction Pending. Check transaction progress on <a v-bind:href="config.etherscanTransactionLink + hashKey" target="_blank">etherscan.io here</a></p>
     </div>
 
 

@@ -23,7 +23,7 @@
                     <p class="small text-danger" v-show="walletAddressError">{{ walletAddressError }}</p>
 
                     <div class="input-group">
-                        <input type="text" class="form-control mono" placeholder="Your Vyral Referral Link" v-model="referralLink" readonly="readonly">
+                        <input type="text" class="form-control mono" placeholder="Your Vyral Referral Link" v-model="referralLink" readonly="readonly" @focus="$event.target.select()">
                         <span class="input-group-btn">
                             <button 
                             class="btn btn-primary" 
@@ -139,7 +139,7 @@ export default {
 
     computed: {
         referralLink(){
-            if(this.walletAddress && this.walletAddress.length >  0){
+            if(this.walletAddress && this.walletAddress.length >  0 && this.isWalletAddressValid()){
                 return this.referralBaseUrl + this.walletAddress
             } else{
                 return ''
@@ -148,6 +148,22 @@ export default {
     },
 
     methods: {
+        isWalletAddressValid(){
+            let walletAddress = this.walletAddress
+                                    .replace("https://etherscan.io/address/", "")
+                                    .replace("https://contribute.vyral.network/#/referrer/", "")
+
+            if(walletAddress === this.contractAddress){
+                return false
+            } else if(walletAddress === this.multisigAddress){
+                return false
+            } else if(! /(0x)?[0-9a-f]{40}$/.test(walletAddress) ){
+                return false
+            } else{
+                return true
+            }
+        },
+
         validateWalletAddress(){
             this.walletAddress = this.walletAddress
                                     .replace("https://etherscan.io/address/", "")

@@ -7,20 +7,20 @@
 
             <wizard-steps current="REFERRAL_LINK"></wizard-steps>
 
-            <p class="choose-the-wallet margin-top-xl">YOUR REFERRAL LINK</p>
+            <p class="choose-the-wallet margin-top-xl">YOUR REFERRAL KEY</p>
 
 
             <div class="row">
                 <div class="col-md-12 margin-top-lg">
                     <p class="hero white text-center">Post your wallet address in the box below to create your Vyral Referral Key:</p>
 
-                    <div class="input-group with-error-message">
+                    <div class="form-group with-error-message">
                         <input type="text" class="form-control mono" placeholder="Enter your wallet address you contributed from" v-model="walletAddress" @keyup="validateWalletAddress()">
-                        <span class="input-group-btn">
+                        <!-- <span class="input-group-btn">
                             <button class="btn btn-primary">Create</button>
-                        </span>
+                        </span> -->
                     </div><!-- /input-group -->
-                    <p class="small text-danger" v-show="walletAddressError">{{ walletAddressError }}</p>
+                    <p class="small text-danger" v-bind:style="{visibility: walletAddressError ? 'visible': 'hidden'}">{{ walletAddressError }}</p>
 
                     <div class="input-group">
                         <input type="text" class="form-control mono" placeholder="Your Vyral Referral Link" v-model="referralLink" readonly="readonly" @focus="$event.target.select()">
@@ -182,7 +182,7 @@ export default {
                 this.getBalance()
             }
         },
-        
+
         referralLinkCopySuccess: function(e){
             this.copyLabel = "Copied";
             this.textCopied = true;
@@ -227,7 +227,7 @@ export default {
 }
 
 .text-danger{
-    margin-top: -30px;
+    margin-top: -15px;
     margin-bottom: 30px
 }
 

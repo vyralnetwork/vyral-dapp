@@ -39,7 +39,7 @@ Vue.component("wizard-steps", {
             </div>
         </router-link>
         <div class="step" v-show="!referralLinkGenerated">4</div>
-        <div class="label">YOUR REFERRAL LINK</div>
+        <div class="label">YOUR REFERRAL KEY</div>
       </li>
     </ul>
     `,

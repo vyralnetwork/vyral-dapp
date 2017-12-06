@@ -1,7 +1,7 @@
 {
     "env": "development",
     "recommendedGasPrice": 56000000000,
-    "recommendedGasLimit": 200000,
+    "recommendedGasLimit": 1000000,
     "vyralSaleContractAddress": "0x9fbfad066906fc102d0caffa6d9d07766bc8a50d",
     "shareContractAddress": "0xdc42ebd2e83474acbb84bbd3333c2a7e6745588e",
     "multisigAddress": "0x4d695d1941327e1c137db130911877a3b3cd85bd",

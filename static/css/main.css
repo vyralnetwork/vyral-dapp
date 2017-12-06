@@ -205,10 +205,6 @@ fieldset[disabled] .btn-primary.focus,
     background-size:cover;
 }
 
-.ref-main input{
-    width: 560px;
-}
-
 .detail{
     padding-top: 50px;
     width: 70%;

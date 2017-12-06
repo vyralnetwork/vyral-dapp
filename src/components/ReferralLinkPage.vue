@@ -5,7 +5,7 @@
                 <a href="/"><img src="/static/images/logo.png" alt="Vyral Network"></a>
             </div>
 
-            <wizard-steps current="REFERRAL_LINK"></wizard-steps>
+            <wizard-steps current="REFERRAL_LINK" :completed="referralLink"></wizard-steps>
 
             <p class="choose-the-wallet margin-top-xl">YOUR REFERRAL KEY</p>
 

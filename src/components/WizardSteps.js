@@ -1,7 +1,7 @@
 import Vue from 'vue'
 
 Vue.component("wizard-steps", {
-    props: ['current'],
+    props: ['current', 'completed'],
 
     template: `
     <ul class="progress-tracker">
@@ -58,7 +58,7 @@ Vue.component("wizard-steps", {
         },
 
         referralLinkGenerated(){
-            return false
+            return this.completed
         }
     }
 })

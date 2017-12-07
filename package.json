@@ -20,7 +20,6 @@
     "vue": "^2.5.9",
     "vue-clipboard2": "0.0.6",
     "vue-config": "^1.0.0",
-    "vue-moment": "^2.2.0",
     "vue-router": "^3.0.1",
     "vue-sweetalert2": "^1.0.7",
     "vuex": "^3.0.1",

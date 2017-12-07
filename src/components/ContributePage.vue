@@ -16,45 +16,63 @@
     <div class="row" v-show="! checkingTransaction">
       <div class="col-md-8 col-md-offset-2 contribution-form">
 
-        <form v-show="selectedWallet === 'METAMASK'">
+        <div v-show="selectedWallet === 'METAMASK'">
           <div class="form-group">
             <label>Enter your contribution amount. Minimum <strong>1 ETH</strong>. Can contain decimal. eg. 1.45 ETH</label>
             <input type="number" class="form-control" placeholder="10.0" name="contributionAmount" v-model="contributionAmount" min="1" max="500" step="0.25" v-validate="'required|min_value:1|max_value:500'">
             <span v-show="errors.has('contributionAmount')" class="small text-danger">Minimum contribution is 1 ETH and maximum is 500 ETH</span>
+            <p class="hero text-success">Standard Purchased Token Allocation: <strong>{{ standardAllocation }}</strong></p>
+            <p class="hero text-success">Guaranteed Bonus Tokens: <strong>{{ bonusAllocation }}</strong> if you purchase in <strong>{{ humanTimeToGo }}</strong></p>
           </div>
 
           <div class="form-group">
-            <label @click="toggleReferralKeyField()" class="pointer-cursor">Have Vyral Referral Key?</label>
+            <label @click="showReferralKeyField = !showReferralKeyField" class="pointer-cursor">Have Vyral Referral Key?</label>
             <input type="text" v-show="showReferralKeyField" class="form-control mono" placeholder="0x000000000000000000000000000" name="referrer" v-model="referrer" v-validate="{regex:/^(https:\/\/contribute\.vyral\.network\/#\/referrer\/)?(0x)?[0-9a-f]{40}$/i}" @blur="linkToKey()" autocomplete="off" />
             <span v-show="errors.has('referrer') && showReferralKeyField" class="small text-danger">Referrer address is not correct</span>
 
             <p class="small text-muted" v-show="showReferralKeyField">If you don't have a Referral Vyral Key it won't impact on your purchase</p>
           </div>
 
-          <button type="button" class="btn btn-primary btn-block" @click="contribute()">Purchase</button>
+          <button type="button" class="btn btn-primary btn-block" @click="contribute()" v-bind:disabled="errors.has('contributionAmount') || errors.has('referrer')">Purchase</button>
 
-        </form>
+        </div>
 
 
         <div v-show="selectedWallet !== 'METAMASK'">
-            <p class="small">Please send your contribution to the following address. Recommended Gas Limit: 1000000 Gas Price: 56 Gwei</p>
-            <div class="input-group">
-              <input type="text" class="form-control mono" placeholder="Contract ETH Address" v-model="contractAddress">
-              <span class="input-group-btn">
-                <button 
-                  class="btn btn-primary" 
-                  type="button"
-                  v-bind:class="{'success': textCopied}"
-                  v-clipboard:copy="contractAddress"
-                  v-clipboard:success="contractAddressCopySuccess"
-                  v-clipboard:error="contractAddressCopyError">{{ copyLabel }}</button>
-              </span>
-            </div><!-- /input-group -->
-          </form>
+          <p class="small">Please send your contribution to the following address. Recommended Gas Limit: 1000000 Gas Price: 56 Gwei</p>
+          <div class="input-group">
+            <input type="text" class="form-control mono" placeholder="Contract ETH Address" v-model="contractAddress" readonly="readonly" @focus="$event.target.select()">
+            <span class="input-group-btn">
+              <button 
+                class="btn btn-primary" 
+                type="button"
+                v-bind:class="{'success': textCopied}"
+                v-clipboard:copy="contractAddress"
+                v-clipboard:success="contractAddressCopySuccess"
+                v-clipboard:error="contractAddressCopyError">{{ copyLabel }}</button>
+            </span>
+          </div><!-- /input-group -->
+
+
+          <div class="form-group margin-top-md">
+            <label @click="showTokenCalculator = !showTokenCalculator" class="pointer-cursor">Token Calculator</label>
+            <div v-show="showTokenCalculator">
+              <label>Enter your contribution amount. Minimum <strong>1 ETH</strong>. Can contain decimal. eg. 1.45 ETH</label>
+              <div class="row">
+                <div class="col-md-3">
+                  <input type="number" class="form-control" placeholder="10.0" name="contributionAmount" v-model="contributionAmount" min="1" max="500" step="0.25" v-validate="'required|min_value:1|max_value:500'">
+                  <span v-show="errors.has('contributionAmount')" class="small text-danger">Minimum contribution is 1 ETH and maximum is 500 ETH</span>
+                </div>
+              </div>
+
+              <p class="hero text-success">Standard Purchased Token Allocation: <strong>{{ standardAllocation }}</strong></p>
+              <p class="hero text-success">Guaranteed Bonus Tokens: <strong>{{ bonusAllocation }}</strong> if you purchase in <strong>{{ humanTimeToGo }}</strong></p>
+            </div>
+          </div>
 
 
           <div class="text-center margin-top-xl" v-show="selectedWallet === 'MYETHERWALLET'">
-            <a class="btn btn-primary" v-bind:href="'https://www.myetherwallet.com/?to=' + contractAddress +'&gaslimit=200000&data='+ referralCode +'#send-transaction'" target="_blank">Click here to purchase via MyEtherWallet</a>
+            <a class="btn btn-primary" v-bind:href="mewLink" target="_blank">Click here to purchase via MyEtherWallet</a>
           </div>
 
           <wallet-instructor :selectedWallet="selectedWallet"></wallet-instructor>
@@ -92,6 +110,8 @@
 <script>
   import {getConfig} from "../utils/config"
   import {getWeb3, getVyralSaleContract} from "../utils/blockChainUtils"
+  import {getBonusForToday, getBonusByDay} from '../utils/vyralBonusCalculator'
+  import {getEndTime, getTimeToGo} from '../utils/vyralSchedule'
 
   const config = getConfig()
 
@@ -113,6 +133,10 @@
         checkingTransaction: false,
         hashKey: "",
         showReferralKeyField: false,
+        showTokenCalculator: false,
+        endTime: getEndTime(),
+        humanTimeToGo: '',
+        friendlyTimeToGoTimer: ''
       }
     },
 
@@ -130,19 +154,63 @@
       } else{
         this.hasContributed = false
       }
+
+    },
+
+    beforeDestroy(){
+      clearInterval(this.friendlyTimeToGoTimer)
+    },
+
+    mounted(){
+      this.friendlyTimeToGoTimer = setInterval(this.friendlyTimeToGo, 1000)
     },
 
     computed:{
+      mewLink(){
+        return `https://www.myetherwallet.com/?to=${this.contractAddress}&gaslimit=1000000&data=${this.referralCode}&value=${this.contributionAmount}#send-transaction`
+      },
+
       referralCode(){
         if(this.referrer.length > 0){
           return config.referralKeyPrefix + this.referrer.replace("0x", "")
         } else{
           return null
         }
-      }
+      },
+
+      standardAllocation(){
+        if(this.contributionAmount){
+          return parseInt(this.contributionAmount * config.standardAllocationRate)
+        } else{
+          return 0
+        }
+      },
+
+      bonusAllocation(){
+        if(this.contributionAmount){
+          return parseInt(this.standardAllocation * getBonusByDay(this.endTime) / 100) // is. on day one we give 70% extra of std allocation
+        }else{
+          return 0
+        }
+      },
     },
 
     methods: {
+      friendlyTimeToGo(){
+        this.endTime =  getEndTime()
+        let timeToGo = getTimeToGo(this.endTime)
+        let str = []
+
+        if(timeToGo.days){
+          this.humanTimeToGo = `${timeToGo.days} days ${timeToGo.hours} hours ${timeToGo.minutes} minutes ${timeToGo.seconds} seconds`
+        } else if(timeToGo.hours){
+          this.humanTimeToGo = `${timeToGo.hours} hours ${timeToGo.minutes} minutes ${timeToGo.seconds} seconds`
+        } else if(timeToGo.minutes){
+          this.humanTimeToGo = `${timeToGo.minutes} minutes ${timeToGo.seconds} seconds`
+        } else {
+          this.humanTimeToGo = `${timeToGo.seconds} seconds`
+        }
+      },
       toggleReferralKeyField(){
         this.showReferralKeyField = !this.showReferralKeyField
       },

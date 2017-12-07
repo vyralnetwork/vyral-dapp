@@ -10,5 +10,6 @@
     "referralKeyPrefix": "0x8bbb9fca000000000000000000000000",
     "infura": "https://ropsten.infura.io/A3Yn1ptLQtN3eaUqHoYN",
     "etherscanTransactionLink": "https://ropsten.etherscan.io/tx/",
-    "etherscanTokenLink": "https://ropsten.etherscan.io/token/"
+    "etherscanTokenLink": "https://ropsten.etherscan.io/token/",
+    "standardAllocationRate": 7000
 }

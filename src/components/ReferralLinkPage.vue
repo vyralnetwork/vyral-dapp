@@ -157,7 +157,7 @@ export default {
                 return false
             } else if(walletAddress === this.multisigAddress){
                 return false
-            } else if(! /(0x)?[0-9a-f]{40}$/.test(walletAddress) ){
+            } else if(! /(0x)?[0-9a-f]{40}$/i.test(walletAddress) ){
                 return false
             } else{
                 return true
@@ -175,7 +175,7 @@ export default {
                 this.walletAddressError = 'This is the SHARE address. Please enter the address you contributed from.'
             } else if(this.walletAddress === this.multisigAddress){
                 this.walletAddressError = 'This is the multisig address. Please enter the address you contributed from.'
-            } else if(! /(0x)?[0-9a-f]{40}$/.test(this.walletAddress) ){
+            } else if(! /(0x)?[0-9a-f]{40}$/i.test(this.walletAddress) ){
                 this.walletAddressError = 'Please enter correct wallet address'
             } else{
                 this.walletAddressError = ""

@@ -265,7 +265,7 @@ fieldset[disabled] .btn-primary.focus,
     height: 10px;
 }
 
-.progress-bar{
+.progress-bar.primary{
     background-color: #ED385E;
 }
 
@@ -278,20 +278,14 @@ fieldset[disabled] .btn-primary.focus,
 .right-block{
     float:right;
 }
-.contributions-accept {
-    height: 14px;
-    color: #FFFFFF;
-    font-size: 11.2px;
+
+
+.xs{
+    font-size: 11px;
     line-height: 13px;
 }
 
 
-.share-token-rate {
-    color: #FFFFFF;
-    font-size: 11.2px;
-    line-height: 13px;
-    padding-top:23px;
-}
 .token-rate{
     height: 34.4px;
     color: #EF395F;

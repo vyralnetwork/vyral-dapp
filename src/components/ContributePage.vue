@@ -21,8 +21,8 @@
             <label>Enter your contribution amount. Minimum <strong>1 ETH</strong>. Can contain decimal. eg. 1.45 ETH</label>
             <input type="number" class="form-control" placeholder="10.0" name="contributionAmount" v-model="contributionAmount" min="1" max="500" step="0.25" v-validate="'required|min_value:1|max_value:500'">
             <span v-show="errors.has('contributionAmount')" class="small text-danger">Minimum contribution is 1 ETH and maximum is 500 ETH</span>
-            <p class="hero text-success">Standard Purchased Token Allocation: <strong>{{ standardAllocation }}</strong></p>
-            <p class="hero text-success">Guaranteed Bonus Tokens: <strong>{{ bonusAllocation }}</strong> if you purchase in <strong>{{ humanTimeToGo }}</strong></p>
+            <p class="hero text-muted">Standard Purchased Token Allocation: <strong>{{ standardAllocation }}</strong></p>
+            <p class="hero text-muted">Guaranteed Bonus Tokens: <strong>{{ bonusAllocation }}</strong> if you purchase in <strong>{{ humanTimeToGo }}</strong></p>
           </div>
 
           <div class="form-group">
@@ -65,8 +65,8 @@
                 </div>
               </div>
 
-              <p class="hero text-success">Standard Purchased Token Allocation: <strong>{{ standardAllocation }}</strong></p>
-              <p class="hero text-success">Guaranteed Bonus Tokens: <strong>{{ bonusAllocation }}</strong> if you purchase in <strong>{{ humanTimeToGo }}</strong></p>
+              <p class="hero text-muted">Standard Purchased Token Allocation: <strong>{{ standardAllocation }}</strong></p>
+              <p class="hero text-muted">Guaranteed Bonus Tokens: <strong>{{ bonusAllocation }}</strong> if you purchase in <strong>{{ humanTimeToGo }}</strong></p>
             </div>
           </div>
 

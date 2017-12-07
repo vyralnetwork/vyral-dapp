@@ -19,18 +19,28 @@
                 <div class="hard-cap">Pre-sale Hard Cap {{ sold }} / 10,000 ETH</div>
             </div>
             <div class="contribution-progress-indicator progress margin-top-md">
-              <div class="progress-bar progress-bar-striped progress-bar-animated active" v-bind:style="{width: percentContributed + '%'}"></div>
+              <div class="progress-bar primary progress-bar-striped progress-bar-animated active" v-bind:style="{width: percentContributed + '%'}"></div>
             </div>
         </div>
 
         <div class="col-md-6">
             <div class="pull-right">
-              <div class="contributions-accept">CURRENT PRE-SALE BONUS ENDS IN</div>
+              <div class="white xs">CURRENT PRE-SALE BONUS ENDS IN</div>
 
               <countdown-timer :timestamp="launchDateTime" @timerStopped="resetTimer"></countdown-timer>
 
-              <div class="share-token-rate">SHARE TOKEN RATE</div>
+              <div class="white xs margin-top-md">SHARE TOKEN RATE</div>
               <div class="token-rate">1 ETH  = 7000 SHARE + BONUS</div>
+
+              <div class="white xs margin-top-md text-uppercase">Bonus reducing every day</div>
+              <div class="contribution-progress-indicator progress margin-top-md">
+                <div class="progress-bar progress-bar-success progress-bar-striped progress-bar-animated active" v-bind:style="{width: scaledBonusPercentage + '%', float: 'right'}"></div>
+              </div>
+              <div class="progress-bar-labels">
+                <span class="white xs max">70%</span>
+                <span class="white xs" v-bind:style="{paddingLeft: 100- scaledBonusPercentage + '%'}">{{ todaysBonusPercent }}%</span>
+                <span class="white xs min">0%</span>
+              </div>
             </div>
         </div>
       </div>
@@ -96,6 +106,8 @@
 import {getConfig} from "../utils/config"
 import {getWeb3, getVyralSaleContract} from '../utils/blockChainUtils'
 import {getEndTime} from '../utils/vyralSchedule'
+import {getBonusForToday, getBonusByDay} from '../utils/vyralBonusCalculator'
+
 const config = getConfig()
 const endTime = getEndTime()
 
@@ -133,6 +145,8 @@ export default {
       sold : 546,
 
       attemptedToContinue: false,
+
+      todaysBonusPercent: getBonusForToday(),
     }
   },
 
@@ -143,6 +157,10 @@ export default {
         && !!this.agreeToNotSendingViaExchange
         && !!this.agreeToTimeToReceiveToken
         && !!this.agreeToMinimumContribution
+    },
+
+    scaledBonusPercentage(){
+      return this.calculateScaledBonus()
     },
 
     percentContributed(){
@@ -166,6 +184,10 @@ export default {
           name: 'SelectWalletPage'
         })
       }
+    },
+
+    calculateScaledBonus(){
+      return parseInt(this.todaysBonusPercent * 10 / 7)
     },
 
 
@@ -273,5 +295,22 @@ export default {
     font-size: 11.2px;
     line-height: 23px;
     font-weight: normal;
+}
+
+.progress-bar-labels{
+  margin-top: -15px;
+  position: relative;
+}
+
+.progress-bar-labels span{
+  position: absolute;
+}
+
+.progress-bar-labels span.max{
+  left: 0;
+}
+
+.progress-bar-labels span.min{
+  right: 0;
 }
 </style>

@@ -266,7 +266,7 @@ fieldset[disabled] .btn-primary.focus,
 }
 
 .progress-bar-primary{
-    background-color: #ED385E;
+    background-color: #ED385E !important;
 }
 
 .wallet-warning{

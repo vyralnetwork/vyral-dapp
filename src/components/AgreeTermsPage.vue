@@ -19,7 +19,7 @@
                 <div class="hard-cap">Pre-sale Hard Cap {{ sold }} / 10,000 ETH</div>
             </div>
             <div class="contribution-progress-indicator progress margin-top-md">
-              <div class="progress-bar primary progress-bar-striped progress-bar-animated active" v-bind:style="{width: percentContributed + '%'}"></div>
+              <div class="progress-bar progress-bar-primary progress-bar-striped progress-bar-animated active" v-bind:style="{width: percentContributed + '%'}"></div>
             </div>
         </div>
 
@@ -34,7 +34,7 @@
 
               <div class="white xs margin-top-md text-uppercase">Bonus reducing every day</div>
               <div class="contribution-progress-indicator progress margin-top-md">
-                <div class="progress-bar progress-bar-success progress-bar-striped progress-bar-animated active" v-bind:style="{width: scaledBonusPercentage + '%', float: 'right'}"></div>
+                <div class="progress-bar progress-bar-primary progress-bar-striped progress-bar-animated active" v-bind:style="{width: scaledBonusPercentage + '%', float: 'right'}"></div>
               </div>
               <div class="progress-bar-labels">
                 <span class="white xs max">70%</span>

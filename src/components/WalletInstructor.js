@@ -7,11 +7,11 @@ Vue.component('wallet-instructor',{
     template: `
     <div class='wallet-instructor'>
         <div class="text-center" v-show="metamaskSelected()">
-          <a href="https://blog.vyral.network/guides/home" target="_blank">Click here for instructions to purchase via <strong>METAMASK</strong></a>
+          <a href="https://blog.vyral.network/how-to-purchase-share-tokens-via-metamask-3bc29df4efbc" target="_blank">Click here for instructions to purchase via <strong>METAMASK</strong></a>
         </div>
 
         <div class="text-center" v-show="myEtherWalletSelected()">
-          <a href="https://blog.vyral.network/guides/home" target="_blank">Click here for instructions to purchase via <strong>MyEtherWallet</strong></a>
+          <a href="https://blog.vyral.network/how-to-contribute-via-myetherwallet-78f6c14418ca" target="_blank">Click here for instructions to purchase via <strong>MyEtherWallet</strong></a>
         </div>
 
         <div class="text-center" v-show="paritySelected()">

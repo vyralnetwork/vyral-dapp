@@ -39,7 +39,7 @@
                 <span class="white xs" style="padding-left: 29%">3<sup>rd</sup>DEC</span>
                 <span class="white xs" v-bind:style="{paddingLeft: 100- scaledBonusPercentage + '%'}"></span>
                 <span class="white xs" style="padding-left: 63%">22<sup>nd</sup>DEC</span>
-                <span class="white xs min">24<sup><th></th></sup> DEC</span>
+                <span class="white xs min">24<sup>th</sup> DEC</span>
               </div>
 
               <div class="contribution-progress-indicator progress margin-top-md" style="margin-top: 30px;">

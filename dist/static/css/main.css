@@ -53,6 +53,10 @@ input[type='radio']{
     color: #4285f4;
 }
 
+.text-primary{
+    color: #EF395F !important;
+}
+
 .btn-primary,
 .btn-primary:hover,
 .btn-primary.disabled:hover, 
@@ -672,4 +676,18 @@ ul
 
 .wallet-instructor{
     margin-top: 20px;
+}
+
+@keyframes heart-beat {
+  30% {
+    transform: scale(2.1);
+  }
+  70% {
+    transform: scale(1.6);
+  }
+}
+
+@-webkit-keyframes blinker {
+  from {opacity: 1.0;}
+  to {opacity: 0.3;}
 }

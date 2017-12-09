@@ -32,14 +32,28 @@
               <div class="white xs margin-top-md">SHARE TOKEN RATE</div>
               <div class="token-rate">1 ETH  = 7000 SHARE + BONUS</div>
 
-              <div class="white xs margin-top-md text-uppercase">Bonus reducing every day</div>
-              <div class="contribution-progress-indicator progress margin-top-md">
+              <div class="white xs margin-top-md text-uppercase">Bonus SHARE token offer dropping every day</div>
+
+              <div class="progress-bar-labels" style="margin-top: 20px; top: -10px;">
+                <span class="white xs max">2<sup>nd</sup> DEC</span>
+                <span class="white xs" style="padding-left: 29%">3<sup>rd</sup>DEC</span>
+                <span class="white xs" v-bind:style="{paddingLeft: 100- scaledBonusPercentage + '%'}"></span>
+                <span class="white xs" style="padding-left: 63%">22<sup>nd</sup>DEC</span>
+                <span class="white xs min">24<sup><th></th></sup> DEC</span>
+              </div>
+
+              <div class="contribution-progress-indicator progress margin-top-md" style="margin-top: 30px;">
                 <div class="progress-bar progress-bar-primary progress-bar-striped progress-bar-animated active" v-bind:style="{width: scaledBonusPercentage + '%', float: 'right'}"></div>
               </div>
               <div class="progress-bar-labels">
-                <span class="white xs max">70%</span>
-                <span class="white xs" v-bind:style="{paddingLeft: 100- scaledBonusPercentage + '%'}">{{ todaysBonusPercent }}%</span>
-                <span class="white xs min">0%</span>
+                <span class="white xs max">70%<br>START</span>
+                <span class="white xs" style="padding-left: 29%">50%</span>
+                <span class="xs white" v-bind:style="{paddingLeft: 100- scaledBonusPercentage + '%'}">{{ todaysBonusPercent }}% <br>NOW</span>
+                <!-- <span class="white xs" style="padding-left: 50%">35%<br>13<sup>th</sup>DEC</span> -->
+                <!-- <span class="white xs" style="padding-left: 57%">30%<br>18<sup>th</sup>DEC</span> -->
+                <span class="white xs" style="padding-left: 63%">26%</span>
+                <!-- <span class="white xs" style="padding-left: 71%">20%<br>23<sup>rd</sup>DEC</span> -->
+                <span class="white xs min">0%<br>END</span>
               </div>
             </div>
         </div>
@@ -312,5 +326,14 @@ export default {
 
 .progress-bar-labels span.min{
   right: 0;
+}
+
+.now{
+  text-decoration: blink;
+  -webkit-animation-name: blinker;
+  -webkit-animation-duration: 0.3s;
+  -webkit-animation-iteration-count:infinite;
+  -webkit-animation-timing-function:ease-in-out;
+  -webkit-animation-direction: alternate;
 }
 </style>

@@ -264,7 +264,7 @@ fieldset[disabled] .btn-primary.focus,
     padding-top:6px;
 }
 .contribution-progress-indicator {
-    width: 400px;
+    width: 100%;
     border-radius: 5px;
     height: 10px;
 }

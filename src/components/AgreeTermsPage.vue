@@ -1,12 +1,12 @@
 <template>
   <div class="ico-main">
     <div class="container">
-      <div class="logo">
+      <div class="logo" v-bind:class="{'text-center': isMobile || isTablet}">
         <a href="https://vyral.network"><img src="/static/images/logo.png" alt="Vyral Network"></a>
       </div>
 
       <div class="row">
-        <div class="col-md-6">
+        <div class="col-md-6" v-show="!isMobile && !isTablet">
             <div class= "launch-title">
                 <div class="line-1"></div>
                 <div class="the-vyral-network-la">THE VYRAL NETWORK LAUNCH</div>
@@ -23,8 +23,8 @@
             </div>
         </div>
 
-        <div class="col-md-6">
-            <div class="pull-right">
+        <div v-bind:class="{'col-md-6': !isMobile && !isTablet}">
+            <div v-bind:class="{ 'pull-right': !isMobile && !isTablet, 'text-center': isMobile || isTablet }">
               <div class="white xs">CURRENT PRE-SALE BONUS ENDS IN</div>
 
               <countdown-timer :timestamp="launchDateTime" @timerStopped="resetTimer"></countdown-timer>
@@ -36,9 +36,9 @@
 
               <div class="progress-bar-labels" style="margin-top: 20px; top: -10px;">
                 <span class="white xs max">2<sup>nd</sup> DEC</span>
-                <span class="white xs" style="padding-left: 29%">3<sup>rd</sup>DEC</span>
+                <span class="white xs" style="left: 29%">3<sup>rd</sup> DEC</span>
                 <span class="white xs" v-bind:style="{paddingLeft: 100- scaledBonusPercentage + '%'}"></span>
-                <span class="white xs" style="padding-left: 63%">22<sup>nd</sup>DEC</span>
+                <span class="white xs" style="left: 63%">22<sup>nd</sup> DEC</span>
                 <span class="white xs min">24<sup>th</sup> DEC</span>
               </div>
 
@@ -47,21 +47,21 @@
               </div>
               <div class="progress-bar-labels">
                 <span class="white xs max">70%<br>START</span>
-                <span class="white xs" style="padding-left: 29%">50%</span>
-                <span class="xs text-primary blinker" v-bind:style="{paddingLeft: 100- scaledBonusPercentage + '%'}">{{ todaysBonusPercent }}% <br>NOW</span>
-                <!-- <span class="white xs" style="padding-left: 50%">35%<br>13<sup>th</sup>DEC</span> -->
-                <!-- <span class="white xs" style="padding-left: 57%">30%<br>18<sup>th</sup>DEC</span> -->
-                <span class="white xs" style="padding-left: 63%">26%</span>
-                <!-- <span class="white xs" style="padding-left: 71%">20%<br>23<sup>rd</sup>DEC</span> -->
+                <span class="white xs" style="left: 29%">50%</span>
+                <span class="xs text-primary blinker" v-bind:style="{left: 100- scaledBonusPercentage + '%'}">{{ todaysBonusPercent }}% <br>NOW</span>
+                <!-- <span class="white xs" style="left: 50%">35%<br>13<sup>th</sup>DEC</span> -->
+                <!-- <span class="white xs" style="left: 57%">30%<br>18<sup>th</sup>DEC</span> -->
+                <span class="white xs" style="left: 63%">26%</span>
+                <!-- <span class="white xs" style="left: 71%">20%<br>23<sup>rd</sup>DEC</span> -->
                 <span class="white xs min">0%<br>END</span>
               </div>
             </div>
         </div>
       </div>
 
-      <wizard-steps current="AGREE_TERMS"></wizard-steps>
+      <wizard-steps current="AGREE_TERMS" v-show="!isMobile && !isTablet"></wizard-steps>
 
-      <ul class="list-unstyled">
+      <ul class="list-unstyled" v-show="!isMobile && !isTablet">
           <li>
               <label class="checkbox">
                   <input type="checkbox" v-model="agreeTerms" @click="attemptedToContinue = false"/>
@@ -99,12 +99,19 @@
           </li>
       </ul>
 
-      <div class="text-center margin-top-xl">
+      <div class="text-center margin-top-xl" v-show="!isMobile && !isTablet">
         <p class="text-danger text-center" v-show="!agreeToAllTermsAndConditions && attemptedToContinue">You must agree to all terms in order to continue</p>
 
         <button class="btn btn-primary text-uppercase" @click="allTermsAgreed()" v-bind:class="{disabled: !agreeToAllTermsAndConditions}">
           Continue
         </button>
+      </div>
+
+
+
+      <!-- Mobile & Table only version -->
+      <div class="text-center margin-top-xxl white" v-show="isMobile || isTablet">
+        <h3><a v-bind:href="'mailto:a.k.vora@gmail.com?Subject=Vyral%20Contribution%20Address&Body='+ emailBody " class="btn btn-primary">Please use Desktop Browser to contribute</a></h3>
       </div>
 
 
@@ -127,6 +134,7 @@ const endTime = getEndTime()
 
 const soldBottomCap =  546
 const totalSupply = 10000
+const mobileDetector = new MobileDetect(window.navigator.userAgent)
 
 
 export default {
@@ -146,6 +154,8 @@ export default {
 
   data () {
     return {
+      isMobile: mobileDetector.phone(),
+      isTablet: mobileDetector.tablet(),
       config: config,
       agreeTerms: false,
       agreeToNotUsResident: false,
@@ -161,6 +171,12 @@ export default {
       attemptedToContinue: false,
 
       todaysBonusPercent: getBonusForToday(),
+
+      emailBody: `
+        Hi,
+
+        Please follow this link <a href="https://contribute.vyral.network">https://contribute.vyral.network</a> to contribute from your Desktop or Laptop.
+      `
     }
   },
 
@@ -231,19 +247,6 @@ export default {
 
 
       this.sold = soldBottomCap + parseInt(tokens.toNumber())
-
-      // let web3 = getWeb3()
-
-      // let VyralSaleContract = getVyralSaleContract(web3)
-
-      // var sold = VyralSaleContract.soldPresale.call((error, response) => {
-      //   console.log(web3.fromWei(response, "ether" ).toNumber())
-      //   this.sold = soldBottomCap + web3.fromWei(response, "ether" ).toNumber();
-      // })
-
-
-      // console.log(sold)
-
     },
 
 

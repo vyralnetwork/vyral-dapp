@@ -48,7 +48,7 @@
               <div class="progress-bar-labels">
                 <span class="white xs max">70%<br>START</span>
                 <span class="white xs" style="padding-left: 29%">50%</span>
-                <span class="xs white" v-bind:style="{paddingLeft: 100- scaledBonusPercentage + '%'}">{{ todaysBonusPercent }}% <br>NOW</span>
+                <span class="xs text-primary blinker" v-bind:style="{paddingLeft: 100- scaledBonusPercentage + '%'}">{{ todaysBonusPercent }}% <br>NOW</span>
                 <!-- <span class="white xs" style="padding-left: 50%">35%<br>13<sup>th</sup>DEC</span> -->
                 <!-- <span class="white xs" style="padding-left: 57%">30%<br>18<sup>th</sup>DEC</span> -->
                 <span class="white xs" style="padding-left: 63%">26%</span>
@@ -328,12 +328,20 @@ export default {
   right: 0;
 }
 
-.now{
-  text-decoration: blink;
+.blinker{
   -webkit-animation-name: blinker;
-  -webkit-animation-duration: 0.3s;
-  -webkit-animation-iteration-count:infinite;
-  -webkit-animation-timing-function:ease-in-out;
-  -webkit-animation-direction: alternate;
+  -webkit-animation-duration: 1s;
+  -webkit-animation-timing-function: linear;
+  -webkit-animation-iteration-count: infinite;
+
+  -moz-animation-name: blinker;
+  -moz-animation-duration: 1s;
+  -moz-animation-timing-function: linear;
+  -moz-animation-iteration-count: infinite;
+
+  animation-name: blinker;
+  animation-duration: 1s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
 }
 </style>

@@ -111,7 +111,7 @@
 
       <!-- Mobile & Table only version -->
       <div class="text-center margin-top-xxl white" v-show="isMobile || isTablet">
-        <h3><a v-bind:href="'mailto:a.k.vora@gmail.com?Subject=Vyral%20Contribution%20Address&Body='+ emailBody " class="btn btn-primary">Please use Desktop Browser to contribute</a></h3>
+        <h3><a v-bind:href="'mailto:?Subject=Vyral%20Contribution%20Address&Body='+ emailBody " class="btn btn-primary">Please use Desktop Browser to contribute</a></h3>
       </div>
 
 
@@ -173,9 +173,7 @@ export default {
       todaysBonusPercent: getBonusForToday(),
 
       emailBody: `
-        Hi,
-
-        Please follow this link <a href="https://contribute.vyral.network">https://contribute.vyral.network</a> to contribute from your Desktop or Laptop.
+        Hi, Please follow this link <a href="https://contribute.vyral.network">https://contribute.vyral.network</a> to contribute from your Desktop or Laptop.
       `
     }
   },

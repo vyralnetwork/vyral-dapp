@@ -13,6 +13,7 @@
     "test": "npm run unit && npm run e2e"
   },
   "dependencies": {
+    "axios": "^0.17.1",
     "bignumber.js": "^5.0.0",
     "moment": "^2.19.3",
     "qrcode": "^1.0.0",

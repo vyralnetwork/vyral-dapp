@@ -7,33 +7,48 @@
 
             <wizard-steps current="REFERRAL_LINK" :completed="referralLink"></wizard-steps>
 
-            <p class="choose-the-wallet margin-top-xl">YOUR REFERRAL KEY</p>
+            <p class="hero h4 text-center margin-top-xxl text-primary">YOUR REFERRAL KEY</p>
 
-
-            <div class="row">
+            <div class="row" v-show="!referralLink">
                 <div class="col-md-12 margin-top-lg">
                     <p class="hero white text-center">Post your wallet address in the box below to create your Vyral Referral Key:</p>
 
                     <div class="form-group with-error-message">
                         <input type="text" class="form-control mono" placeholder="Enter your wallet address you contributed from" v-model="walletAddress" @keyup="validateWalletAddress()">
-                        <!-- <span class="input-group-btn">
-                            <button class="btn btn-primary">Create</button>
-                        </span> -->
-                    </div><!-- /input-group -->
+                    </div>
                     <p class="small text-danger" v-bind:style="{visibility: walletAddressError ? 'visible': 'hidden'}">{{ walletAddressError }}</p>
+                    <!-- wallet address -->
 
-                    <div class="input-group">
-                        <input type="text" class="form-control mono" placeholder="Your Vyral Referral Link" v-model="referralLink" readonly="readonly" @focus="$event.target.select()">
-                        <span class="input-group-btn">
-                            <button 
-                            class="btn btn-primary" 
-                            v-bind:class="{'success': textCopied}"
-                            v-clipboard:copy="referralLink"
-                            v-clipboard:success="referralLinkCopySuccess"
-                            v-clipboard:error="referralLinkCopyError">{{ copyLabel }}</button>
-                        </span>
+                    <div class="form-group with-error-message">
+                        <input type="text" class="form-control mono" placeholder="Enter your email address" name="emailAddress" v-model="emailAddress" v-validate="'required|email'" autocomplete="off">
                     </div><!-- /input-group -->
+                    <p class="small text-danger" v-show="errors.has('emailAddress')">Email address is required</p>
+
+                    <div class="form-group with-error-message">
+                        <input type="text" class="form-control mono" placeholder="Enter your Telegram ID" v-model="telegramId" name="telegramId" v-validate="'required|alpha_num'">
+                    </div><!-- /input-group -->
+                    <p class="small text-muted help-block">Please visit <a href="https://t.me/vyralnetwork" target="_blank">https://t.me/vyralnetwork</a> if you do not have a telegram ID yet</p>
+                    <p class="small text-danger" v-show="errors.has('telegramId')">Telegram ID is required and should contain alphabets and numbers only</p>
+
+                    <button class="btn btn-block btn-primary"
+                        v-bind:disabled="!walletAddress || !emailAddress || !telegramId || walletAddressError || errors.has('emailAddress') || errors.has('telegramId')"
+                        @click="generateReferralKey()">
+                            Generate Referral Link
+                    </button>
                 </div>
+            </div>
+
+
+            <div class="input-group" v-show="referralLink">
+                <input type="text" class="form-control mono" placeholder="Your Vyral Referral Link" v-model="referralLink" readonly="readonly" @focus="$event.target.select()">
+                <span class="input-group-btn">
+                    <button 
+                    class="btn btn-primary" 
+                    v-bind:class="{'success': textCopied}"
+                    v-clipboard:copy="referralLink"
+                    v-clipboard:success="referralLinkCopySuccess"
+                    v-clipboard:error="referralLinkCopyError">{{ copyLabel }}</button>
+                </span>
             </div>
 
 
@@ -67,7 +82,7 @@
             </div>
 
 
-            <ul class="list-unstyled list-inline margin-top-xl row text-center" v-show="walletAddress">
+            <ul class="list-unstyled list-inline margin-top-xl row text-center" v-show="referralLink">
                 <li class="col-md-4 col-md-offset-2">
                     <div class="balance-title margin-bottom-xl">
                         <a target="_blank" v-bind:href="etherscanTokenLink + shareContractAddress + '?a=' + walletAddress">Your SHARE Balance</a>
@@ -96,6 +111,7 @@
 <script>
 import {getConfig} from "../utils/config"
 import {getWeb3, getShareContract} from "../utils/blockChainUtils"
+const axios = require('axios')
 
 const config = getConfig()
 
@@ -118,7 +134,13 @@ export default {
             loadingVyralBalance: true,
             loadingVyralLockedBalance: true,
             walletAddressError: "",
-            etherscanTokenLink: config.etherscanTokenLink
+            telegramId: "",
+            telegramIdError: "",
+            emailAddress: "",
+            emailAddressError: "",
+            etherscanTokenLink: config.etherscanTokenLink,
+            referralLink: "",
+            zapierWebhookUrl: config.zapierWebhookUrl
         }
     },
 
@@ -132,19 +154,19 @@ export default {
         }
 
 
-        if(this.walletAddress){
+        if(this.referralLink){
             this.getBalance()
         }
     },
 
     computed: {
-        referralLink(){
-            if(this.walletAddress && this.walletAddress.length >  0 && this.isWalletAddressValid()){
-                return this.referralBaseUrl + this.walletAddress
-            } else{
-                return ''
-            }
-        },
+        // referralLink(){
+        //     if(this.walletAddress && this.walletAddress.length >  0 && this.isWalletAddressValid()){
+        //         return this.referralBaseUrl + this.walletAddress
+        //     } else{
+        //         return ''
+        //     }
+        // },
     },
 
     methods: {
@@ -213,7 +235,21 @@ export default {
 
         referralLinkCopyError: function(e){
             alert("Error");
-        }
+        },
+
+        sendWebhookRequest(walletAddress, emailAddress, telegramId){
+            return axios.get(this.zapierWebhookUrl +'?wallet='+ walletAddress + '&email='+ emailAddress + '&telegram='+ telegramId)
+        },
+
+        generateReferralKey(){
+            if(this.walletAddress && this.walletAddress.length >  0 && this.isWalletAddressValid()){
+                this.referralLink = this.referralBaseUrl + this.walletAddress
+                this.sendWebhookRequest(this.walletAddress, this.emailAddress, this.telegramId)
+                this.getBalance()
+            } else{
+                this.referralLink = ''
+            }
+        },
 
 
     }

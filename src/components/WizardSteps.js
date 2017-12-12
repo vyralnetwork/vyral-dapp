@@ -8,7 +8,7 @@ Vue.component("wizard-steps", {
       <li>
         <router-link :to="{name:'AgreeTermsPage'}" v-show="areTermsAgreed">
             <div class="step complete">
-                <img class="oval-ok" src="/static/images/ok-icon.svg"/>
+                <i class="fa fa-check white"></i>
             </div>
         </router-link>
         <div class="step" v-show="!areTermsAgreed">1</div>
@@ -17,7 +17,7 @@ Vue.component("wizard-steps", {
       <li>
         <router-link :to="{name:'SelectWalletPage'}" v-show="isWalletSelected">
             <div class="step complete">
-                <img class="oval-ok" src="/static/images/ok-icon.svg"/>
+                <i class="fa fa-check white"></i>
             </div>
         </router-link>
         <div class="step" v-show="!isWalletSelected">2</div>
@@ -26,7 +26,7 @@ Vue.component("wizard-steps", {
       <li>
         <router-link :to="{name:'ContributePage'}" v-show="userHasContributed">
             <div class="step complete">
-                <img class="oval-ok" src="/static/images/ok-icon.svg"/>
+                <i class="fa fa-check white"></i>
             </div>
         </router-link>
         <div class="step" v-show="!userHasContributed">3</div>
@@ -35,7 +35,7 @@ Vue.component("wizard-steps", {
       <li>
         <router-link :to="{name:'ReferralLinkPage'}" v-show="referralLinkGenerated">
             <div class="step complete">
-                <img class="oval-ok" src="/static/images/ok-icon.svg"/>
+                <i class="fa fa-check white"></i>
             </div>
         </router-link>
         <div class="step" v-show="!referralLinkGenerated">4</div>

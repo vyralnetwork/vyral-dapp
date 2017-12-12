@@ -39,7 +39,7 @@
 
 
         <div v-show="selectedWallet !== 'METAMASK'">
-          <p class="small">Please send your contribution to the following address. Recommended Gas Limit: 1000000 Gas Price: 56 Gwei</p>
+          <p class="small">Please send your contribution to the following address. Recommended Gas Limit: 1000000 Gas Price: {{ recommendedGasPrice/1000000000 }} Gwei</p>
           <div class="input-group">
             <input type="text" class="form-control mono" placeholder="Contract ETH Address" v-model="contractAddress" readonly="readonly" @focus="$event.target.select()">
             <span class="input-group-btn">
@@ -136,7 +136,8 @@
         showTokenCalculator: false,
         endTime: getEndTime(),
         humanTimeToGo: '',
-        friendlyTimeToGoTimer: ''
+        friendlyTimeToGoTimer: '',
+        recommendedGasPrice: config.recommendedGasPrice
       }
     },
 
@@ -154,6 +155,8 @@
       } else{
         this.hasContributed = false
       }
+
+      this.getRecommendedGasPrice()
 
     },
 
@@ -219,6 +222,12 @@
         this.referrer = this.referrer.split("/").pop()
       },
 
+      getRecommendedGasPrice(){
+        web3.eth.getGasPrice((error, response) => {
+          this.recommendedGasPrice = parseInt(response.toString(), 10) + 5000000000
+        })
+      },
+
       contribute() {
 
         if(this.referrer){
@@ -244,7 +253,7 @@
             from: web3.eth.defaultAccount,
             value: web3.toWei(this.contributionAmount, 'ether'),
             gas: 1000000,
-            gasPrice: 56000000000,
+            gasPrice: this.recommendedGasPrice,
           }
 
           if(this.referrer){

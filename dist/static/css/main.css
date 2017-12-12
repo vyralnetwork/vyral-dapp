@@ -374,6 +374,11 @@ ul.progress-tracker li:last-child:after {
   width: 0%;
 }
 
+ul.progress-tracker li i{
+    font-size: 14px;
+    vertical-align: middle;
+}
+
 
 
 .status-bar-txt{

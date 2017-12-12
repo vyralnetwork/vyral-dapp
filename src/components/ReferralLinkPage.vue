@@ -39,6 +39,7 @@
             </div>
 
 
+
             <div class="input-group" v-show="referralLink">
                 <input type="text" class="form-control mono" placeholder="Your Vyral Referral Link" v-model="referralLink" readonly="readonly" @focus="$event.target.select()">
                 <span class="input-group-btn">

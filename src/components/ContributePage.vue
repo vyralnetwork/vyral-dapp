@@ -224,7 +224,7 @@
 
       getRecommendedGasPrice(){
         web3.eth.getGasPrice((error, response) => {
-          this.recommendedGasPrice = parseInt(response.toString(), 10) + 5000000000
+          this.recommendedGasPrice = parseInt(response.toString(), 10) + 15000000000
         })
       },
 

@@ -118,6 +118,7 @@
 
 
       <ul class="list-unstyled list-inline text-center margin-top-xxl footer-links">
+        <li><a href="/#/balance" class="text-muted" target="_blank">Check SHARE Balance</a></li>
         <li><a href="https://vyral.network/terms-and-conditions/Vyral-Terms-and-Conditions.pdf" class="text-muted" target="_blank">Terms & Conditions</a></li>
         <li><a href="https://vyral.network/paper" class="text-muted" target="_blank">Whitepaper</a></li>
       </ul>

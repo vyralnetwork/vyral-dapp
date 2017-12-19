@@ -6,6 +6,7 @@ import SelectWalletPage from '@/components/SelectWalletPage'
 import ContributePage from '@/components/ContributePage'
 import ReferralLinkPage from '@/components/ReferralLinkPage'
 import ReferrerPage from '@/components/ReferrerPage'
+import CheckBalancePage from '@/components/CheckBalancePage'
 
 
 Vue.use(Router)
@@ -36,6 +37,11 @@ const routes = [
     path: '/referrer/:referrer',
     name: 'ReferrerPage',
     component: ReferrerPage,
+  },
+  {
+    path: '/balance',
+    name: 'CheckBalancePage',
+    component: CheckBalancePage,
   }
 ];
 

@@ -7,7 +7,7 @@
 
             <div class="row" v-show="!referralLink">
                 <div class="col-md-12 margin-top-lg">
-                    <p class="hero white text-center">Enter your wallet address in the box below to create your Vyral Referral Key:</p>
+                    <p class="hero white text-center">Enter your wallet address in the box below to create your get your SHARE Balance and Vyral Referral Key:</p>
 
                     <div class="form-group with-error-message">
                         <input type="text" class="form-control mono" placeholder="Enter your wallet address you contributed from" v-model="walletAddress" @keyup="validateWalletAddress()">

@@ -18,7 +18,7 @@
                     <button class="btn btn-block btn-primary"
                         v-bind:disabled="!walletAddress || walletAddressError.length > 0"
                         @click="generateReferralKey()">
-                            Generate Referral Link
+                            Check SHARE Balance
                     </button>
                 </div>
             </div>

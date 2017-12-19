@@ -142,17 +142,17 @@
     },
 
     created(){
-      if(! this.$store.getters.termsAgreed){
-        this.$router.push({name: "AgreeTermsPage"})
-      } else if(! this.$store.getters.selectedWallet){
-        this.$router.push({name: "SelectWalletPage"})
-      }
+      // if(! this.$store.getters.termsAgreed){
+      //   this.$router.push({name: "AgreeTermsPage"})
+      // } else if(! this.$store.getters.selectedWallet){
+      //   this.$router.push({name: "SelectWalletPage"})
+      // }
 
       // If it's not MetaMask, we have no way to know if we should enable Referral Link or not.
-      if(this.selectedWallet !== 'METAMASK'){
+      if(!this.hasContributed && this.selectedWallet !== 'METAMASK'){
         this.hasContributed = true
         this.$store.dispatch("setContributedStatus", true)
-      } else{
+      } else if(!this.hasContributed){
         this.hasContributed = false
       }
 

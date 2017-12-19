@@ -57,12 +57,9 @@
     },
 
     mounted() {
-      // check if user has agreed to all the terms or not
-      // if not, redirect to Home page
-      // TODO: Move this to before enter route filter
-      if(! this.$store.getters.termsAgreed){
-        this.$router.push({name: "AgreeTermsPage"})
-      }
+      // if(! this.$store.getters.termsAgreed){
+      //   this.$router.push({name: "AgreeTermsPage"})
+      // }
 
       this.metamaskStatusChecker = setInterval(this.checkMetaMaskStatus, 1000)
     },

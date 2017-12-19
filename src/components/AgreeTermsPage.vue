@@ -16,10 +16,12 @@
                  Vyral Smart Contracts powers a decentralized advertising 
                  Ecosystem of blockchain incentive programs from fueling viral
                  growth for crypto token sales to tokenizing reward programs for businesses
-                <div class="hard-cap">Pre-sale Hard Cap {{ sold }} / 10,000 ETH</div>
+                <div class="hard-cap">Pre-sale Hard Cap {{ sold }} / {{ totalSupply }} ETH</div>
             </div>
+            <div style="width: 70%">
             <div class="contribution-progress-indicator progress margin-top-md">
               <div class="progress-bar progress-bar-primary progress-bar-striped progress-bar-animated active" v-bind:style="{width: percentContributed + '%'}"></div>
+            </div>
             </div>
         </div>
 
@@ -35,10 +37,10 @@
               <div class="white xs margin-top-md text-uppercase">Bonus SHARE token offer dropping every day</div>
 
               <div class="progress-bar-labels" style="margin-top: 20px; top: -10px;">
-                <span class="white xs max">2<sup>nd</sup> DEC</span>
-                <span class="white xs" style="left: 29%">3<sup>rd</sup> DEC</span>
+                <!-- <span class="white xs max">2<sup>nd</sup> DEC</span> -->
+                <!-- <span class="white xs" style="left: 29%">3<sup>rd</sup> DEC</span> -->
                 <span class="white xs" v-bind:style="{paddingLeft: 100- scaledBonusPercentage + '%'}"></span>
-                <span class="white xs" style="left: 63%">22<sup>nd</sup> DEC</span>
+                <!-- <span class="white xs" style="left: 63%">22<sup>nd</sup> DEC</span> -->
                 <span class="white xs min">24<sup>th</sup> DEC</span>
               </div>
 
@@ -46,12 +48,12 @@
                 <div class="progress-bar progress-bar-primary progress-bar-striped progress-bar-animated active" v-bind:style="{width: scaledBonusPercentage + '%', float: 'right'}"></div>
               </div>
               <div class="progress-bar-labels">
-                <span class="white xs max">70%<br>START</span>
-                <span class="white xs" style="left: 29%">50%</span>
+                <!-- <span class="white xs max">70%<br>START</span> -->
+                <!-- <span class="white xs" style="left: 29%">50%</span> -->
                 <span class="xs text-primary blinker" v-bind:style="{left: 100- scaledBonusPercentage + '%'}">{{ todaysBonusPercent }}% <br>NOW</span>
                 <!-- <span class="white xs" style="left: 50%">35%<br>13<sup>th</sup>DEC</span> -->
                 <!-- <span class="white xs" style="left: 57%">30%<br>18<sup>th</sup>DEC</span> -->
-                <span class="white xs" style="left: 63%">26%</span>
+                <!-- <span class="white xs" style="left: 63%">26%</span> -->
                 <!-- <span class="white xs" style="left: 71%">20%<br>23<sup>rd</sup>DEC</span> -->
                 <span class="white xs min">0%<br>END</span>
               </div>
@@ -133,7 +135,7 @@ const config = getConfig()
 const endTime = getEndTime()
 
 const soldBottomCap =  546
-const totalSupply = 10000
+const totalSupply = 5000
 const mobileDetector = new MobileDetect(window.navigator.userAgent)
 
 
@@ -331,17 +333,17 @@ export default {
 
 .blinker{
   -webkit-animation-name: blinker;
-  -webkit-animation-duration: 1s;
+  -webkit-animation-duration: 0.8s;
   -webkit-animation-timing-function: linear;
   -webkit-animation-iteration-count: infinite;
 
   -moz-animation-name: blinker;
-  -moz-animation-duration: 1s;
+  -moz-animation-duration: 0.8s;
   -moz-animation-timing-function: linear;
   -moz-animation-iteration-count: infinite;
 
   animation-name: blinker;
-  animation-duration: 1s;
+  animation-duration: 0.8s;
   animation-timing-function: linear;
   animation-iteration-count: infinite;
 }

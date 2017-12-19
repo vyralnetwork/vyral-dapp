@@ -146,28 +146,18 @@ export default {
     },
 
     mounted(){
-        if(! this.$store.getters.termsAgreed){
-            this.$router.push({name: "AgreeTermsPage"})
-        } else if(! this.$store.getters.selectedWallet){
-            this.$router.push({name: "SelectWalletPage"})
-        } else if (! this.$store.getters.hasContributed){
-            this.$router.push({name: "ContributePage"})
-        }
+        // if(! this.$store.getters.termsAgreed){
+        //     this.$router.push({name: "AgreeTermsPage"})
+        // } else if(! this.$store.getters.selectedWallet){
+        //     this.$router.push({name: "SelectWalletPage"})
+        // } else if (! this.$store.getters.hasContributed){
+        //     this.$router.push({name: "ContributePage"})
+        // }
 
 
         if(this.referralLink){
             this.getBalance()
         }
-    },
-
-    computed: {
-        // referralLink(){
-        //     if(this.walletAddress && this.walletAddress.length >  0 && this.isWalletAddressValid()){
-        //         return this.referralBaseUrl + this.walletAddress
-        //     } else{
-        //         return ''
-        //     }
-        // },
     },
 
     methods: {

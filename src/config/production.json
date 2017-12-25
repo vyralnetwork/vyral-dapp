@@ -12,5 +12,6 @@
     "etherscanTransactionLink": "https://etherscan.io/tx/",
     "etherscanTokenLink": "https://etherscan.io/token/",
     "standardAllocationRate": 7000,
-    "zapierWebhookUrl": "https://hooks.zapier.com/hooks/catch/642762/s7huty/"
+    "zapierWebhookUrl": "https://hooks.zapier.com/hooks/catch/642762/s7huty/",
+    "zapierSubscribeUrl": "https://hooks.zapier.com/hooks/catch/642762/8691j5/"
 }

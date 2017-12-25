@@ -7,12 +7,18 @@ import ContributePage from '@/components/ContributePage'
 import ReferralLinkPage from '@/components/ReferralLinkPage'
 import ReferrerPage from '@/components/ReferrerPage'
 import CheckBalancePage from '@/components/CheckBalancePage'
+import PreSaleEndedPage from '@/components/PreSaleEndedPage'
 
 
 Vue.use(Router)
 
 
 const routes = [
+  {
+    path: '/',
+    name: 'PreSaleEndedPage',
+    component: PreSaleEndedPage
+  },
   {
     path: '/',
     name: 'AgreeTermsPage',

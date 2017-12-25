@@ -28,7 +28,7 @@
         <div v-bind:class="{'col-md-6': !isMobile && !isTablet}">
             <div v-bind:class="{ 'pull-right': !isMobile && !isTablet, 'text-center': isMobile || isTablet }">
               <div class="white xs">CURRENT PRE-SALE BONUS ENDS IN</div>
-
+              
               <countdown-timer :timestamp="launchDateTime" @timerStopped="resetTimer"></countdown-timer>
 
               <div class="white xs margin-top-md">SHARE TOKEN RATE</div>

@@ -57,7 +57,7 @@
 
             <ul class="list-unstyled list-inline margin-top-xl">
               <li>
-                <a class="btn btn-link btn-xs white" href="/#/get-referral-link">Get Referral Link</a>
+                <a class="btn btn-link btn-xs white" href="/#/balance">Get Referral Link</a>
               </li>
               <li>
                 <a class="btn btn-link btn-xs white" href="/#/balance">Check SHARE Balance</a>

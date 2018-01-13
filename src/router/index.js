@@ -5,6 +5,7 @@ import AgreeTermsPage from '@/components/AgreeTermsPage'
 import SelectWalletPage from '@/components/SelectWalletPage'
 import ContributePage from '@/components/ContributePage'
 import ReferralLinkPage from '@/components/ReferralLinkPage'
+import GetReferralLinkPage from '@/components/GetReferralLinkPage'
 import ReferrerPage from '@/components/ReferrerPage'
 import CheckBalancePage from '@/components/CheckBalancePage'
 import PreSaleEndedPage from '@/components/PreSaleEndedPage'
@@ -38,6 +39,11 @@ const routes = [
     path: '/referral-link',
     name: 'ReferralLinkPage',
     component: ReferralLinkPage,
+  },
+  {
+    path: '/get-referral-link',
+    name: 'GetReferralLinkPage',
+    component: GetReferralLinkPage,
   },
   {
     path: '/referrer/:referrer',

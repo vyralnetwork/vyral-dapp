@@ -17,6 +17,10 @@
 
             <h2 class="margin-top-xxl text-primary text-uppercase">Pre-sale has ended</h2>
             <button class="btn btn-primary margin-top-md text-uppercase" @click="showModal = true">Get Notified When We Open Again</button>
+
+
+
+
             <div v-if="showModal" @close="showModal = false">
               <div class="modal-mask">
                 <div class="modal-wrapper">
@@ -30,8 +34,9 @@
                           </div>
 
                           <div class="form-group">
-                            <button class="btn btn-primary btn-block" v-bind:disabled="errors.has('emailAddress')">Notify me when contribution is open</button>
-                            
+                            <button class="btn btn-primary btn-block" v-bind:disabled="errors.has('emailAddress')">
+                              Notify me when contribution is open
+                            </button>
                           </div>
                       </form>
 
@@ -47,6 +52,17 @@
                 </div>
               </div>
             </div>
+
+
+
+            <ul class="list-unstyled list-inline margin-top-xl">
+              <li>
+                <a class="btn btn-link btn-xs white" href="/#/get-referral-link">Get Referral Link</a>
+              </li>
+              <li>
+                <a class="btn btn-link btn-xs white" href="/#/balance">Check SHARE Balance</a>
+              </li>
+            </ul>
           </div>
        </div>
       </div>
